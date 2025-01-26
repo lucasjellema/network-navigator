@@ -1,4 +1,4 @@
-import { getSelectedNodes, createEdge } from './utils.js';
+import { getSelectedNodes, createEdge, generateGUID } from './utils.js';
 import { editNode} from './modal-element-editor.js';
 
 
@@ -44,12 +44,12 @@ export const addNodeContextMenu = (cy) => {
         const selectedNodes = getSelectedNodes(cy);
 
         if (selectedNodes.length > 0) {
-            if (selectedNodes[0].id() === selectedNode.id()) {
+            if (selectedNodes[0].id() !== selectedNode.id()) {
                 // merge nodes
                 const mergeNodeButton = document.createElement('button');
-                mergeNodeButton.textContent = 'Merge with ' + selectedNodes[0].data('label');
+                mergeNodeButton.textContent = 'Merge - absorb ' + selectedNodes[0].data('label');
                 mergeNodeButton.addEventListener('click', () => {
-                    mergeNodes(selectedNode, selectedNodes[0]);
+                    mergeNodes(cy, selectedNode, selectedNodes[0]);
                     hideNodeContextMenu();
 
                 });
@@ -85,4 +85,50 @@ const deleteNode = (selectedNode)=> {
     hideNodeContextMenu();
 }
 
+const mergeNodes = (cy, node1, node2) =>{
+  
+    // Combine properties (customize as needed)
+  
+    const newNodeId = generateGUID();
+    
+// merge properties from node1 and node2 - but do not include id and label
+
+
+    const mergedProperties = {
+      ...node1.data(),
+      ...node2.data(),
+      id: newNodeId,
+      label: node1.data('label'),
+    };
+  
+    // Add a new merged node at the midpoint between the two nodes
+    const newPosition = {
+      x: (node1.position('x') + node2.position('x')) / 2,
+      y: (node1.position('y') + node2.position('y')) / 2,
+    };
+  
+    const mergedNode = cy.add({
+      group: 'nodes',
+      data: mergedProperties,
+      position: newPosition,
+    });
+  
+
+    // Redirect edges
+    cy.edges().forEach((edge) => {
+      if (edge.source().id() === node1.id() || edge.source().id() === node2.id()) {
+        edge.move({ source:  mergedNode.id()});
+      }
+      if (edge.target().id() === node1.id() || edge.target().id() === node2.id()) {
+        edge.move({ target:  mergedNode.id()});
+      }
+    });
+  
+    // Remove the old nodes
+    node1.remove();
+    node2.remove();
+  
+    // Optional: Apply a visual effect to highlight the new node
+   // mergedNode.flashAnimation();
+}
             
