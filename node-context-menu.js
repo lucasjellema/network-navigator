@@ -72,6 +72,17 @@ export const addNodeContextMenu = (cy) => {
 
             });
             nodeContextMenu.appendChild(createEdgeButton2);
+
+
+             // show path from selectedNodes[0] to selectedNode (of it exists)
+             const showPathButton = document.createElement('button');
+             showPathButton.textContent = 'Show Path from ' + selectedNodes[0].data('label');
+             showPathButton.addEventListener('click', () => {
+                 showPathFrom(cy, selectedNodes[0], selectedNode);
+                 hideNodeContextMenu();
+ 
+             });
+             nodeContextMenu.appendChild(showPathButton);
         }
     });
 }
@@ -132,3 +143,21 @@ const mergeNodes = (cy, node1, node2) =>{
    // mergedNode.flashAnimation();
 }
             
+const showPathFrom = (cy, startNode, destinationNode) => {
+    cy.elements().removeClass('highlighted');
+    const dijkstra = cy.elements().dijkstra({
+        root: startNode,
+        weight: edge => edge.data('weight') || 1 // Default weight is 1 if not provided
+      });
+
+      // Get the shortest path to the target node
+      const path = dijkstra.pathTo(destinationNode);
+
+      if (path.length > 0) {
+        console.log('Shortest path found:', path.map(ele => ele.id()));
+        path.addClass('highlighted'); // Highlight the path
+      } else {
+        console.log('No path exists between the selected nodes.');
+        alert('No path exists between the selected nodes.');
+      }
+};

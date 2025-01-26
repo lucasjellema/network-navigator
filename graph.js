@@ -4,7 +4,7 @@ import { setTitle } from './ui.js';
 
 import { saveCurrentGraph, getCurrentGraph, loadGraph } from "./utils.js";
 import { addEdgeContextMenu, hideEdgeContextMenu } from "./edge-context-menu.js";
-import {hideElementEditModal} from "./modal-element-editor.js";
+import { hideElementEditModal } from "./modal-element-editor.js";
 
 let cy
 document.addEventListener("DOMContentLoaded", () => {
@@ -52,9 +52,19 @@ export const initializeCytoscape = () => {
             }, {
                 selector: 'node:selected',
                 style: {
-                    'background-color': '#FF4136', // Change background color
+                    'background-color': '#FFA167', // Change background color
                     'border-width': 4,            // Thicker border
                     'border-color': '#FF851B'     // Highlight border color
+                }
+            },
+            {
+                selector: '.highlighted',
+                style: {
+                    'background-color': '#FF4136',
+                    'line-color': '#FF4136',
+                    'target-arrow-color': '#FF4136',
+                    'transition-property': 'background-color, line-color, target-arrow-color',
+                    'transition-duration': '0.5s'
                 }
             }
         ],
