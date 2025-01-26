@@ -85,6 +85,14 @@ export const initializeCytoscape = () => {
         console.log('Selected Node Labels:', labels); // Log the labels
     });
 
+    cy.on('dblclick', 'node', (event) => {
+        const node = event.target;
+        const url = node.data("url");
+        if (url) {
+            window.open(url, "_blank");
+        }
+    });
+
     addNodeContextMenu(cy);
     addEdgeContextMenu(cy);
     addGraphContextMenu(cy);
