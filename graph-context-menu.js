@@ -1,9 +1,11 @@
-import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurrentGraph, loadGraph } from './utils.js';
+import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurrentGraph, loadGraph, getCurrentGraph, saveGraph } from './utils.js';
 import { setTitle } from './ui.js';
 const graphContextMenu = document.getElementById('graph-context-menu');
 const addNodeButton = document.getElementById('add-node');
 const createGraphButton = document.getElementById('create-new-graph');
 const viewGraphsButton = document.getElementById('view-saved-graphs');
+const exportGraphButton = document.getElementById('export-graph');
+const importGraphButton = document.getElementById('import-graph');
 
 let clickedPosition
 
@@ -15,6 +17,8 @@ export const addGraphContextMenu = (cy) => {
     initialiseViewGraphsButton(cy);
     initialiseCreateGraphsButton(cy);
     initialiseAddNodeButton(cy);
+    initialiseExportGraphButton(cy);
+    initialiseImportGraphButton(cy);
     cy.on('cxttap', (event) => {
         if (event.target === cy) {
             const pos = event.renderedPosition;
@@ -24,6 +28,50 @@ export const addGraphContextMenu = (cy) => {
             // Save clicked position for adding the node
             clickedPosition = event.position;
         }
+    });
+}
+
+const initialiseExportGraphButton = (cy) => {
+    exportGraphButton.addEventListener('click', () => {
+        const graphJson = getCurrentGraph(cy);
+        // Convert JSON to a downloadable file
+        const blob = new Blob([JSON.stringify(graphJson, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+
+        // Create a temporary link to download the file
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'graph.json'; // File name for the download
+        a.click();
+
+        // Revoke the object URL to free up memory
+        URL.revokeObjectURL(url);
+        hideGraphContextMenu(); // Hide the context menu
+    });
+}
+
+const initialiseImportGraphButton = (cy) => {
+    importGraphButton.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const graphData = JSON.parse(e.target.result);
+                    saveGraph(graphData.id, graphData.title, graphData.description, graphData.elements);
+                    console.log('Graph successfully imported:', graphData);
+                    loadGraph(cy, getGraphById(graphData.id));
+
+                } catch (error) {
+                    console.error('Invalid JSON file:', error);
+                    alert('Failed to import graph. Please make sure the file is a valid JSON.');
+                }
+            };
+            // Read the file as text
+            reader.readAsText(file);
+        }
+        hideGraphContextMenu(); // Hide the context menu
     });
 }
 
