@@ -10,19 +10,19 @@ const modalTitle = document.getElementById('modalTitle');
 let nodeToEdit = null;
 let edgeToEdit = null;
 
-export const editNode = (node) => {
+export const editNode = (cy, node) => {
     nodeToEdit = node;
     modalTitle.textContent = 'Edit Node Properties ' + node.data('label');
-    showModal(node);
+    showModal(cy, node);
 }
 
-export const editEdge = (edge) => {
+export const editEdge = (cy, edge) => {
     edgeToEdit = edge;
     modalTitle.textContent = 'Edit Edge Properties';
-    showModal(edge);
+    showModal(cy, edge);
 }
 
-const showModal = (element) => {
+const showModal = (cy, element) => {
     propertyList.innerHTML = ''; // Clear the property list
     // Populate the modal with the element's current properties
     const data = element.data();
@@ -42,12 +42,26 @@ const showModal = (element) => {
             value = date.toLocaleString();
             editable = false;
         }
+        let options
+        const datalistId = `datalist-${key}`;
+        if (editable) {
+            const suggestions = getTopValuesForProperty(cy, key);
+            options = suggestions.map(value => `<option value="${value}">${value}</option>`).join('');
+        }
+
 
         const div = document.createElement('div');
-        div.innerHTML = `
-        <label>${key}: </label>
-        <input type="text" value="${value}" data-key="${key}" ${!editable ? 'disabled' : ''}/>
-      `;
+        div.innerHTML = `<label>${key}: </label>`;
+        if (options) {
+            div.innerHTML +=
+                `<input list="${datalistId}" value="${data[key]}" data-key="${key}" />
+          <datalist id="${datalistId}">
+            ${options}
+          </datalist>`
+        } else {
+            div.innerHTML +=
+                `<input type="text" value="${value}" data-key="${key}" ${!editable ? 'disabled' : ''} />`
+        }
         propertyList.appendChild(div);
     }
 
@@ -92,3 +106,20 @@ cancelButton.addEventListener('click', () => {
     hideElementEditModal();
 });
 
+const getTopValuesForProperty = (cy, propertyKey) => {
+    const values = {};
+
+    // Count occurrences of each value
+    cy.nodes().forEach(node => {
+        const value = node.data(propertyKey);
+        if (value !== undefined) {
+            values[value] = (values[value] || 0) + 1;
+        }
+    });
+
+    // Sort values by frequency and return the top 3
+    return Object.entries(values)
+        .sort((a, b) => b[1] - a[1]) // Sort by count (descending)
+        .slice(0, 9) // Get top results
+        .map(entry => entry[0]); // Extract values
+};

@@ -32,7 +32,7 @@ export const addEdgeContextMenu = (cy) => {
         const editEdgeButton = document.createElement('button');
         editEdgeButton.textContent = 'Edit Edge ' + selectedEdge.data('label');
         editEdgeButton.addEventListener('click', () => {
-            editEdge(selectedEdge);
+            editEdge(cy,selectedEdge);
             hideEdgeContextMenu();
 
         });

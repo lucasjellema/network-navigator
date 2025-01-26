@@ -34,7 +34,7 @@ export const addNodeContextMenu = (cy) => {
         const editNodeButton = document.createElement('button');
         editNodeButton.textContent = 'Edit Node ' + selectedNode.data('label');
         editNodeButton.addEventListener('click', () => {
-            editNode(selectedNode);
+            editNode(cy,selectedNode);
             hideNodeContextMenu();
 
         });
