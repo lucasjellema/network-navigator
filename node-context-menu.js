@@ -1,5 +1,5 @@
 import { getSelectedNodes, createEdge } from './utils.js';
-import { editNode} from './node-edit.js';
+import { editNode} from './modal-element-editor.js';
 
 
 const nodeContextMenu = document.getElementById('node-context-menu');

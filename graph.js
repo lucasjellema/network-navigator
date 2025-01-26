@@ -4,6 +4,8 @@ import { setTitle } from './ui.js';
 
 import { saveCurrentGraph, getCurrentGraph, loadGraph } from "./utils.js";
 import { addEdgeContextMenu, hideEdgeContextMenu } from "./edge-context-menu.js";
+import {hideElementEditModal} from "./modal-element-editor.js";
+
 let cy
 document.addEventListener("DOMContentLoaded", () => {
     cy = initializeCytoscape();
@@ -96,6 +98,7 @@ export const initializeCytoscape = () => {
         hideEdgeContextMenu();
         hideGraphContextMenu();
         hideGraphListModal();
+        hideElementEditModal();
 
     });
     return cy

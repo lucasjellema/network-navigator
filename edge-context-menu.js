@@ -1,4 +1,6 @@
 import { getSelectedNodes, createEdge } from './utils.js';
+import { editEdge } from './modal-element-editor.js';
+
 const edgeContextMenu = document.getElementById('edge-context-menu');
 edgeContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
     event.preventDefault();
@@ -27,13 +29,23 @@ export const addEdgeContextMenu = (cy) => {
         });
         edgeContextMenu.appendChild(deleteEdgeButton);
 
-})   }
+        const editEdgeButton = document.createElement('button');
+        editEdgeButton.textContent = 'Edit Edge ' + selectedEdge.data('label');
+        editEdgeButton.addEventListener('click', () => {
+            editEdge(selectedEdge);
+            hideEdgeContextMenu();
+
+        });
+        edgeContextMenu.appendChild(editEdgeButton);
+
+    })
+}
 
 export const hideEdgeContextMenu = () => {
     edgeContextMenu.style.display = 'none';
 }
 
-const deleteEdge = (selectedEdge)=> {
-    selectedEdge.remove(); 
+const deleteEdge = (selectedEdge) => {
+    selectedEdge.remove();
     hideEdgeContextMenu();
 }
