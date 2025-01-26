@@ -66,3 +66,8 @@ export const addNodeContextMenu = (cy) => {
 export const hideNodeContextMenu = () => {
     nodeContextMenu.style.display = 'none';
 }
+
+const deleteNode = (selectedNode)=> {
+    selectedNode.remove();
+    hideNodeContextMenu();
+}

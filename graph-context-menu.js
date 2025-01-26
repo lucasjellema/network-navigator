@@ -1,9 +1,11 @@
-import { getSelectedNodes, getSavedGraphs, getGraphById , generateGUID,saveCurrentGraph, loadGraph} from './utils.js';
+import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurrentGraph, loadGraph } from './utils.js';
 import { setTitle } from './ui.js';
 const graphContextMenu = document.getElementById('graph-context-menu');
 const addNodeButton = document.getElementById('add-node');
 const createGraphButton = document.getElementById('create-new-graph');
 const viewGraphsButton = document.getElementById('view-saved-graphs');
+
+let clickedPosition
 
 graphContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
     event.preventDefault();
@@ -12,25 +14,38 @@ graphContextMenu.addEventListener('contextmenu', (event) => { // do not show a c
 export const addGraphContextMenu = (cy) => {
     initialiseViewGraphsButton(cy);
     initialiseCreateGraphsButton(cy);
+    initialiseAddNodeButton(cy);
     cy.on('cxttap', (event) => {
-
         if (event.target === cy) {
             const pos = event.renderedPosition;
             graphContextMenu.style.left = `${pos.x}px`;
             graphContextMenu.style.top = `${pos.y}px`;
             graphContextMenu.style.display = 'block';
             // Save clicked position for adding the node
-            let clickedPosition = event.position;
+            clickedPosition = event.position;
         }
+    });
+}
 
+const initialiseAddNodeButton = (cy) => {
+    addNodeButton.addEventListener('click', () => {
+        const newNodeId = generateGUID();
+        cy.add({
+            group: 'nodes',
+            data: { id: newNodeId, label: `New Node` },
+            position: clickedPosition,
+        });
+        // Re-center layout to include new node
+        //   cy.fit();
+        hideGraphContextMenu(); // Hide the context menu
     });
 }
 
 const initialiseCreateGraphsButton = (cy) => {
-createGraphButton.addEventListener('click', () => {
-    createNewGraph(cy);
-    hideGraphContextMenu(); // Hide the context menu
-});
+    createGraphButton.addEventListener('click', () => {
+        createNewGraph(cy);
+        hideGraphContextMenu(); // Hide the context menu
+    });
 }
 
 const createNewGraph = (cy) => {
@@ -76,7 +91,7 @@ const initialiseViewGraphsButton = (cy) => {
                 const graphId = event.target.getAttribute('data-id');
                 const selectedGraph = getGraphById(graphId);
                 if (selectedGraph) {
-                   loadGraph(cy, selectedGraph);
+                    loadGraph(cy, selectedGraph);
                 }
                 hideGraphListModal();
             });
