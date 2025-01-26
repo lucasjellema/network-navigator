@@ -93,6 +93,36 @@ export const initializeCytoscape = () => {
         }
     });
 
+    cy.on('tapdragover', 'node', (event) => {
+        event.originalEvent.preventDefault(); // Prevent default browser context menu
+        
+        const node = event.target;
+        const label = node.data('label');
+        const additionalInfo = "more information: "+node.data('additionalInfo');
+        const tooltip = document.getElementById('node-tooltip');
+
+         // Set tooltip content
+         tooltip.innerHTML = `
+         <strong>${label}</strong><br>
+         ${additionalInfo}
+       `;
+       const clickPosition = event.renderedPosition;
+        
+         // Position the tooltip near the mouse pointer
+         tooltip.style.left = `${clickPosition.x + 10}px`;
+         tooltip.style.top = `${clickPosition.y + 10}px`;
+         tooltip.style.display = "block";
+
+    });
+    
+    const hideTooltip = () => {
+        const tooltip = document.getElementById('node-tooltip');
+        tooltip.style.display = "none";
+    };
+    cy.on('tapdragout', 'node', () => {
+        hideTooltip();
+    });
+
     addNodeContextMenu(cy);
     addEdgeContextMenu(cy);
     addGraphContextMenu(cy);
