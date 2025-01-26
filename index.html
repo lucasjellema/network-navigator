@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Network Navigator</title>
+    <link rel="stylesheet" href="network-navigator.css">
+    <script src="cytoscape.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+        }
+
+        #content {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="graphTitle"></h1>
+    <div id="cy" style="width: 100% ; height: 600px;"></div>
+    <div id="node-context-menu" class="context-menu">
+        <div class="context-menu-item" id="delete-node">Delete Node</div>
+    </div>
+    <div id="graph-context-menu" class="context-menu">
+        <ul>
+          <li id="add-node">Add Node</li>
+          <li id="create-new-graph">Create Graph</li>
+          <li id="view-saved-graphs">View Saved Graphs</li>
+        </ul>
+      </div>
+      <div id="graphs-overview" class="context-menu">
+    </div>
+  
+    <div>
+      <input type="text" id="graph-title" placeholder="Graph Title" />
+      <textarea id="graph-description" placeholder="Graph Description"></textarea>
+      <button id="save-graph">Save Graph</button>
+    </div>
+  
+
+    <script src="graph.js" type="module"></script>
+</body>
+
+</html>
