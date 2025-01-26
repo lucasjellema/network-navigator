@@ -3,6 +3,7 @@ import { addGraphContextMenu, hideGraphContextMenu, hideGraphListModal } from ".
 import { setTitle } from './ui.js';
 
 import { saveCurrentGraph, getCurrentGraph, loadGraph } from "./utils.js";
+import { addEdgeContextMenu, hideEdgeContextMenu } from "./edge-context-menu.js";
 let cy
 document.addEventListener("DOMContentLoaded", () => {
     cy = initializeCytoscape();
@@ -73,6 +74,7 @@ export const initializeCytoscape = () => {
     });
 
     addNodeContextMenu(cy);
+    addEdgeContextMenu(cy);
     addGraphContextMenu(cy);
 
     cy.on('add remove data position', () => {
@@ -91,6 +93,7 @@ export const initializeCytoscape = () => {
     // if tap on cy then close node context menu
     cy.on('tap', () => {
         hideNodeContextMenu();
+        hideEdgeContextMenu();
         hideGraphContextMenu();
         hideGraphListModal();
 
