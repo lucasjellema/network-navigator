@@ -73,6 +73,8 @@ const showModal = (cy, element) => {
 export const hideElementEditModal = () => {
     newPropertyKey.value = '';
     newPropertyValue.value = '';
+    nodeToEdit = null;
+    edgeToEdit = null;
     modal.style.display = 'none';
 };
 
