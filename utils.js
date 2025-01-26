@@ -66,7 +66,8 @@ export const createEdge = (cy, sourceNode, targetNode) => {
         data: {
             source: sourceNode.id(),
             target: targetNode.id(),
-            label: `Edge: ${sourceNode.id()} → ${targetNode.id()}`,
+            label: `Edge: ${sourceNode.data('label')} →  ${targetNode.data('label')}`,
+            timeOfCreation: Date.now(),
         },
     });
 }

@@ -1,5 +1,9 @@
 import { getSelectedNodes, createEdge } from './utils.js';
+import { editNode} from './node-edit.js';
+
+
 const nodeContextMenu = document.getElementById('node-context-menu');
+
 nodeContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
     event.preventDefault();
 });
@@ -26,6 +30,15 @@ export const addNodeContextMenu = (cy) => {
 
         });
         nodeContextMenu.appendChild(deleteNodeButton);
+
+        const editNodeButton = document.createElement('button');
+        editNodeButton.textContent = 'Edit Node ' + selectedNode.data('label');
+        editNodeButton.addEventListener('click', () => {
+            editNode(selectedNode);
+            hideNodeContextMenu();
+
+        });
+        nodeContextMenu.appendChild(editNodeButton);
 
         // if selectedNode then add an option to the nodeContextMenu to merge that node to the one for which the context menu was opened
         const selectedNodes = getSelectedNodes(cy);
@@ -71,3 +84,5 @@ const deleteNode = (selectedNode)=> {
     selectedNode.remove();
     hideNodeContextMenu();
 }
+
+            

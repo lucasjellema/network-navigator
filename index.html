@@ -21,7 +21,6 @@
     <h1 id="graphTitle"></h1>
     <div id="cy" style="width: 100% ; height: 600px;"></div>
     <div id="node-context-menu" class="context-menu">
-        <div class="context-menu-item" id="delete-node">Delete Node</div>
     </div>
     <div id="edge-context-menu" class="context-menu">
         <button id="delete-edge">Delete Edge</button>
@@ -45,6 +44,14 @@
         <button id="save-graph">Save Graph</button>
     </div>
 
+    <div class="modal" id="editModal">
+        <h3>Edit Node Properties</h3>
+        <div id="propertyList"></div>
+        <input type="text" id="newPropertyKey" placeholder="New Property Key" />
+        <input type="text" id="newPropertyValue" placeholder="New Property Value" />
+        <button class="save" id="saveChanges">Save</button>
+        <button class="cancel" id="cancelChanges">Cancel</button>
+      </div>
 
     <script src="graph.js" type="module"></script>
 </body>

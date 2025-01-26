@@ -80,7 +80,8 @@ const initialiseAddNodeButton = (cy) => {
         const newNodeId = generateGUID();
         cy.add({
             group: 'nodes',
-            data: { id: newNodeId, label: `New Node` },
+            data: { id: newNodeId, label: `New Node`, timeOfCreation: Date.now(),
+            },
             position: clickedPosition,
         });
         // Re-center layout to include new node
