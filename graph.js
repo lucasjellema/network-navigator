@@ -30,9 +30,13 @@ export const initializeCytoscape = () => {
                     'label': 'data(label)',
                     'width': 40,
                     'height': 40,
-                    'background-color': '#0074D9',
+                    'background-color': 'transparent',
                     'text-valign': 'bottom',
-                    'color': 'gold'
+                    'color': 'gold',
+                    'background-image': 'data(image)', // Use image from node data
+                    'background-fit': 'cover',        // Fit the image to the node size
+                    'background-opacity': 1,          // Ensure the image is fully visible
+                    'background-image-opacity': 1,          // Ensure the image is fully visible
                 }
             },
             {
@@ -95,26 +99,26 @@ export const initializeCytoscape = () => {
 
     cy.on('tapdragover', 'node', (event) => {
         event.originalEvent.preventDefault(); // Prevent default browser context menu
-        
+
         const node = event.target;
         const label = node.data('label');
-        const additionalInfo = "more information: "+node.data('additionalInfo');
+        const additionalInfo = "more information: " + node.data('additionalInfo');
         const tooltip = document.getElementById('node-tooltip');
 
-         // Set tooltip content
-         tooltip.innerHTML = `
+        // Set tooltip content
+        tooltip.innerHTML = `
          <strong>${label}</strong><br>
          ${additionalInfo}
        `;
-       const clickPosition = event.renderedPosition;
-        
-         // Position the tooltip near the mouse pointer
-         tooltip.style.left = `${clickPosition.x + 10}px`;
-         tooltip.style.top = `${clickPosition.y + 10}px`;
-         tooltip.style.display = "block";
+        const clickPosition = event.renderedPosition;
+
+        // Position the tooltip near the mouse pointer
+        tooltip.style.left = `${clickPosition.x + 10}px`;
+        tooltip.style.top = `${clickPosition.y + 10}px`;
+        tooltip.style.display = "block";
 
     });
-    
+
     const hideTooltip = () => {
         const tooltip = document.getElementById('node-tooltip');
         tooltip.style.display = "none";
