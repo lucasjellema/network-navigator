@@ -33,10 +33,13 @@ export const initializeCytoscape = () => {
                     'background-color': 'transparent',
                     'text-valign': 'bottom',
                     'color': 'gold',
-                    'background-image': 'data(image)', // Use image from node data
+//                    'background-image': 'data(image)', // Use image from node data
+                    'background-image': function( ele ){  const img = ele.data('image')
+                         return img || 'https://m.media-amazon.com/images/M/MV5BY2JiNjU3NWYtMTRlYS00NzY3LWE2NDQtZGFkNWE2MDU4OTExXkEyXkFqcGc@._V1_QL75_UX280_CR0,0,280,414_.jpg';  // some dummy image that is never actually shown
+                        },
                     'background-fit': 'cover',        // Fit the image to the node size
                     'background-opacity': 1,          // Ensure the image is fully visible
-                    'background-image-opacity': 1,          // Ensure the image is fully visible
+                    'background-image-opacity':  function( ele ){  const img = ele.data('image'); return img ? 1 : 0},          // Ensure the image is visible if it exists
                 }
             },
             {
