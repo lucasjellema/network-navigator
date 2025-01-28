@@ -86,6 +86,7 @@ export const createNode = (cy, label,) => {
 }
 
 export const loadGraph = (cy, graph) => {
+    if (!graph) return;
     localStorage.setItem('currentGraphId', graph.id);
     cy.elements().remove();
     cy.add(graph.elements); // Load graph elements
