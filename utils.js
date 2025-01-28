@@ -71,7 +71,19 @@ export const createEdge = (cy, sourceNode, targetNode) => {
         },
     });
 }
-
+export const createNode = (cy, label,) => {
+    const newNodeId = generateGUID();
+    const node =
+    {
+        group: 'nodes',
+        data: {
+            id: newNodeId, label: label, timeOfCreation: Date.now(),
+        }
+    }
+    cy.add(node);
+    const newNode = cy.getElementById(newNodeId)
+    return newNode
+}
 
 export const loadGraph = (cy, graph) => {
     localStorage.setItem('currentGraphId', graph.id);

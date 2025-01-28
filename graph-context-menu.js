@@ -1,4 +1,4 @@
-import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurrentGraph, loadGraph, getCurrentGraph, saveGraph } from './utils.js';
+import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurrentGraph, loadGraph, getCurrentGraph, saveGraph, createNode } from './utils.js';
 import { setTitle } from './ui.js';
 const graphContextMenu = document.getElementById('graph-context-menu');
 const addNodeButton = document.getElementById('add-node');
@@ -77,15 +77,8 @@ const initialiseImportGraphButton = (cy) => {
 
 const initialiseAddNodeButton = (cy) => {
     addNodeButton.addEventListener('click', () => {
-        const newNodeId = generateGUID();
-        cy.add({
-            group: 'nodes',
-            data: { id: newNodeId, label: `New Node`, timeOfCreation: Date.now(),
-            },
-            position: clickedPosition,
-        });
-        // Re-center layout to include new node
-        //   cy.fit();
+        const newNode = createNode(cy, 'New Node');
+        newNode.position({ x: clickedPosition.x, y: clickedPosition.y });
         hideGraphContextMenu(); // Hide the context menu
     });
 }
