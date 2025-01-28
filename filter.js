@@ -5,11 +5,12 @@ const filterPanel = document.getElementById('filterPanel');
 const closePanelButton = document.getElementById('closePanelButton'); 
 const filterValueInput = document.getElementById('filterValue'); // .value.toLowerCase();
 const includeConnectedCheckBox = document.getElementById('includeConnected'); //.checked
+const includeSelectedCheckBox = document.getElementById('includeSelected'); //.checked
 
 
 export const initializeFilter = (cy) => {
     filterButton.addEventListener('click', () => {
-        filterPanel.style.display = filterPanel.style.display === 'none' ? 'block' : 'none';
+        filterPanel.style.display = 'block';
     });    
 
     applyFilterButton.addEventListener('click', () => {
@@ -41,6 +42,11 @@ const closeFilterPanel= () =>  {
     if (filterValue) {
         // Reset all elements to hidden first
         cy.elements().hide();
+        // add currently selected elements
+        if (includeSelectedCheckBox.checked) {
+            const selectedElements = cy.$(':selected');
+            selectedElements.show();
+        }
         // https://js.cytoscape.org/#collection/traversing 
         // Select nodes with the matching prefix
         const matchedNodes = cy.nodes().filter((node) =>
