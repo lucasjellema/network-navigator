@@ -19,6 +19,8 @@
 
 <body>
     <h1 id="graphTitle"></h1>
+    <button id="filterButton">Filter Nodes</button>
+
     <div id="cy" style="width: 100% ; height: 600px;"></div>
     <div id="node-context-menu" class="context-menu">
     </div>
@@ -32,8 +34,8 @@
             <li id="view-saved-graphs">View Saved Graphs</li>
             <li id="export-graph">Export Current Graph</li>
         </ul>
-        <input type="file" id="import-graph" accept=".json" />
         <label for="importInput">Import Graph from JSON</label>
+        <input type="file" id="import-graph" accept=".json" />
     </div>
     <div id="graphs-overview" class="context-menu">
     </div>
@@ -54,6 +56,22 @@
         <button class="save" id="saveChanges">Save</button>
         <button class="cancel" id="cancelChanges">Cancel</button>
     </div>
+    <div id="filterPanel">
+        <div id="filterPanelHeader">
+          <h3>Filter Nodes</h3>
+          <button id="closePanelButton" >✖️</button>
+        </div>
+        <label>
+          Enter filter value (Label):
+          <input type="text" id="filterValue" placeholder="Enter label value">
+        </label>
+        <label>
+          <input type="checkbox" id="includeConnected"> Include Connected Nodes
+        </label>
+        <button id="applyFilter">Apply Filter</button>
+        <button id="resetFilter">Reset</button>
+      </div>
+
     <div id="node-tooltip"
         style="display: none; position: absolute; background: #f8f9fa; padding: 8px; border-radius: 4px; border: 1px solid #ddd; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); font-size: 12px; z-index: 10;">
     </div>

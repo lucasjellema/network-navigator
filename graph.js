@@ -5,10 +5,12 @@ import { setTitle } from './ui.js';
 import { saveCurrentGraph, getCurrentGraph, loadGraph } from "./utils.js";
 import { addEdgeContextMenu, hideEdgeContextMenu } from "./edge-context-menu.js";
 import { hideElementEditModal } from "./modal-element-editor.js";
+import { initializeFilter } from "./filter.js";
 
 let cy
 document.addEventListener("DOMContentLoaded", () => {
     cy = initializeCytoscape();
+    initializeFilter(cy);
 
     // Save graph button
     document.getElementById('save-graph').addEventListener('click', () => {
