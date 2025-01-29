@@ -32,15 +32,18 @@ export const initializeCytoscape = () => {
                     'label': 'data(label)',
                     'width': 40,
                     'height': 40,
-                    'background-color': 'transparent',
+                    'background-color': function( ele ){  const img = ele.data('image');
+                        return img? 'transparent' : '#0074D9';
+                       },
+
                     'text-valign': 'bottom',
                     'color': 'gold',
-//                    'background-image': 'data(image)', // Use image from node data
+
                     'background-image': function( ele ){  const img = ele.data('image')
                          return img || 'https://m.media-amazon.com/images/M/MV5BY2JiNjU3NWYtMTRlYS00NzY3LWE2NDQtZGFkNWE2MDU4OTExXkEyXkFqcGc@._V1_QL75_UX280_CR0,0,280,414_.jpg';  // some dummy image that is never actually shown
                         },
                     'background-fit': 'cover',        // Fit the image to the node size
-                    'background-opacity': 1,          // Ensure the image is fully visible
+//                    'background-opacity': 1,          // Ensure the image is fully visible
                     'background-image-opacity':  function( ele ){  const img = ele.data('image'); return img ? 1 : 0},          // Ensure the image is visible if it exists
                 }
             },
@@ -84,6 +87,9 @@ export const initializeCytoscape = () => {
         boxSelectionEnabled: true, // Enable box selection
         autounselectify: false
     });
+
+    document.dispatchEvent(new CustomEvent("cyInitialized", { detail: cy })); // inform any consumers that cy is available
+
     const existingGraph = getCurrentGraph();
     loadGraph(cy, existingGraph);
 
