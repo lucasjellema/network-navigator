@@ -97,3 +97,8 @@ export const loadGraph = (cy, graph) => {
     document.getElementById("graph-description").value = graph.description;
     setTitle(graph.title);
 }
+
+export const findNodeByProperty = (cy,property, value) => {
+    const currentNodes = cy.nodes().filter((node) => node.data(property) === value);
+    return currentNodes[0] || null;
+};
