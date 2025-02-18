@@ -1,8 +1,8 @@
 import { addNodeContextMenu, hideNodeContextMenu } from "./node-context-menu.js";
-import { addGraphContextMenu, hideGraphContextMenu, hideGraphListModal } from "./graph-context-menu.js";
+import { addGraphContextMenu, hideGraphContextMenu, hideGraphListModal , importGraphFromRemoteURL} from "./graph-context-menu.js";
 import { setTitle } from './ui.js';
 
-import { saveCurrentGraph, getCurrentGraph, loadGraph } from "./utils.js";
+import { saveCurrentGraph, getCurrentGraph, loadGraph, getQueryParam } from "./utils.js";
 import { addEdgeContextMenu, hideEdgeContextMenu } from "./edge-context-menu.js";
 import { hideElementEditModal } from "./modal-element-editor.js";
 import { hideElementPropertiesModal } from "./modal-element-properties.js"
@@ -10,7 +10,7 @@ import { initializeFilter } from "./filter.js";
 import { initializeLayout } from "./layout.js";
 
 let cy
-document.addEventListener("networkNavigatorContentLoaded", () => {
+document.addEventListener("networkNavigatorContentLoaded", async () => {
     cy = initializeCytoscape();
     initializeFilter(cy);
     initializeLayout(cy);
@@ -19,6 +19,12 @@ document.addEventListener("networkNavigatorContentLoaded", () => {
     document.getElementById('save-graph').addEventListener('click', () => {
         saveCurrentGraph(cy);
     });
+
+    const remoteURL = getQueryParam("remoteURL");
+    if (remoteURL) {
+        console.log("load graph from ",remoteURL)
+        const _ = await importGraphFromRemoteURL(remoteURL, cy)
+    }
 })
 
 export const initializeCytoscape = () => {

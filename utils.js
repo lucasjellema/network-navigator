@@ -106,3 +106,23 @@ export const findNodeByProperty = (cy,property, value) => {
     const currentNodes = cy.nodes().filter((node) => node.data(property) === value);
     return currentNodes[0] || null;
 };
+
+export function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+export const getJSONFile = (url) => {
+    return new Promise((resolve, reject) => {
+        fetch(url, { method: 'GET' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                resolve(response.json())
+            })
+            .catch(err =>
+                resolve(1)
+            );
+    })
+}

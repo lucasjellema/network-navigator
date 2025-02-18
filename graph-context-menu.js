@@ -1,33 +1,29 @@
-import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurrentGraph, loadGraph, getCurrentGraph, saveGraph, createNode } from './utils.js';
+import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurrentGraph, loadGraph, getCurrentGraph, saveGraph, createNode, getJSONFile } from './utils.js';
 import { setTitle } from './ui.js';
 
 
 let graphContextMenu, addNodeButton, addEdgeButton, selectAllNodesButton, editModeButton, createGraphButton, viewGraphsButton, exportGraphButton, exportOnlyVisibleGraphButton, importGraphButton, importRemoteGraphButton, importMergeGraphButton
 
 document.addEventListener('networkNavigatorContentLoaded', function () {
-
- graphContextMenu = document.getElementById('graph-context-menu');
- addNodeButton = document.getElementById('add-node');
- selectAllNodesButton = document.getElementById('select-all-nodes');
- editModeButton = document.getElementById('edit-mode-toggle');
- createGraphButton = document.getElementById('create-new-graph');
- viewGraphsButton = document.getElementById('view-saved-graphs');
- exportGraphButton = document.getElementById('export-graph');
- exportOnlyVisibleGraphButton = document.getElementById('export-visible-graph');
- importGraphButton = document.getElementById('import-graph');
- importRemoteGraphButton = document.getElementById('import-remote-graph');
- importMergeGraphButton = document.getElementById('import-merge-graph');
-
- graphContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
-    event.preventDefault();
-});
+    graphContextMenu = document.getElementById('graph-context-menu');
+    addNodeButton = document.getElementById('add-node');
+    selectAllNodesButton = document.getElementById('select-all-nodes');
+    editModeButton = document.getElementById('edit-mode-toggle');
+    createGraphButton = document.getElementById('create-new-graph');
+    viewGraphsButton = document.getElementById('view-saved-graphs');
+    exportGraphButton = document.getElementById('export-graph');
+    exportOnlyVisibleGraphButton = document.getElementById('export-visible-graph');
+    importGraphButton = document.getElementById('import-graph');
+    importRemoteGraphButton = document.getElementById('import-remote-graph');
+    importMergeGraphButton = document.getElementById('import-merge-graph');
+    graphContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
+        event.preventDefault();
+    });
 })
 
 
 let clickedPosition
 let editMode = false
-
-
 
 export const addGraphContextMenu = (cy) => {
     initialiseViewGraphsButton(cy);
@@ -86,15 +82,17 @@ const updateGraphContextMenuForEditMode = (cy, editMode) => {
     }
 }
 
-const initialiseImportGraphButton = (cy) => {
-    importGraphButton.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-
+const importGraph = (cy) => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".json";
+    input.onchange = () => {
+        const file = input.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = (e) => {
+            reader.onload = () => {
                 try {
-                    const graphData = JSON.parse(e.target.result);
+                    const graphData = JSON.parse(reader.result);
                     saveGraph(graphData.id, graphData.title, graphData.description, graphData.elements);
                     console.log('Graph successfully imported:', graphData);
                     loadGraph(cy, getGraphById(graphData.id));
@@ -104,59 +102,44 @@ const initialiseImportGraphButton = (cy) => {
                     alert('Failed to import graph. Please make sure the file is a valid JSON.');
                 }
             };
-            // Read the file as text
             reader.readAsText(file);
         }
         hideGraphContextMenu(); // Hide the context menu
+    };
+    input.click();
+}
+
+
+const initialiseImportGraphButton = (cy) => {
+    importGraphButton.addEventListener('click', (event) => {
+        importGraph(cy)
     });
 }
 
 
-const getJSONFile = (url) => {
-    return new Promise((resolve, reject) => {
-        fetch(url, { method: 'GET' })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                resolve(response.json())
-            })
-            .catch(err =>
-                resolve(1)
-            );
-    })
-}
 const initialiseImportRemoteGraphButton = (cy) => {
     importRemoteGraphButton.addEventListener('click', async (event) => {
         const remoteGraphURL = prompt("Enter URL for remote graph:");
 
         if (remoteGraphURL) {
-            try {
-                const graphData = await getJSONFile(remoteGraphURL)
-                // assign new graphData.id ??
-                const newId = generateGUID();
-                saveGraph(newId, graphData.title, graphData.description, graphData.elements);
-                console.log('Graph successfully imported:', graphData);
-                loadGraph(cy, getGraphById(graphData.id));
-            } catch (error) {
-                console.error('Invalid JSON file:', error);
-                alert('Failed to import graph. Please make sure the file is a valid JSON.');
-            }
+            await importGraphFromRemoteURL(remoteGraphURL, cy);
         }
         hideGraphContextMenu(); // Hide the context menu
     });
 }
 
-
-const initialiseImportMergeGraphButton = (cy) => {
-    importMergeGraphButton.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-
+const importMergeGraph = (cy) => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".json";
+    input.onchange = () => {
+        const file = input.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = (e) => {
+            reader.onload = () => {
                 try {
-                    const graphData = JSON.parse(e.target.result);
+                    const graphData = JSON.parse(reader.result);
+                    // merge newly imported nodes into existing graph
                     const nodeIdMap = {};
                     // iterate over all nodes in the imported graph
                     for (const node of graphData.elements) {
@@ -166,7 +149,7 @@ const initialiseImportMergeGraphButton = (cy) => {
                             if (!existingNode) {
                                 // find node of same type and with same label
                                 const matchingNodes = cy.filter(function (element, i) {
-                                    return element.isNode() && leement.data('label') === node.data.label && element.data('type') === node.data.type;
+                                    return element.isNode() && element.data('label') === node.data.label && element.data('type') === node.data.type;
                                 })
                                 if (matchingNodes.length > 0) {
                                     existingNode = matchingNodes[0];
@@ -221,15 +204,22 @@ const initialiseImportMergeGraphButton = (cy) => {
                         }
                     }
 
+
                 } catch (error) {
                     console.error('Invalid JSON file:', error);
                     alert('Failed to import graph. Please make sure the file is a valid JSON.');
                 }
             };
-            // Read the file as text
             reader.readAsText(file);
         }
         hideGraphContextMenu(); // Hide the context menu
+    };
+    input.click();
+}
+
+const initialiseImportMergeGraphButton = (cy) => {
+    importMergeGraphButton.addEventListener('click', (event) => {
+        importMergeGraph(cy)
     });
 }
 
@@ -334,6 +324,20 @@ const initialiseViewGraphsButton = (cy) => {
 
 export const hideGraphContextMenu = () => {
     graphContextMenu.style.display = 'none';
+}
+
+export async function importGraphFromRemoteURL(remoteGraphURL, cy) {
+    try {
+        const graphData = await getJSONFile(remoteGraphURL);
+        // assign new graphData.id ??
+        const newId = generateGUID();
+        saveGraph(newId, graphData.title, graphData.description, graphData.elements);
+        console.log('Graph successfully imported:', graphData);
+        loadGraph(cy, getGraphById(graphData.id));
+    } catch (error) {
+        console.error('Invalid JSON file:', error);
+        alert(`Failed to import graph ${remoteGraphURL}. Please make sure the file is a valid JSON.`);
+    }
 }
 
 function exportGraphToJsonFile(cy, onlyVisible) {
