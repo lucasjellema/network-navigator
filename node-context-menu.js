@@ -231,7 +231,7 @@ const showPathFrom = (cy, startNode, destinationNode, directed) => {
         console.log('Shortest path found:', path.map(ele => ele.id()));
         path.addClass('highlighted'); // Highlight the path
         cy.scratch('shortestPath', path);
-        executeFilter('XQW@#$', cy, false, false, true, includeConnected); // hide all nodes not on the shortest path
+        executeFilter('XQW@#$', cy, false, false, true, false); // hide all nodes not on the shortest path - (filterValue, cy, includeVisible, includeSelected, includePath, includeConnected)
     } else {
         console.log('No path exists between the selected nodes.');
         alert(`No ${directed?"directed":""} path exists between the selected nodes.`);
