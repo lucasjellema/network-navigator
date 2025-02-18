@@ -1,12 +1,22 @@
 import { getSelectedNodes, createEdge, generateGUID } from './utils.js';
 import { editNode } from './modal-element-editor.js';
+import { showNodeDetails     }   from './modal-element-properties.js';
 
+let editMode = false
 
-const nodeContextMenu = document.getElementById('node-context-menu');
-
-nodeContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
-    event.preventDefault();
+document.addEventListener("editModeToggled", (event) => {
+    editMode = event.detail.editMode;
+    console.log("Edit mode toggled", editMode);
 });
+
+let nodeContextMenu
+document.addEventListener('networkNavigatorContentLoaded', function () {
+     nodeContextMenu = document.getElementById('node-context-menu');
+
+    nodeContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
+        event.preventDefault();
+    });
+    })
 
 export const addNodeContextMenu = (cy) => {
 
@@ -21,35 +31,46 @@ export const addNodeContextMenu = (cy) => {
         nodeContextMenu.style.top = `${clickPosition.y + 10}px`;
         nodeContextMenu.style.display = 'block';
 
-
-        const deleteNodeButton = document.createElement('button');
-        deleteNodeButton.textContent = 'Delete Node ' + selectedNode.data('label');
-        deleteNodeButton.addEventListener('click', () => {
-            deleteNode(selectedNode);
+        const detailsNodeButton = document.createElement('button');
+        detailsNodeButton.textContent = 'Show Details for ' + selectedNode.data('label');
+        detailsNodeButton.addEventListener('click', () => {
+            showNodeDetails(cy,selectedNode);
             hideNodeContextMenu();
 
         });
-        nodeContextMenu.appendChild(deleteNodeButton);
+        nodeContextMenu.appendChild(detailsNodeButton);
 
-        const editNodeButton = document.createElement('button');
-        editNodeButton.textContent = 'Edit Node ' + selectedNode.data('label');
-        editNodeButton.addEventListener('click', () => {
-            editNode(cy, selectedNode);
-            hideNodeContextMenu();
+        if (editMode) {
 
-        });
-        nodeContextMenu.appendChild(editNodeButton);
 
-        if (selectedNode.data('parent')) {
-            const orphanNodeButton = document.createElement('button');
-            orphanNodeButton.textContent = 'Remove Node from Parent ';
-            orphanNodeButton.addEventListener('click', () => {
-                orphanNode(cy, selectedNode);
+            const deleteNodeButton = document.createElement('button');
+            deleteNodeButton.textContent = 'Delete Node ' + selectedNode.data('label');
+            deleteNodeButton.addEventListener('click', () => {
+                deleteNode(selectedNode);
                 hideNodeContextMenu();
 
             });
-            nodeContextMenu.appendChild(orphanNodeButton);
-        }
+            nodeContextMenu.appendChild(deleteNodeButton);
+
+            const editNodeButton = document.createElement('button');
+            editNodeButton.textContent = 'Edit Node ' + selectedNode.data('label');
+            editNodeButton.addEventListener('click', () => {
+                editNode(cy, selectedNode);
+                hideNodeContextMenu();
+
+            });
+            nodeContextMenu.appendChild(editNodeButton);
+
+            if (selectedNode.data('parent')) {
+                const orphanNodeButton = document.createElement('button');
+                orphanNodeButton.textContent = 'Remove Node from Parent ';
+                orphanNodeButton.addEventListener('click', () => {
+                    orphanNode(cy, selectedNode);
+                    hideNodeContextMenu();
+
+                });
+                nodeContextMenu.appendChild(orphanNodeButton);
+            }
 
             // if selectedNode then add an option to the nodeContextMenu to merge that node to the one for which the context menu was opened
             const selectedNodes = getSelectedNodes(cy);
@@ -75,6 +96,15 @@ export const addNodeContextMenu = (cy) => {
                     });
                     nodeContextMenu.appendChild(makeNodeChildButton);
 
+                    const deleteSelectedNodesButton = document.createElement('button');
+                    deleteSelectedNodesButton.textContent = `Delete All ${selectedNodes.length} Selected Nodes `;
+                    deleteSelectedNodesButton.addEventListener('click', () => {
+                        deleteAllSelectedNodes(cy);
+                        hideNodeContextMenu();
+        
+                    });
+                    nodeContextMenu.appendChild(deleteSelectedNodesButton);
+
                 }
                 // create edge from selectedNode to selectedNodes[0]
                 const createEdgeButton = document.createElement('button');
@@ -94,18 +124,21 @@ export const addNodeContextMenu = (cy) => {
                 });
                 nodeContextMenu.appendChild(createEdgeButton2);
 
-
-                // show path from selectedNodes[0] to selectedNode (of it exists)
-                const showPathButton = document.createElement('button');
-                showPathButton.textContent = 'Show Path from ' + selectedNodes[0].data('label');
-                showPathButton.addEventListener('click', () => {
-                    showPathFrom(cy, selectedNodes[0], selectedNode);
-                    hideNodeContextMenu();
-
-                });
-                nodeContextMenu.appendChild(showPathButton);
             }
-        });
+        }
+        const selectedNodes = getSelectedNodes(cy);
+        if (selectedNodes.length > 0) {
+            // show path from selectedNodes[0] to selectedNode (of it exists)
+            const showPathButton = document.createElement('button');
+            showPathButton.textContent = 'Show Path from ' + selectedNodes[0].data('label');
+            showPathButton.addEventListener('click', () => {
+                showPathFrom(cy, selectedNodes[0], selectedNode);
+                hideNodeContextMenu();
+
+            });
+            nodeContextMenu.appendChild(showPathButton);
+        }
+    });
 }
 
 export const hideNodeContextMenu = () => {
@@ -114,6 +147,14 @@ export const hideNodeContextMenu = () => {
 
 const deleteNode = (selectedNode) => {
     selectedNode.remove();
+    hideNodeContextMenu();
+}
+
+const deleteAllSelectedNodes = (cy) => {
+    const selectedNodes = getSelectedNodes(cy);
+    selectedNodes.forEach((node) => {
+        node.remove();
+    });
     hideNodeContextMenu();
 }
 
@@ -169,7 +210,7 @@ const showPathFrom = (cy, startNode, destinationNode) => {
     const dijkstra = cy.elements().dijkstra({
         root: startNode,
         weight: edge => edge.data('weight') || 1,  // Default weight is 1 if not provided
-        directed: true
+        directed: false // walk edges only from source to target or in both directions
     });
 
     // Get the shortest path to the target node
@@ -178,6 +219,7 @@ const showPathFrom = (cy, startNode, destinationNode) => {
     if (path.length > 0) {
         console.log('Shortest path found:', path.map(ele => ele.id()));
         path.addClass('highlighted'); // Highlight the path
+        cy.scratch('shortestPath', path);
     } else {
         console.log('No path exists between the selected nodes.');
         alert('No path exists between the selected nodes.');

@@ -1,10 +1,47 @@
-const modal = document.getElementById('editModal');
-const propertyList = document.getElementById('propertyList');
-const newPropertyKey = document.getElementById('newPropertyKey');
-const newPropertyValue = document.getElementById('newPropertyValue');
-const saveButton = document.getElementById('saveChanges');
-const cancelButton = document.getElementById('cancelChanges');
-const modalTitle = document.getElementById('modalTitle');
+
+let modal, propertyList, newPropertyKey, newPropertyValue, saveButton, cancelButton, modalTitle
+
+document.addEventListener('networkNavigatorContentLoaded', function () {
+
+    modal = document.getElementById('editModal');
+    propertyList = document.getElementById('editPropertyList');
+    newPropertyKey = document.getElementById('newPropertyKey');
+    newPropertyValue = document.getElementById('newPropertyValue');
+    saveButton = document.getElementById('saveChanges');
+    cancelButton = document.getElementById('cancelChanges');
+    modalTitle = document.getElementById('modalTitle');
+    
+// Event listener for save button
+saveButton.addEventListener('click', () => {
+    if (!nodeToEdit && !edgeToEdit) return;
+
+    // Update the existing properties
+    const inputs = propertyList.querySelectorAll('input');
+    inputs.forEach(input => {
+        const key = input.getAttribute('data-key');
+        const value = input.value;
+        if (nodeToEdit) nodeToEdit.data(key, value);
+        else if (edgeToEdit) edgeToEdit.data(key, value);
+    });
+
+    // Add new property if specified
+    const key = newPropertyKey.value.trim();
+    const value = newPropertyValue.value.trim();
+    if (key) {
+        if (nodeToEdit) nodeToEdit.data(key, value);
+        else if (edgeToEdit) edgeToEdit.data(key, value);
+    }
+    hideElementEditModal();
+});
+
+// Event listener for cancel button
+cancelButton.addEventListener('click', () => {
+    // Simply hide the modal without making changes
+    hideElementEditModal();
+});
+
+
+})
 
 
 let nodeToEdit = null;
@@ -12,13 +49,13 @@ let edgeToEdit = null;
 
 export const editNode = (cy, node) => {
     nodeToEdit = node;
-    modalTitle.textContent = 'Edit Node Properties ' + node.data('label');
+    modalTitle.textContent = 'Edit ' + node.data('label');
     showModal(cy, node);
 }
 
 export const editEdge = (cy, edge) => {
     edgeToEdit = edge;
-    modalTitle.textContent = 'Edit Edge Properties';
+    modalTitle.textContent = 'Edit '+ edge.data('label') + edge.target().data('label');
     showModal(cy, edge);
 }
 
@@ -78,35 +115,6 @@ export const hideElementEditModal = () => {
     modal.style.display = 'none';
 };
 
-// Event listener for save button
-saveButton.addEventListener('click', () => {
-    if (!nodeToEdit && !edgeToEdit) return;
-
-    // Update the existing properties
-    const inputs = propertyList.querySelectorAll('input');
-    inputs.forEach(input => {
-        const key = input.getAttribute('data-key');
-        const value = input.value;
-        if (nodeToEdit) nodeToEdit.data(key, value);
-        else if (edgeToEdit) edgeToEdit.data(key, value);
-    });
-
-    // Add new property if specified
-    const key = newPropertyKey.value.trim();
-    const value = newPropertyValue.value.trim();
-    if (key) {
-        if (nodeToEdit) nodeToEdit.data(key, value);
-        else if (edgeToEdit) edgeToEdit.data(key, value);
-    }
-    hideElementEditModal();
-});
-
-// Event listener for cancel button
-cancelButton.addEventListener('click', () => {
-
-    // Simply hide the modal without making changes
-    hideElementEditModal();
-});
 
 const getTopValuesForProperty = (cy, propertyKey) => {
     const values = {};

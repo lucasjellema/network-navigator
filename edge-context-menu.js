@@ -1,10 +1,21 @@
-import { getSelectedNodes, createEdge , createNode} from './utils.js';
+import { getSelectedNodes, createEdge, createNode } from './utils.js';
 import { editEdge } from './modal-element-editor.js';
+import { showEdgeDetails } from './modal-element-properties.js';
 
-const edgeContextMenu = document.getElementById('edge-context-menu');
-edgeContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
-    event.preventDefault();
+let editMode = false
+
+document.addEventListener("editModeToggled", (event) => {
+    editMode = event.detail.editMode;
+    console.log("Edit mode toggled", editMode);
 });
+
+let edgeContextMenu
+document.addEventListener('networkNavigatorContentLoaded', function () {
+    edgeContextMenu = document.getElementById('edge-context-menu');
+    edgeContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
+        event.preventDefault();
+    });
+})
 
 let clickedPosition
 export const addEdgeContextMenu = (cy) => {
@@ -20,33 +31,44 @@ export const addEdgeContextMenu = (cy) => {
         edgeContextMenu.style.top = `${clickedPosition.y + 10}px`;
         edgeContextMenu.style.display = 'block';
 
-        const deleteEdgeButton = document.createElement('button');
-        deleteEdgeButton.textContent = 'Delete Edge ';
-        deleteEdgeButton.addEventListener('click', () => {
-            deleteEdge(selectedEdge);
+
+        const detailsEdgeButton = document.createElement('button');
+        detailsEdgeButton.textContent = 'Show Details for ' + selectedEdge.data('label');
+        detailsEdgeButton.addEventListener('click', () => {
+            showEdgeDetails(cy, selectedEdge);
             hideEdgeContextMenu();
 
         });
-        edgeContextMenu.appendChild(deleteEdgeButton);
+        edgeContextMenu.appendChild(detailsEdgeButton);
 
-        const editEdgeButton = document.createElement('button');
-        editEdgeButton.textContent = 'Edit Edge ' + selectedEdge.data('label');
-        editEdgeButton.addEventListener('click', () => {
-            editEdge(cy,selectedEdge);
-            hideEdgeContextMenu();
+        if (editMode) {
+            const deleteEdgeButton = document.createElement('button');
+            deleteEdgeButton.textContent = 'Delete Edge ';
+            deleteEdgeButton.addEventListener('click', () => {
+                deleteEdge(selectedEdge);
+                hideEdgeContextMenu();
 
-        });
-        edgeContextMenu.appendChild(editEdgeButton); 
-        
-        const edgeToNodeButton = document.createElement('button');
-        edgeToNodeButton.textContent = 'Turn Edge into Node ' + selectedEdge.data('label');
-        edgeToNodeButton.addEventListener('click', () => {
-            edgeToNode(cy,selectedEdge);
-            hideEdgeContextMenu();
+            });
+            edgeContextMenu.appendChild(deleteEdgeButton);
 
-        });
-        edgeContextMenu.appendChild(edgeToNodeButton);
+            const editEdgeButton = document.createElement('button');
+            editEdgeButton.textContent = 'Edit Edge ' + selectedEdge.data('label');
+            editEdgeButton.addEventListener('click', () => {
+                editEdge(cy, selectedEdge);
+                hideEdgeContextMenu();
 
+            });
+            edgeContextMenu.appendChild(editEdgeButton);
+
+            const edgeToNodeButton = document.createElement('button');
+            edgeToNodeButton.textContent = 'Turn Edge into Node ' + selectedEdge.data('label');
+            edgeToNodeButton.addEventListener('click', () => {
+                edgeToNode(cy, selectedEdge);
+                hideEdgeContextMenu();
+
+            });
+            edgeContextMenu.appendChild(edgeToNodeButton);
+        }
     })
 }
 
@@ -59,16 +81,21 @@ const deleteEdge = (selectedEdge) => {
     hideEdgeContextMenu();
 }
 
-const edgeToNode= (cy,selectedEdge) => {
+const edgeToNode = (cy, selectedEdge) => {
 
     const sourceNode = cy.getElementById(selectedEdge.data('source'));
     const targetNode = cy.getElementById(selectedEdge.data('target'));
-            const newNode = createNode(cy, selectedEdge.data('label'));
-            newNode.position({ x: clickedPosition.x, y: clickedPosition.y });
-    
-            createEdge(cy, sourceNode, newNode);
-            createEdge(cy, newNode, targetNode);
-    
-            selectedEdge.remove();
-    
+    const newNode = createNode(cy, selectedEdge.data('label'));
+    newNode.position({ x: clickedPosition.x, y: clickedPosition.y });
+
+    // TODO copy edge properties to node
+
+
+    createEdge(cy, sourceNode, newNode);
+    createEdge(cy, newNode, targetNode);
+
+    selectedEdge.remove();
+
+
+
 }

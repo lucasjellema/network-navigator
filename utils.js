@@ -62,14 +62,18 @@ export const getSelectedNodes = (cy) => {
 }
 
 export const createEdge = (cy, sourceNode, targetNode) => {
+    const newEdgeId = generateGUID();
     cy.add({
         data: {
+            id: newEdgeId,
             source: sourceNode.id(),
             target: targetNode.id(),
             label: `Edge: ${sourceNode.data('label')} →  ${targetNode.data('label')}`,
             timeOfCreation: Date.now(),
         },
     });
+    const newEdge = cy.getElementById(newEdgeId)
+    return newEdge 
 }
 export const createNode = (cy, label,) => {
     const newNodeId = generateGUID();

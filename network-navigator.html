@@ -1,0 +1,111 @@
+<h1 id="graphTitle"></h1>
+<button id="graphManagementButton">Graph Management</button>
+<button id="layoutButton">Graph Layout</button>
+<button id="filterButton">Filter Nodes</button>
+
+<div id="cy" style="width: 100% ; height: 600px;"></div>
+<div id="node-context-menu" class="context-menu">
+</div>
+<div id="edge-context-menu" class="context-menu">
+    <button id="delete-edge">Delete Edge</button>
+</div>
+<div id="graph-context-menu" class="context-menu">
+    <ul>
+        <li id="add-node">Add Node</li>
+        <li id="select-all-nodes">Select All Nodes</li>
+        <li id="edit-mode-toggle">Toggle Edit Mode</li>
+        <li id="create-new-graph">Create Graph</li>
+        <li id="view-saved-graphs">View Saved Graphs</li>
+        <li id="export-graph">Export Graph (full)</li>
+        <li id="export-visible-graph">Export Visible Graph</li>
+        <li id="import-graph"> <label for="importInput">Import Graph from local JSON</label>
+            <input type="file" id="import-graph" accept=".json" />
+        </li>
+        <li id="import-merge-graph"> <label for="importMergeInput">Import and Merge (Absorb) Graph from JSON</label>
+            <input type="file" id="import-merge-graph" accept=".json" />
+        </li>
+        <li id="import-remote-graph"> <label for="importRemote">Import Graph from remote JSON (URL)</label>
+        </li>
+
+    </ul>
+</div>
+<div id="graphs-overview" class="context-menu">
+</div>
+
+<div>
+    <input type="text" id="graph-title" placeholder="Graph Title" />
+    <textarea id="graph-description" placeholder="Graph Description"></textarea>
+    <button id="save-graph">Save Graph</button>
+</div>
+
+<div class="modal" id="editModal">
+    <h3 id="modalTitle">Edit Node Properties</h3>
+    <div id="editPropertyList"></div>
+    <input type="text" id="newPropertyKey" placeholder="New Property Key" />
+    <input type="text" id="newPropertyValue" placeholder="New Property Value" />
+    <button class="save" id="saveChanges">Save</button>
+    <button class="cancel" id="cancelChanges">Cancel</button>
+</div>
+<div class="modal" id="propertiesPanel">
+    <h3 id="propertiesPanelTitle">Node Properties</h3>
+    <div id="propertyList"></div>
+    <button class="cancel" id="close">Close</button>
+</div>
+<div id="filterPanel">
+    <div id="filterPanelHeader">
+        <h3>Filter Nodes</h3>
+        <button id="closePanelButton">[X]</button>
+    </div>
+    <label>
+        Enter filter value (Label):
+        <input type="text" id="filterValue" placeholder="Enter label value">
+    </label>
+    <label>
+        <input type="checkbox" id="includeSelected"> Include Selected Nodes
+    </label> <label>
+        <input type="checkbox" id="includeVisible"> Include Visible Nodes
+    </label>
+    <label>
+        <input type="checkbox" id="includePath"> Include Nodes on Shortest Path
+    </label>
+    <label>
+        <input type="checkbox" id="includeConnected"> Include Connected Nodes
+    </label>
+    <button id="applyFilter">Apply Filter</button>
+    <button id="resetFilter">Reset</button>
+</div>
+
+<div id="layoutPanel">
+    <div id="filterPanelHeader">
+        <h3>Select & Apply Layout</h3>
+        <button id="closeLayoutPanelButton">[X]</button>
+    </div>
+    <label>
+        Enter filter value (Label):
+        <label for="layoutValue">Select Layout Style:</label>
+
+        <select id="layoutValue">
+            <option value="">Select Layout Style</option>
+            <option value="random">Random</option>
+            <option value="circle">Circle</option>
+            <option value="concentric">Concentric</option>
+            <option value="breadthfirst">Breadthfirst</option>
+            <option value="grid">Grid</option>
+            <option value="cose">Cose</option>
+            <option value="euler">Euler</option>
+        </select>
+    </label>
+    <label>
+        <input type="checkbox" id="onlyVisible"> Only visible Nodes
+    </label>
+    <label>
+        <input type="checkbox" id="onlySelected"> Only Selected Nodes
+    </label>
+    <button id="applyLayout">Apply Layout</button>
+</div>
+
+<div id="node-tooltip"
+    style="display: none; position: absolute; background: #f8f9fa; padding: 8px; border-radius: 4px; border: 1px solid #ddd; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); font-size: 12px; z-index: 10;">
+</div>
+<div id="content"></div>
+<script src="graph.js" type="module"></script>
