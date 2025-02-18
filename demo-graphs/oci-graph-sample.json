@@ -1,0 +1,688 @@
+{
+  "id": "d6b87e65-ea8c-40c9-a5f3-a79fe3e7d631",
+  "title": "OCI",
+  "description": "",
+  "elements": {
+    "nodes": [
+      {
+        "data": {
+          "id": "bde0f0b2-d0d1-434a-8cf4-7287b4743b7a",
+          "label": "TheMainVault",
+          "timeOfCreation": 1738773714976,
+          "url": "https://cloud.oracle.com/security/kms/vaults/ocid1.vault.oc1.iad.ejt2he7qaabrs.abuwcljtsw6tx7vwf5i6b2p2clkvew2x54cpeymksor5dplziel4kne3udba?region=us-ashburn-1",
+          "type": "ociResource",
+          "ocid": "ocid1.vault.oc1.iad.ejt2he7qaabrs.abuwcljtsw6tx7vwf5i6b2p2clkvew2x54cpeymksor5dplziel4kne3udba",
+          "subtype": "vault",
+          "ociService": "ociKey Management & Secret Management",
+          "shape": "rectangle",
+          "image": "url(\"images/oci-images/Vault.png\")",
+          "compartment": "lucascloudlab (root)"
+        },
+        "position": {
+          "x": 261.32272769061655,
+          "y": -4.964060392544719
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "cb6986cc-ecce-4098-a7d7-c29620deaa0d",
+          "label": "bubbletip",
+          "timeOfCreation": 1738773754710,
+          "url": "https://cloud.oracle.com/object-storage/buckets/idtwlqf2hanz/bubbletip/objects?region=us-ashburn-1",
+          "type": "ociResource",
+          "ocid": "ocid1.bucket.oc1.iad.aaaaaaaapm4movw4vkwgwdz4euodrhz73ky3fisuk44ywmaquagkl6a5wrja",
+          "subtype": "bucket",
+          "ociService": "ociObject Storage",
+          "shape": "rectangle",
+          "image": "url(\"images/oci-images/Buckets.png\")",
+          "compartment": "FotoMapp"
+        },
+        "position": {
+          "x": 118.00869190756016,
+          "y": -64.45970722654151
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "a3412333-a2f9-40b2-90ae-548e245a79fb",
+          "label": "FotoMapp",
+          "timeOfCreation": 1738773754711,
+          "url": "https://cloud.oracle.com/identity/compartments/ocid1.compartment.oc1..aaaaaaaab5vkkrodyutgwtqjoivjodwew4qgd3vo674fmajk2oq6h2eagefq",
+          "ocid": "ocid1.compartment.oc1..aaaaaaaab5vkkrodyutgwtqjoivjodwew4qgd3vo674fmajk2oq6h2eagefq",
+          "ociService": "identity",
+          "type": "ociResource",
+          "subtype": "compartment",
+          "shape": "square",
+          "image": "url(\"images/oci-images/Compartments.png\")"
+        },
+        "position": {
+          "x": 37.956951875011015,
+          "y": -61.1871074156835
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "69dd72a8-0a1d-429b-a6af-898a683dfe93",
+          "label": "Default",
+          "timeOfCreation": "2/5/2025, 5:42:57 PM",
+          "url": "https://cloud.oracle.com/identity/domains/policies?region=us-ashburn-1",
+          "type": "ociResource",
+          "ocid": "ocid1.domain.oc1..aaaaaaaa3yhevyde3sasx7g3xxuqhcfjqt2ts3zhrndf7gxtqbbf2igzowmq",
+          "subtype": "domain",
+          "ociService": "ociIdentity",
+          "shape": "rectangle"
+        },
+        "position": {
+          "x": 15.107331546682396,
+          "y": -159.8541549138815
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "342394ee-477e-45db-9405-64ca61d21fc1",
+          "label": "lucascloudlab (root)",
+          "timeOfCreation": 1738773949379,
+          "url": "https://cloud.oracle.com/identity/compartments/ocid1.tenancy.oc1..aaaaaaaag7c7slwmlvsodyym662ixlsonnihko2igwpjwwe2egmlf3gg6okq",
+          "ocid": "ocid1.tenancy.oc1..aaaaaaaag7c7slwmlvsodyym662ixlsonnihko2igwpjwwe2egmlf3gg6okq",
+          "ociService": "identity",
+          "type": "ociResource",
+          "subtype": "tenancy",
+          "shape": "square"
+        },
+        "position": {
+          "x": -38.35316884962496,
+          "y": -86.40184038955276
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "e1c5606d-12f4-4fb2-af7b-e0bb1bed28c4",
+          "label": "amis-open-dag",
+          "timeOfCreation": 1738773992690,
+          "url": "https://cloud.oracle.com/identity/compartments/ocid1.compartment.oc1..aaaaaaaaipf7wdz3a4qvs5t5vo7hnysnr2yvdw4ggl36bc4nqkbso6nyzalq?region=us-ashburn-1",
+          "type": "ociResource",
+          "ocid": "ocid1.compartment.oc1..aaaaaaaaipf7wdz3a4qvs5t5vo7hnysnr2yvdw4ggl36bc4nqkbso6nyzalq",
+          "subtype": "compartment",
+          "ociService": "ociIdentity",
+          "shape": "rectangle",
+          "image": "url(\"images/oci-images/Compartments.png\")"
+        },
+        "position": {
+          "x": -116.26299155782702,
+          "y": -65.86880674768656
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "481af348-f7ec-4ebb-8def-66746e4e4e85",
+          "label": "",
+          "timeOfCreation": 1738774790764,
+          "url": "https://cloud.oracle.com/networking/vcns/ocid1.vcn.oc1.iad.amaaaaaa6sde7caae3w4vytsxp4aynpsywv5ge4ivg3jjqth6surh342w7uq?region=us-ashburn-1",
+          "type": "ociResource",
+          "ocid": "ocid1.vcn.oc1.iad.amaaaaaa6sde7caae3w4vytsxp4aynpsywv5ge4ivg3jjqth6surh342w7uq",
+          "subtype": "vcn",
+          "ociService": "ociNetworking",
+          "shape": "rectangle",
+          "image": "url(\"images/oci-images/VirtualCloudNetworkVCN_red.png\")"
+        },
+        "position": {
+          "x": -43.03370903731286,
+          "y": 67.3502150074926
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "bb80a11d-8c87-43d5-9b14-ebe5495fc49a",
+          "label": "fotomapp-vcn",
+          "timeOfCreation": 1738774790765,
+          "url": "https://cloud.oracle.com/dns/resolvers/ocid1.dnsresolver.oc1.iad.amaaaaaa6sde7caanplnipql6whe2yvhp4yrzs6aq4x7am62fnyugf5it6nq",
+          "ocid": "ocid1.dnsresolver.oc1.iad.amaaaaaa6sde7caanplnipql6whe2yvhp4yrzs6aq4x7am62fnyugf5it6nq",
+          "ociService": "dns",
+          "type": "ociResource",
+          "subtype": "dnsresolver",
+          "shape": "square"
+        },
+        "position": {
+          "x": 31.01270119904712,
+          "y": 36.26744529017057
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "3e46a374-ec4a-4375-8823-1ecf4cb70c96",
+          "label": "default route table for fotomapp-vcn",
+          "timeOfCreation": 1738774790765,
+          "url": "https://cloud.oracle.com/networking/vcns/ocid1.vcn.oc1.iad.amaaaaaa6sde7caae3w4vytsxp4aynpsywv5ge4ivg3jjqth6surh342w7uq/route-tables/ocid1.routetable.oc1.iad.aaaaaaaa3s6wndmtmcvm4dpatzyppgbzq6gepovla3zt6fg6qtx3pxpof7qq",
+          "ocid": "ocid1.routetable.oc1.iad.aaaaaaaa3s6wndmtmcvm4dpatzyppgbzq6gepovla3zt6fg6qtx3pxpof7qq",
+          "ociService": "networking",
+          "type": "ociResource",
+          "subtype": "routetable",
+          "shape": "square"
+        },
+        "position": {
+          "x": -57.24871491320631,
+          "y": -11.325726920422355
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "21262360-44d9-4ef9-b721-aed2ac653ecc",
+          "label": "private subnet-fotomapp-vcn",
+          "timeOfCreation": 1738774790766,
+          "url": "https://cloud.oracle.com/networking/vcns/ocid1.vcn.oc1.iad.amaaaaaa6sde7caae3w4vytsxp4aynpsywv5ge4ivg3jjqth6surh342w7uq/subnets/ocid1.subnet.oc1.iad.aaaaaaaa5bji5axdffcotavfj7gdu2myuigmk6hnv5rw6l7y2zdnhvqm5ouq",
+          "ocid": "ocid1.subnet.oc1.iad.aaaaaaaa5bji5axdffcotavfj7gdu2myuigmk6hnv5rw6l7y2zdnhvqm5ouq",
+          "ociService": "networking",
+          "type": "ociResource",
+          "subtype": "subnet",
+          "shape": "square"
+        },
+        "position": {
+          "x": -0.11354563572495253,
+          "y": -0.2607528388313513
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "a51d034f-4295-49bf-9b4e-cfd059578335",
+          "label": "public subnet-fotomapp-vcn",
+          "timeOfCreation": 1738774790766,
+          "url": "https://cloud.oracle.com/networking/vcns/ocid1.vcn.oc1.iad.amaaaaaa6sde7caae3w4vytsxp4aynpsywv5ge4ivg3jjqth6surh342w7uq/subnets/ocid1.subnet.oc1.iad.aaaaaaaah4halopj4h35nboh5uqs5evlyg25sioqsz3wzro7eya6trqyushq",
+          "ocid": "ocid1.subnet.oc1.iad.aaaaaaaah4halopj4h35nboh5uqs5evlyg25sioqsz3wzro7eya6trqyushq",
+          "ociService": "networking",
+          "type": "ociResource",
+          "subtype": "subnet",
+          "shape": "square"
+        },
+        "position": {
+          "x": -122.17875234890828,
+          "y": 53.38445131473369
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "8705643a-dc60-4e95-8916-c5920b9a2a54",
+          "label": " fotomapp-vcn ",
+          "timeOfCreation": 1738774815942,
+          "url": "https://cloud.oracle.com/dns/views/ocid1.dnsview.oc1.iad.aaaaaaaak4x4sj3acuqoo32butqieytmv44sqqhb2bb3zw5flaxxwkyxazqq",
+          "ocid": "ocid1.dnsview.oc1.iad.aaaaaaaak4x4sj3acuqoo32butqieytmv44sqqhb2bb3zw5flaxxwkyxazqq",
+          "ociService": "dns",
+          "type": "ociResource",
+          "subtype": "dnsview",
+          "shape": "square"
+        },
+        "position": {
+          "x": 69.45878574492644,
+          "y": 106.0308697702335
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "e855e762-ef30-4e41-9112-5caebb09599f",
+          "label": "sub05071103231.fotomappvcn.oraclevcn.com",
+          "timeOfCreation": 1738774887491,
+          "url": "https://cloud.oracle.com/dns/zones/ocid1.dns-zone.oc1.iad.aaaaaaaa2bx67uqj6cyqmdhmkcnp5m3ybqvov2nzgvbkka44w5hito3jp5oq?viewId=ocid1.dnsview.oc1.iad.aaaaaaaak4x4sj3acuqoo32butqieytmv44sqqhb2bb3zw5flaxxwkyxazqq",
+          "ocid": "ocid1.dns-zone.oc1.iad.aaaaaaaa2bx67uqj6cyqmdhmkcnp5m3ybqvov2nzgvbkka44w5hito3jp5oq",
+          "ociService": "dns",
+          "type": "ociResource",
+          "subtype": "dns-zone",
+          "shape": "square"
+        },
+        "position": {
+          "x": 123.84427405591771,
+          "y": 46.304926959678674
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "45a7ff0f-f64b-42da-a43d-7f973560f1d1",
+          "label": "sub05071103230.fotomappvcn.oraclevcn.com",
+          "timeOfCreation": 1738774887491,
+          "url": "https://cloud.oracle.com/dns/zones/ocid1.dns-zone.oc1.iad.aaaaaaaaofey5glrnthsfcn43bocxtmvkgimye5myf56c6ekplzgyjyenrsq?viewId=ocid1.dnsview.oc1.iad.aaaaaaaak4x4sj3acuqoo32butqieytmv44sqqhb2bb3zw5flaxxwkyxazqq",
+          "ocid": "ocid1.dns-zone.oc1.iad.aaaaaaaaofey5glrnthsfcn43bocxtmvkgimye5myf56c6ekplzgyjyenrsq",
+          "ociService": "dns",
+          "type": "ociResource",
+          "subtype": "dns-zone",
+          "shape": "square"
+        },
+        "position": {
+          "x": -1.7126798938683256,
+          "y": 144.28842315442753
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "b2403884-8617-4be8-a9e8-f54b3364794a",
+          "label": "0.10.in-addr.arpa",
+          "timeOfCreation": 1738774887491,
+          "url": "https://cloud.oracle.com/dns/zones/ocid1.dns-zone.oc1.iad.aaaaaaaa6xqgdeg2p445oslhdzedwelywaxe7s42jqrfzh6eta4ny7yykn5a?viewId=ocid1.dnsview.oc1.iad.aaaaaaaak4x4sj3acuqoo32butqieytmv44sqqhb2bb3zw5flaxxwkyxazqq",
+          "ocid": "ocid1.dns-zone.oc1.iad.aaaaaaaa6xqgdeg2p445oslhdzedwelywaxe7s42jqrfzh6eta4ny7yykn5a",
+          "ociService": "dns",
+          "type": "ociResource",
+          "subtype": "dns-zone",
+          "shape": "square"
+        },
+        "position": {
+          "x": 112.87548798143077,
+          "y": 173.60758851045765
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "id": "60a8d60c-a9b4-493f-bbc4-32f72beb9325",
+          "source": "cb6986cc-ecce-4098-a7d7-c29620deaa0d",
+          "target": "a3412333-a2f9-40b2-90ae-548e245a79fb",
+          "label": "compartment",
+          "timeOfCreation": 1738773754711
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "296daea4-c610-41d3-827c-01f022b87774",
+          "source": "a3412333-a2f9-40b2-90ae-548e245a79fb",
+          "target": "342394ee-477e-45db-9405-64ca61d21fc1",
+          "label": "tenancy",
+          "timeOfCreation": 1738773949379
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "6cebf531-6d58-40eb-a792-98fdf4e1d95d",
+          "source": "e1c5606d-12f4-4fb2-af7b-e0bb1bed28c4",
+          "target": "342394ee-477e-45db-9405-64ca61d21fc1",
+          "label": "tenancy",
+          "timeOfCreation": 1738773992690
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "539977a3-ad8e-4e89-9981-001addf87d82",
+          "source": "481af348-f7ec-4ebb-8def-66746e4e4e85",
+          "target": "481af348-f7ec-4ebb-8def-66746e4e4e85",
+          "label": "vcn",
+          "timeOfCreation": 1738774790765
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "eb8a62fe-2fac-4dee-9e3d-b9ed7a8c6ec2",
+          "source": "481af348-f7ec-4ebb-8def-66746e4e4e85",
+          "target": "bb80a11d-8c87-43d5-9b14-ebe5495fc49a",
+          "label": "dnsresolver",
+          "timeOfCreation": 1738774790765
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "a2f8abbd-ee40-44b9-8b89-ba184ac7aab8",
+          "source": "481af348-f7ec-4ebb-8def-66746e4e4e85",
+          "target": "3e46a374-ec4a-4375-8823-1ecf4cb70c96",
+          "label": "routetable",
+          "timeOfCreation": 1738774790766
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "e7c75105-df0e-42f4-886b-6210a1cd7388",
+          "source": "481af348-f7ec-4ebb-8def-66746e4e4e85",
+          "target": "21262360-44d9-4ef9-b721-aed2ac653ecc",
+          "label": "subnet",
+          "timeOfCreation": 1738774790766
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "49a08b34-9bb1-401b-90d3-2a22cb5770c5",
+          "source": "481af348-f7ec-4ebb-8def-66746e4e4e85",
+          "target": "a51d034f-4295-49bf-9b4e-cfd059578335",
+          "label": "subnet",
+          "timeOfCreation": 1738774790766
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "b2e8e9e6-e316-43fa-a7e5-674dddc8ee3a",
+          "source": "bb80a11d-8c87-43d5-9b14-ebe5495fc49a",
+          "target": "481af348-f7ec-4ebb-8def-66746e4e4e85",
+          "label": "vcn",
+          "timeOfCreation": 1738774815942
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "224b4d41-a5e7-4074-bb39-df18fc5b16af",
+          "source": "bb80a11d-8c87-43d5-9b14-ebe5495fc49a",
+          "target": "481af348-f7ec-4ebb-8def-66746e4e4e85",
+          "label": "vcn",
+          "timeOfCreation": 1738774815942
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "21927372-3962-4d17-9abc-4c346acfc87e",
+          "source": "bb80a11d-8c87-43d5-9b14-ebe5495fc49a",
+          "target": "8705643a-dc60-4e95-8916-c5920b9a2a54",
+          "label": "dnsview",
+          "timeOfCreation": 1738774815943
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "c493a585-f1d6-45ec-93ed-6229196dbea9",
+          "source": "8705643a-dc60-4e95-8916-c5920b9a2a54",
+          "target": "e855e762-ef30-4e41-9112-5caebb09599f",
+          "label": "dns-zone",
+          "timeOfCreation": 1738774887491
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "9902b405-e13c-4158-b98e-012e13105e8b",
+          "source": "8705643a-dc60-4e95-8916-c5920b9a2a54",
+          "target": "45a7ff0f-f64b-42da-a43d-7f973560f1d1",
+          "label": "dns-zone",
+          "timeOfCreation": 1738774887491
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "e6778975-0964-4b81-b52c-93b55c201f7a",
+          "source": "8705643a-dc60-4e95-8916-c5920b9a2a54",
+          "target": "b2403884-8617-4be8-a9e8-f54b3364794a",
+          "label": "dns-zone",
+          "timeOfCreation": 1738774887491
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      }
+    ]
+  },
+  "timestamp": 1739863359041
+}
