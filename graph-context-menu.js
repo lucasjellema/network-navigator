@@ -333,7 +333,9 @@ export async function importGraphFromRemoteURL(remoteGraphURL, cy) {
         const newId = generateGUID();
         saveGraph(newId, graphData.title, graphData.description, graphData.elements);
         console.log('Graph successfully imported:', graphData);
-        loadGraph(cy, getGraphById(graphData.id));
+        const newGraph = getGraphById(graphData.id)
+        console.log('newgraph ',newGraph)
+        loadGraph(cy, graphData);
     } catch (error) {
         console.error('Invalid JSON file:', error);
         alert(`Failed to import graph ${remoteGraphURL}. Please make sure the file is a valid JSON.`);
