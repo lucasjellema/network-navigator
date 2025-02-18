@@ -51,11 +51,15 @@ const applyFilter = (cy) => {
     const includeVisible = includeVisibleCheckBox.checked;
     const includeSelected = includeSelectedCheckBox.checked;
     const includePath = includePathCheckBox.checked;
+    executeFilter(filterValue, cy, includeVisible, includeSelected, includePath, includeConnected);
+}
+
+export const executeFilter = (filterValue, cy, includeVisible, includeSelected, includePath, includeConnected) => {
     if (filterValue) {
         const theElements = cy.collection();
         if (includeVisible) {
             const visibleNodes = cy.nodes(':visible');
-            theElements.merge(cy.nodes(visibleNodes))
+            theElements.merge(cy.nodes(visibleNodes));
         }
 
         cy.elements().hide();
@@ -68,11 +72,10 @@ const applyFilter = (cy) => {
         if (includePath) {
             theElements.merge(cy.scratch('shortestPath'));
         }
-        
+
         // https://js.cytoscape.org/#collection/traversing 
         // Select nodes with the matching prefix
-        const matchedNodes = cy.nodes().filter((node) =>
-            node.data('label')?.startsWith(filterValue)
+        const matchedNodes = cy.nodes().filter((node) => node.data('label')?.startsWith(filterValue)
         );
         theElements.merge(matchedNodes);
         // Show matched nodes

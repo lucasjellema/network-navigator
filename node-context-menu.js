@@ -1,6 +1,7 @@
 import { getSelectedNodes, createEdge, generateGUID } from './utils.js';
 import { editNode } from './modal-element-editor.js';
 import { showNodeDetails     }   from './modal-element-properties.js';
+import { executeFilter } from './filter.js';
 
 let editMode = false
 
@@ -128,15 +129,25 @@ export const addNodeContextMenu = (cy) => {
         }
         const selectedNodes = getSelectedNodes(cy);
         if (selectedNodes.length > 0) {
-            // show path from selectedNodes[0] to selectedNode (of it exists)
+            // show path from selectedNodes[0] to selectedNode (if it exists) - following direction of paths  
             const showPathButton = document.createElement('button');
-            showPathButton.textContent = 'Show Path from ' + selectedNodes[0].data('label');
+            showPathButton.textContent = 'Show Shortest Path from ' + selectedNodes[0].data('label')+' (Directed)' ;
             showPathButton.addEventListener('click', () => {
-                showPathFrom(cy, selectedNodes[0], selectedNode);
+                showPathFrom(cy, selectedNodes[0], selectedNode, true);
                 hideNodeContextMenu();
 
             });
             nodeContextMenu.appendChild(showPathButton);
+
+
+            // show path from selectedNodes[0] to selectedNode (if it exists) - following direction of paths  
+            const showUndirectedPathButton = document.createElement('button');
+            showUndirectedPathButton.textContent = 'Show Shortest Path from ' + selectedNodes[0].data('label')+' (Undirected)' ;
+            showUndirectedPathButton.addEventListener('click', () => {
+                showPathFrom(cy, selectedNodes[0], selectedNode, false);
+                hideNodeContextMenu();
+            });
+            nodeContextMenu.appendChild(showUndirectedPathButton);
         }
     });
 }
@@ -205,24 +216,25 @@ const mergeNodes = (cy, node1, node2) => {
     // mergedNode.flashAnimation();
 }
 
-const showPathFrom = (cy, startNode, destinationNode) => {
+const showPathFrom = (cy, startNode, destinationNode, directed) => {
     cy.elements().removeClass('highlighted');
     const dijkstra = cy.elements().dijkstra({
         root: startNode,
         weight: edge => edge.data('weight') || 1,  // Default weight is 1 if not provided
-        directed: false // walk edges only from source to target or in both directions
+        directed: directed // walk edges only from source to target or in both directions
     });
 
     // Get the shortest path to the target node
     const path = dijkstra.pathTo(destinationNode);
-
-    if (path.length > 0) {
+    // check if the startnode is in the path; when no path from end to start can be found, a non-empty path is still returned
+    if (path.length > 0 && path.has(startNode))  {
         console.log('Shortest path found:', path.map(ele => ele.id()));
         path.addClass('highlighted'); // Highlight the path
         cy.scratch('shortestPath', path);
+        executeFilter('XQW@#$', cy, false, false, true, includeConnected); // hide all nodes not on the shortest path
     } else {
         console.log('No path exists between the selected nodes.');
-        alert('No path exists between the selected nodes.');
+        alert(`No ${directed?"directed":""} path exists between the selected nodes.`);
     }
 };
 
