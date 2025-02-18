@@ -2,6 +2,8 @@ import { createEdge, createNode, findNodeByProperty } from './utils.js';
 import {processLinkedInProfile} from './processLinkedInProfile.js';
 import {processImdbProfile} from './processImdbProfile.js';
 import {processOciProfile} from './processOciProfile.js';
+import {processGoodreadsProfile} from './processGoodreadsProfile.js';
+
 // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 //   if (message.type === 'linkInfo') {
 //     const contentDiv = document.getElementById('content');
@@ -54,6 +56,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }  
   if (message.type === 'ociProfile') {
     processOciProfile(cy, message);
+  }  
+  if (message.type === 'goodreadsProfile') {
+    processGoodreadsProfile(cy, message);
   }
 
   if (message.type === 'linkInfo') {

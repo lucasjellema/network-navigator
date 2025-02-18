@@ -85,179 +85,198 @@ const scrapeBookData = async (profile) => {
     profile.truncatedContent = truncatedContentElement?.textContent.trim();
 
   }
-  // div with data-testid="genresList"
-  const genresListElement = document.querySelector('div[data-testid="genresList"]');
-  if (genresListElement) {
-    // all span children with class BookPageMetadataSection__genreButton
-    const genreButtons = genresListElement.querySelectorAll('span.BookPageMetadataSection__genreButton');
-    if (genreButtons) {
-      profile.genres = [...genreButtons].map(genreButton => genreButton.textContent.trim());
+  // more author details
+  const authorDiv = document.querySelector('div.AuthorPreview')
+  if (authorDiv) {
+    const authorImage = authorDiv.querySelector('img[data-testid="image"]')
+    if (authorImage) {
+      profile.authorImage = authorImage.src
+      profile.authorUrl = authorImage.parentElement.href
     }
-
   }
 
-  // div with class BookDetails
-  const bookDetailsElement = document.querySelector('div.BookDetails');
-  // find first button  in div
-  if (bookDetailsElement) {
-    const bookDetailsButton = bookDetailsElement.querySelector('button');
-    if (bookDetailsButton) {
-      bookDetailsButton.click();
-      await delay(300)
-      const dtElements = bookDetailsElement.querySelectorAll('dt');
-      for (const dtElement of dtElements) {
-        const dtText = dtElement.textContent.trim();
-        if (dtText === "Setting") {
-          const settingValueElement = dtElement.nextElementSibling;
-          profile.setting = settingValueElement.textContent.trim();
-        } else if (dtText === "Characters") {
-          const charactersValueElement = dtElement.nextElementSibling;
-          profile.characters = charactersValueElement.textContent.trim();
-        }
+    // const authorAnchor = authorDiv.querySelector('a.ContributorLink')
+    // if (authorAnchor) {
+    //   const authorUrl = authorAnchor.href
+    //   const authorName = authorAnchor.textContent.trim()
+    //   profile.authorUrl = authorUrl
+    //   profile.authorName = authorName
+
+    // }}
+
+    // div with data-testid="genresList"
+    const genresListElement = document.querySelector('div[data-testid="genresList"]');
+    if (genresListElement) {
+      // all span children with class BookPageMetadataSection__genreButton
+      const genreButtons = genresListElement.querySelectorAll('span.BookPageMetadataSection__genreButton');
+      if (genreButtons) {
+        profile.genres = [...genreButtons].map(genreButton => genreButton.textContent.trim());
       }
-// div class EditionDetails
-      const editionDetailsElement = document.querySelector('div.EditionDetails');
-      if (editionDetailsElement) {
-       // all divs with class="DescListItem"
-        const descListItems = editionDetailsElement.querySelectorAll('div.DescListItem');
-        if (descListItems) {
-          for (const descListItem of descListItems) {
-            const dtElement = descListItem.querySelector('dt');
-            const ddElement = descListItem.querySelector('dd');
-            if (dtElement && ddElement) {
-              profile[dtElement.textContent.trim()] = ddElement.textContent.trim();
+
+    }
+
+    // div with class BookDetails
+    const bookDetailsElement = document.querySelector('div.BookDetails');
+    // find first button  in div
+    if (bookDetailsElement) {
+      const bookDetailsButton = bookDetailsElement.querySelector('button');
+      if (bookDetailsButton) {
+        bookDetailsButton.click();
+        await delay(300)
+        const dtElements = bookDetailsElement.querySelectorAll('dt');
+        for (const dtElement of dtElements) {
+          const dtText = dtElement.textContent.trim();
+          if (dtText === "Setting") {
+            const settingValueElement = dtElement.nextElementSibling;
+            profile.setting = settingValueElement.textContent.trim();
+          } else if (dtText === "Characters") {
+            const charactersValueElement = dtElement.nextElementSibling;
+            profile.characters = charactersValueElement.textContent.trim();
+          }
+        }
+        // div class EditionDetails
+        const editionDetailsElement = document.querySelector('div.EditionDetails');
+        if (editionDetailsElement) {
+          // all divs with class="DescListItem"
+          const descListItems = editionDetailsElement.querySelectorAll('div.DescListItem');
+          if (descListItems) {
+            for (const descListItem of descListItems) {
+              const dtElement = descListItem.querySelector('dt');
+              const ddElement = descListItem.querySelector('dd');
+              if (dtElement && ddElement) {
+                profile[dtElement.textContent.trim()] = ddElement.textContent.trim();
+              }
             }
           }
         }
-      }
 
+      }
     }
-  }
-  // find similar books
-  // ul with class="CarouselGroup"
-  const similarBooksElement = document.querySelector('ul.CarouselGroup');
-  if (similarBooksElement) {
-    const similarBooks = similarBooksElement.querySelectorAll('li');
-    if (similarBooks) {
-      // iterate over similar books
-      profile.similarBooks = [];
-      for (const similarBook of similarBooks) {
-        const book = {}
-        // find image
-        const imageElement = similarBook.querySelector('img');
-        book.image = imageElement.src;
-        // div element with data-testid="title"
-        const titleElement = similarBook.querySelector('div[data-testid="title"]');
-        book.title = titleElement.textContent.trim();
-        const authorElement = similarBook.querySelector('div[data-testid="author"]');
-        book.author = authorElement.textContent.trim();
-        book.pageUrl = similarBook.querySelector('a').href;
-        // find span with class AverageRating__ratingValue
-        const ratingElement = similarBook.querySelector('span.AverageRating__ratingValue');
-        book.rating = ratingElement.textContent.trim();
-        profile.similarBooks.push(book);
+    // find similar books
+    // ul with class="CarouselGroup"
+    const similarBooksElement = document.querySelector('ul.CarouselGroup');
+    if (similarBooksElement) {
+      const similarBooks = similarBooksElement.querySelectorAll('li');
+      if (similarBooks) {
+        // iterate over similar books
+        profile.similarBooks = [];
+        for (const similarBook of similarBooks) {
+          const book = {}
+          // find image
+          const imageElement = similarBook.querySelector('img');
+          book.image = imageElement.src;
+          // div element with data-testid="title"
+          const titleElement = similarBook.querySelector('div[data-testid="title"]');
+          book.title = titleElement.textContent.trim();
+          const authorElement = similarBook.querySelector('div[data-testid="author"]');
+          book.author = authorElement.textContent.trim();
+          book.pageUrl = similarBook.querySelector('a').href;
+          // find span with class AverageRating__ratingValue
+          const ratingElement = similarBook.querySelector('span.AverageRating__ratingValue');
+          book.rating = ratingElement.textContent.trim();
+          profile.similarBooks.push(book);
+        }
+
       }
-
-    }
-  }
-}
-
-const scrapeAuthorData = (profile) => {
-  // div with class authorLeftContainer
-  const authorLeftContainerElement = document.querySelector('div.authorLeftContainer');
-  if (authorLeftContainerElement) {
-    // find image
-    const imageElement = authorLeftContainerElement.querySelector('img');
-    profile.image = imageElement.src;
-  }
-  // find div with BookPageTitleSection
-  const authorNameElement = document.querySelector('h1.authorName');
-  if (authorNameElement) {
-    profile.name = authorNameElement.textContent.trim();
-
-    const div = authorNameElement.parentElement.parentElement
-    if (div) {
-      // iterate over all child nodes
-      for (const child of div.children) {
-        if (child.tagName === 'DIV' && "Born" === child.textContent?.trim()) {
-          console.log("Born", child.textContent.trim());
-          console.log("Born next - where", child.nextSibling.textContent.trim());
-          profile.birthplace = child.nextSibling.textContent.trim();
-          console.log("Born next next - when", child.nextSibling.nextSibling.textContent.trim());
-          profile.birthdate = child.nextSibling.nextSibling.textContent.trim();
-
-        }
-        if (child.tagName === 'DIV' && "Died" === child.textContent?.trim()) {
-          console.log("Died", child.textContent.trim());
-          console.log("Died next - ", child.nextSibling.textContent?.trim());
-          console.log("Died next next - when", child.nextSibling.nextSibling.textContent?.trim());
-          profile.died = child.nextSibling.nextSibling.textContent?.trim();
-        }
-        if (child.tagName === 'DIV' && "Website" === child.textContent?.trim()) {
-          console.log("Website", child.textContent.trim());
-          console.log("Website next - ", child.nextElementSibling.textContent?.trim());
-          profile.website = child.nextElementSibling.textContent?.trim();
-        }
-        if (child.tagName === 'DIV' && "Genre" === child.textContent?.trim()) {
-          console.log("Genre", child.textContent.trim());
-          console.log("Genere next - ", child.nextElementSibling.textContent?.trim());
-          profile.genres = child.nextElementSibling.textContent?.trim();
-        }
-      }
-
     }
   }
 
+  const scrapeAuthorData = (profile) => {
+    // div with class authorLeftContainer
+    const authorLeftContainerElement = document.querySelector('div.authorLeftContainer');
+    if (authorLeftContainerElement) {
+      // find image
+      const imageElement = authorLeftContainerElement.querySelector('img');
+      profile.image = imageElement.src;
+    }
+    // find div with BookPageTitleSection
+    const authorNameElement = document.querySelector('h1.authorName');
+    if (authorNameElement) {
+      profile.name = authorNameElement.textContent.trim();
 
-  // div with class aboutAuthorInfo
-  const aboutAuthorInfoElement = document.querySelector('div.aboutAuthorInfo');
-  if (aboutAuthorInfoElement) {
-    // find description
-    const descriptionElement = aboutAuthorInfoElement.querySelector('span');
-    profile.description = descriptionElement?.textContent.trim();
-  }
+      const div = authorNameElement.parentElement.parentElement
+      if (div) {
+        // iterate over all child nodes
+        for (const child of div.children) {
+          if (child.tagName === 'DIV' && "Born" === child.textContent?.trim()) {
+            console.log("Born", child.textContent.trim());
+            console.log("Born next - where", child.nextSibling.textContent.trim());
+            profile.birthplace = child.nextSibling.textContent.trim();
+            console.log("Born next next - when", child.nextSibling.nextSibling.textContent.trim());
+            profile.birthdate = child.nextSibling.nextSibling.textContent.trim();
 
-  // div with itemtype="https://schema.org/Collection"
-  const collectionElement = document.querySelector('div[itemtype="https://schema.org/Collection"]');
-  if (collectionElement) {
-    // find table
-    const tableElement = collectionElement.querySelector('table');
-    if (tableElement) {
-      // find all tr in table
-      const trElements = tableElement.querySelectorAll('tr');
-      if (trElements) {
-        const books = []
-        // iterate over all tr elements
-        for (const trElement of trElements) {
-          // find all td elements in tr
-          const tdElements = trElement.querySelectorAll('td');
-          if (tdElements) {
-            const book = {}
-            book.image = tdElements[0].querySelector('img').src
-            book.title = tdElements[0].querySelector('a').title
-            book.goodreadsUrl = tdElements[0].querySelector('a').href
-            const bookText = tdElements[1].querySelector('div')?.textContent
-            if (bookText) {
-              // find string published and then extract the next 5 characters
-              const publishedIndex = bookText.indexOf("published")
-              book.published = bookText.substring(publishedIndex + 12, publishedIndex + 16)
-              // find string "avg rating" and extract the 5 characters  before that string
-              const avgRatingIndex = bookText.indexOf("avg rating")
-              book.avgRating = bookText.substring(avgRatingIndex - 5, avgRatingIndex)
-
-            }
-
-            books.push(book)
+          }
+          if (child.tagName === 'DIV' && "Died" === child.textContent?.trim()) {
+            console.log("Died", child.textContent.trim());
+            console.log("Died next - ", child.nextSibling.textContent?.trim());
+            console.log("Died next next - when", child.nextSibling.nextSibling.textContent?.trim());
+            profile.died = child.nextSibling.nextSibling.textContent?.trim();
+          }
+          if (child.tagName === 'DIV' && "Website" === child.textContent?.trim()) {
+            console.log("Website", child.textContent.trim());
+            console.log("Website next - ", child.nextElementSibling.textContent?.trim());
+            profile.website = child.nextElementSibling.textContent?.trim();
+          }
+          if (child.tagName === 'DIV' && "Genre" === child.textContent?.trim()) {
+            console.log("Genre", child.textContent.trim());
+            console.log("Genere next - ", child.nextElementSibling.textContent?.trim());
+            profile.genres = child.nextElementSibling.textContent?.trim();
           }
         }
-        profile.books = books
+
+      }
+    }
+
+
+    // div with class aboutAuthorInfo
+    const aboutAuthorInfoElement = document.querySelector('div.aboutAuthorInfo');
+    if (aboutAuthorInfoElement) {
+      // find description
+      const descriptionElement = aboutAuthorInfoElement.querySelector('span');
+      profile.description = descriptionElement?.textContent.trim();
+    }
+
+    // div with itemtype="https://schema.org/Collection"
+    const collectionElement = document.querySelector('div[itemtype="https://schema.org/Collection"]');
+    if (collectionElement) {
+      // find table
+      const tableElement = collectionElement.querySelector('table');
+      if (tableElement) {
+        // find all tr in table
+        const trElements = tableElement.querySelectorAll('tr');
+        if (trElements) {
+          const books = []
+          // iterate over all tr elements
+          for (const trElement of trElements) {
+            // find all td elements in tr
+            const tdElements = trElement.querySelectorAll('td');
+            if (tdElements) {
+              const book = {}
+              book.image = tdElements[0].querySelector('img').src
+              book.title = tdElements[0].querySelector('a').title
+              book.goodreadsUrl = tdElements[0].querySelector('a').href
+              const bookText = tdElements[1].querySelector('div')?.textContent
+              if (bookText) {
+                // find string published and then extract the next 5 characters
+                const publishedIndex = bookText.indexOf("published")
+                book.published = bookText.substring(publishedIndex + 12, publishedIndex + 16)
+                // find string "avg rating" and extract the 5 characters  before that string
+                const avgRatingIndex = bookText.indexOf("avg rating")
+                book.avgRating = bookText.substring(avgRatingIndex - 5, avgRatingIndex)
+
+              }
+
+              books.push(book)
+            }
+          }
+          profile.books = books
+        }
       }
     }
   }
-}
 
-function delay(milliseconds) {
-  return new Promise(resolve => {
-    setTimeout(resolve, milliseconds);
-  });
-}
+  function delay(milliseconds) {
+    return new Promise(resolve => {
+      setTimeout(resolve, milliseconds);
+    });
+  }
