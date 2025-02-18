@@ -2,7 +2,7 @@ import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurre
 import { setTitle } from './ui.js';
 
 
-let graphContextMenu, addNodeButton, addEdgeButton, selectAllNodesButton, editModeButton, createGraphButton, viewGraphsButton, exportGraphButton, exportOnlyVisibleGraphButton, importGraphButton, importRemoteGraphButton, importMergeGraphButton
+let graphContextMenu, addNodeButton, addEdgeButton, selectAllNodesButton, editModeButton, createGraphButton, viewGraphsButton, exportGraphButton, exportOnlyVisibleGraphButton, importGraphButton, importRemoteGraphButton, importMergeGraphButton, minimumSpanningTreeButton, allEdgesButton
 
 document.addEventListener('networkNavigatorContentLoaded', function () {
     graphContextMenu = document.getElementById('graph-context-menu');
@@ -16,6 +16,8 @@ document.addEventListener('networkNavigatorContentLoaded', function () {
     importGraphButton = document.getElementById('import-graph');
     importRemoteGraphButton = document.getElementById('import-remote-graph');
     importMergeGraphButton = document.getElementById('import-merge-graph');
+    minimumSpanningTreeButton = document.getElementById('minimum-spanning-tree')
+    allEdgesButton = document.getElementById('all-edges')
     graphContextMenu.addEventListener('contextmenu', (event) => { // do not show a context menu on the context menu
         event.preventDefault();
     });
@@ -36,6 +38,8 @@ export const addGraphContextMenu = (cy) => {
     initialiseImportGraphButton(cy);
     initialiseImportRemoteGraphButton(cy);
     initialiseImportMergeGraphButton(cy);
+    initialiseMinimumSpanningTreeButton(cy);
+    initialiseAllEdgesButton(cy);
     cy.on('cxttap', (event) => {
         if (event.target === cy) {
             const pos = event.renderedPosition;
@@ -264,6 +268,35 @@ const initialiseCreateGraphsButton = (cy) => {
     });
 }
 
+const initialiseMinimumSpanningTreeButton = (cy) => {
+    minimumSpanningTreeButton.addEventListener('click', () => {
+        const mstEdges = cy.elements().kruskal();
+        cy.edges().forEach(edge => {
+            if (mstEdges.includes(edge)) {
+                edge.style({
+                    'line-color': 'blue',  // Highlight MST edges
+                    'width': 4
+                });
+            } else {
+                edge.style({
+                    'line-color': '#ccc',  // Gray out non-MST edges
+                    'width': 2
+                });
+            }
+        });
+        hideGraphContextMenu(); // Hide the context menu
+    })
+}
+
+const initialiseAllEdgesButton = (cy) => {
+
+    allEdgesButton.addEventListener('click', () =>{
+        cy.edges().removeStyle();
+    hideGraphContextMenu(); // Hide the context menu
+    })
+}
+
+
 const createNewGraph = (cy) => {
     console.log('creating new graph');
     const newId = generateGUID();
@@ -334,7 +367,7 @@ export async function importGraphFromRemoteURL(remoteGraphURL, cy) {
         saveGraph(newId, graphData.title, graphData.description, graphData.elements);
         console.log('Graph successfully imported:', graphData);
         const newGraph = getGraphById(graphData.id)
-        console.log('newgraph ',newGraph)
+        console.log('newgraph ', newGraph)
         loadGraph(cy, graphData);
     } catch (error) {
         console.error('Invalid JSON file:', error);
