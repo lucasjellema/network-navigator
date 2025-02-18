@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Network Navigator",
-  "version": "1.1",
+  "version": "1.1.1",
   "permissions": [
     "contextMenus",
     "activeTab",
@@ -16,14 +16,66 @@
       "js": ["content-scrapers/content.js"]
     },
     {
-      "matches": ["https://www.linkedin.com/*"],
-      "js": ["content-scrapers/linkedin-content.js"],
-      "run_at": "document_end" 
+      "matches": [
+        "https://www.google.com/maps/*"
+      ],
+      "js": [
+        "content-scrapers/google-maps-content.js"
+      ]
     },
     {
-      "matches": ["https://www.imdb.com/*"],
-      "js": ["content-scrapers/imdb-content.js"],
-      "run_at": "document_end" 
+      "matches": [
+        "https://www.linkedin.com/*"
+      ],
+      "js": [
+        "content-scrapers/linkedin-content.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://www.imdb.com/*"
+      ],
+      "js": [
+        "content-scrapers/imdb-content.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://github.com/*"
+      ],
+      "js": [
+        "content-scrapers/github-content.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://www.goodreads.com/*"
+      ],
+      "js": [
+        "content-scrapers/goodreads-content.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://open.spotify.com/*"
+      ],
+      "js": [
+        "content-scrapers/spotify-content.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://en.wikipedia.org/*"
+      ],
+      "js": [
+        "content-scrapers/wikipedia-content.js"
+      ],
+      "run_at": "document_end"
     },
     {
       "matches": ["https://cloud.oracle.com/*"],
