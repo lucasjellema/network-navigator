@@ -77,7 +77,7 @@ const initialiseEditModeButton = (cy) => {
     });
 }
 const updateGraphContextMenuForEditMode = (cy, editMode) => {
-    if (editMode) {
+    if (!editMode) {
         addNodeButton.style.display = 'none';
         createGraphButton.style.display = 'none';
     } else {
