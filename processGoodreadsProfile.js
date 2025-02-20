@@ -1,4 +1,4 @@
-import { createEdge, createNode, findNodeByProperty } from './utils.js';
+import { createEdge, createNode, findNodeByProperty, createEdgeWithLabel } from './utils.js';
 
 export const processGoodreadsProfile = (cy, message) => {
     const profile = message.profile;
@@ -74,8 +74,8 @@ function processBook(cy, profile, newNodes) {
                 authorOfSimilarBookNode.data('shape', 'triangle');
                 newNodes = newNodes.union(authorOfSimilarBookNode);
             }
-            const similarWrittenByEdge = createEdge(cy, authorOfSimilarBookNode, similarBookNode);
-            similarWrittenByEdge.data('label', 'author of');
+            const similarWrittenByEdge  = createEdgeWithLabel  (cy,  authorOfSimilarBookNode, similarBookNode, 'author of', true)
+            edge.data('type', 'author');    
             similarWrittenByEdge.data('type', 'author');
 
         }
@@ -91,8 +91,8 @@ function processBook(cy, profile, newNodes) {
     }
     authorNode.data('url', profile.authorUrl);
     authorNode.data('image', profile.authorImage);
-    const edge = createEdge(cy, authorNode, bookNode);
-    edge.data('label', 'author of');
+    const edge = createEdgeWithLabel  (cy, authorNode, bookNode, 'author of', true)
+
     edge.data('type', 'author');
 }
 
@@ -126,8 +126,7 @@ if (profile.books)
             bookNode.data('shape', 'square');
             newNodes = newNodes.union(bookNode);
         }
-        const edge = createEdge(cy, authorNode, bookNode);
-        edge.data('label', 'author of');
+        const edge = createEdgeWithLabel  (cy, authorNode, bookNode, 'author of', true)
         edge.data('type', 'author');
     }
 }

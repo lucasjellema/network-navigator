@@ -61,20 +61,41 @@ export const getSelectedNodes = (cy) => {
     return selectedNodes;
 }
 
-export const createEdge = (cy, sourceNode, targetNode) => {
+
+export const createEdgeWithLabel = (cy, sourceNode, targetNode, label, doNotCreateWhenEdgeExists) => {
+    let edge = firstEdgeWithLabel(cy, sourceNode.id(), targetNode.id(), label)
+    if (edge && doNotCreateWhenEdgeExists) return edge
+
     const newEdgeId = generateGUID();
     cy.add({
         data: {
             id: newEdgeId,
             source: sourceNode.id(),
             target: targetNode.id(),
-            label: `Edge: ${sourceNode.data('label')} →  ${targetNode.data('label')}`,
+            label: label,
             timeOfCreation: Date.now(),
         },
     });
     const newEdge = cy.getElementById(newEdgeId)
     return newEdge 
 }
+
+export const createEdge = (cy, sourceNode, targetNode) => {
+    return createEdgeWithLabel (cy, sourceNode, targetNode, `Edge: ${sourceNode.data('label')} →  ${targetNode.data('label')}`) 
+}
+
+export const edgeWithLabelExists = (sourceId, targetId, label) => {
+    return cy.$(`edge[source = "${sourceId}"][target = "${targetId}"][label = "${label}"]`).length > 0 
+       // ||            cy.$(`edge[source = "${targetId}"][target = "${sourceId}"][label = "${label}"]`).length > 0; // For undirected graphs
+}
+
+export const firstEdgeWithLabel = (cy, sourceId, targetId, label) => {
+    const edges= cy.$(`edge[source = "${sourceId}"][target = "${targetId}"][label = "${label}"]`)
+    return edges.length > 0 ? edges[0] : null 
+       // ||            cy.$(`edge[source = "${targetId}"][target = "${sourceId}"][label = "${label}"]`).length > 0; // For undirected graphs
+}
+
+
 export const createNode = (cy, label,) => {
     const newNodeId = generateGUID();
     const node =
@@ -126,3 +147,4 @@ export const getJSONFile = (url) => {
             );
     })
 }
+
