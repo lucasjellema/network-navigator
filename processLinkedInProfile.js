@@ -1,4 +1,4 @@
-import { createEdge, createNode, findNodeByProperty } from './utils.js';
+import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from './utils.js';
 
 export const processLinkedInProfile = (cy, message) => {
     const contentDiv = document.getElementById('content');
@@ -9,13 +9,15 @@ export const processLinkedInProfile = (cy, message) => {
         `;
 
     const profile = message.profile;
+    let newNodes = cy.collection();
     if (profile.type === 'person') {
-        let personNode = findNodeByProperty(cy, 'label', profile.name);
+        let personNode = findNodeByProperties(cy, { 'label': profile.name, 'type': profile.type });
         if (!personNode) {
             personNode = createNode(cy, profile.name);
             personNode.data('url', message.linkedInUrl);
             personNode.data('type', profile.type);
             personNode.data('subtype', `linkedIn${profile.type}`);
+            newNodes = newNodes.union(personNode);
         }
         if (profile.currentRole) personNode.data('currentRole', profile.currentRole);
         if (profile.image) personNode.data('image', profile.image);
@@ -24,29 +26,31 @@ export const processLinkedInProfile = (cy, message) => {
 
         if (profile.currentCompany) {
             personNode.data('currentCompany', profile.currentCompany);
-            let companyNode = findNodeByProperty(cy, 'label', profile.currentCompany);
+            let companyNode = findNodeByProperties(cy, { 'label': profile.currentCompany, 'type': 'company' });
             if (!companyNode) {
                 companyNode = createNode(cy, profile.currentCompany);
                 companyNode.data('image', profile.currentCompanyLogo);
                 //companyNode.data('url', profile.companyUrl);
                 companyNode.data('type', 'company');
                 companyNode.data('shape', 'square');
+                newNodes = newNodes.union(companyNode);
+
             }
-            const edge = createEdge(cy, personNode, companyNode);
-            edge.data('label', 'works at');
+            const edge = createEdgeWithLabel(cy, personNode, companyNode, 'works at', true);
             edge.data('type', 'workAt');
             edge.data('role', profile.currentRole);
         }
         if (profile.latestEducation) {
-            let educationNode = findNodeByProperty(cy, 'label', profile.latestEducation);
+            let educationNode = findNodeByProperties(cy, { 'label': profile.latestEducation, 'type': 'education' });
             if (!educationNode) {
                 educationNode = createNode(cy, profile.latestEducation);
                 educationNode.data('image', profile.latestEducationLogo);
                 educationNode.data('type', 'education');
                 educationNode.data('shape', 'diamond');
+                newNodes = newNodes.union(educationNode);
+
             }
-            const edge = createEdge(cy, personNode, educationNode);
-            edge.data('label', 'educated at');
+            const edge = createEdgeWithLabel(cy, personNode, educationNode, 'educated at', true);
             edge.data('type', 'educatedAt');
         }
 
@@ -55,7 +59,7 @@ export const processLinkedInProfile = (cy, message) => {
             // loop over elements in array experience
             for (let i = 0; i < profile.experience.length; i++) {
                 const experience = profile.experience[i];
-                let companyNode = findNodeByProperty(cy, 'label', experience.company);
+                let companyNode = findNodeByProperties(cy, { 'label': experience.company, 'type': 'company' });
 
                 if (!companyNode) {
                     companyNode = createNode(cy, experience.company);
@@ -63,10 +67,12 @@ export const processLinkedInProfile = (cy, message) => {
                     companyNode.data('url', experience.companyUrl);
                     companyNode.data('type', 'company');
                     companyNode.data('shape', 'square');
+                    newNodes = newNodes.union(companyNode);
+
                 }
                 companyNode.data('linkedInUrl', experience.companyUrl);
-                const edge = createEdge(cy, personNode, companyNode);
-                edge.data('label', 'works at');
+                const edge = createEdgeWithLabel(cy, personNode, companyNode, 'works at', true);
+                //                edge.data('label', 'works at');
                 edge.data('type', 'workAt');
                 edge.data('role', experience.role);
                 edge.data('location', experience.location);
@@ -93,4 +99,35 @@ export const processLinkedInProfile = (cy, message) => {
 
 
     }
+    if (profile.type === 'company') {
+        let companyNode = findNodeByProperties(cy, { 'label': profile.name, 'type': profile.type });
+        if (!companyNode) {
+            companyNode = createNode(cy, profile.name);
+            companyNode.data('type', profile.type);
+            companyNode.data('subtype', `linkedIn${profile.type}`);
+            companyNode.data('shape', 'square');
+            newNodes = newNodes.union(companyNodeNode);
+
+        }
+        companyNode.data('url', message.linkedInUrl);
+        if (profile.image) companyNode.data('image', profile.image);
+        if (profile.about) companyNode.data('about', profile.about);
+        if (profile.tagline) companyNode.data('tagline', profile.tagline);
+        if (profile.location) companyNode.data('location', profile.location);
+        if (profile.industry) companyNode.data('industry', profile.industry);
+        if (profile.numberOfEmployees) companyNode.data('numberOfEmployees', profile.numberOfEmployees);
+    }
+    // run layout for new nodes
+    newNodes.layout({
+        name: 'random',
+        animate: true,
+        animateFilter: function (node, i) {
+            return true;
+        },
+        animationDuration: 1000,
+        animationEasing: undefined,
+        fit: true,
+    })
+        .run();
+
 }

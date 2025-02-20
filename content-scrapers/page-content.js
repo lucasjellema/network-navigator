@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   console.log("Received message:", message);
-  if (message.type === 'linkInfoRequest') {
+  if (message.type === 'linkInfoRequestForNetworkNavigator') {
     if (message.href) {
       console.log("Link received: ", message.href);
       const link = getLinkInfo(message.href);
@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
   }
 });
-console.log('content.js loaded - context-menu-clipboard extension');
+console.log('page-content.js loaded - network navigator');
 
 function getLinkInfo(linkUrl) {
   console.log(`inside console.js `, linkUrl)

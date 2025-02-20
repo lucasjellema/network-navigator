@@ -1,11 +1,12 @@
 chrome.runtime.onInstalled.addListener(() => {
+console.log('background.js Network Navigator loaded - go set up context Menu');
   chrome.contextMenus.create({
-    id: "linkInfoForNetwork",
-    title: "Add Link to Network Navigator",
+    id: "linkInfoForNetworkNavigator",
+    title: "Add Page, Link & Linked Page to Network Navigator",
     contexts: ["link"]
   });
   chrome.contextMenus.create({
-    id: "webmemoGoogleMapsInfoForNetwork",
+    id: "googleMapsInfoForNetwork",
     title: "Make Web Memo for Google Maps Location",
     documentUrlPatterns: ["https://www.google.com/maps/*"]
   });
@@ -28,22 +29,22 @@ chrome.runtime.onInstalled.addListener(() => {
     documentUrlPatterns: ["*://cloud.oracle.com/*"]
   });
   chrome.contextMenus.create({
-    id: "webmemoGitHubInfoForNetwork",
+    id: "githubInfoForNetwork",
     title: "Make Network Navigator entry for GitHub Repository",
     documentUrlPatterns: ["*://github.com/*"]
   });
   chrome.contextMenus.create({
-    id: "webmemoGoodreadsInfoForNetwork",
+    id: "goodreadsInfoForNetwork",
     title: "Add Goodreads Book Details to Network Navigator",
     documentUrlPatterns: ["*://www.goodreads.com/*"]
   });
   chrome.contextMenus.create({
-    id: "webmemoSpotifyInfoForNetwork",
+    id: "spotifyInfoForNetwork",
     title: "Add Spotify Song to Network Navigator",
     documentUrlPatterns: ["*://open.spotify.com/*"]
   });
   chrome.contextMenus.create({
-    id: "webmemoWikipediaInfoForNetwork",
+    id: "wikipediaInfoForNetwork",
     title: "Add Wikipedia Page to Network Navigator",
     documentUrlPatterns: ["*://en.wikipedia.org/*"]
   });
@@ -51,27 +52,28 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 
-chrome.runtime.onMessage.addListener((message, sender) => {
-  if (message.action === "togglePageType") {
-    if (message.contentExtension === "linkedin") {
+// chrome.runtime.onMessage.addListener((message, sender) => {
+//   console.log("Received message:", message);
+//   if (message.action === "togglePageType") {
+//     if (message.contentExtension === "linkedin") {
 
-      chrome.contextMenus.update("linkedInInfoForNetwork", {
-        visible: message.personPage || message.companyPage,
-        title: message.personPage ? "Add LinkedIn Person Details to Network Navigator" : "Add LinkedIn Company Details to Network Navigator"
-      });
-    }
-    if (message.contentExtension === "imdb") {
+//       chrome.contextMenus.update("linkedInInfoForNetwork", {
+//         visible: message.personPage || message.companyPage,
+//         title: message.personPage ? "Add LinkedIn Person Details to Network Navigator" : "Add LinkedIn Company Details to Network Navigator"
+//       });
+//     }
+//     if (message.contentExtension === "imdb") {
 
-      chrome.contextMenus.update("imdbInfoForNetwork", {
-        visible: message.namePage || message.titlePage,
-        title: message.namePage ? "Add IMDB Person Details to Network Navigator" : "Add IMBD Title Details to Network Navigator"
-      });
-    }
-  }
-});
+//       chrome.contextMenus.update("imdbInfoForNetwork", {
+//         visible: message.namePage || message.titlePage,
+//         title: message.namePage ? "Add IMDB Person Details to Network Navigator" : "Add IMBD Title Details to Network Navigator"
+//       });
+//     }
+//   }
+// });
 
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
-  if (info.menuItemId === "linkInfoForNetwork") {
+  if (info.menuItemId === "linkInfoForNetworkNavigator") {
     await handleLinkInfo(info, tab);
   }
   if (info.menuItemId === "linkedInInfoForNetwork") {
@@ -83,19 +85,19 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   if (info.menuItemId === "imdbInfoForNetwork") {
     await handleImdbInfo(info, tab);
   }
-  if (info.menuItemId === "webmemoGoogleMapsInfoForNetwork") {
-    await handleGoogleMapsInfo(info, tab, 'location');
+  if (info.menuItemId === "googleMapsInfoForNetwork") {
+    await handleGoogleMapsInfo(info, tab);
   }
-  if (info.menuItemId === "webmemoGitHubInfoForNetwork") {
+  if (info.menuItemId === "githubInfoForNetwork") {
     await handleGitHubInfo(info, tab);
   }
-  if (info.menuItemId === "webmemoGoodreadsInfoForNetwork") {
+  if (info.menuItemId === "goodreadsInfoForNetwork") {
     await handleGoodreadsInfo(info, tab);
   }
-  if (info.menuItemId === "webmemoSpotifyInfoForNetwork") {
+  if (info.menuItemId === "spotifyInfoForNetwork") {
     await handleSpotifyInfo(info, tab);
   }
-  if (info.menuItemId === "webmemoWikipediaInfoForNetwork") {
+  if (info.menuItemId === "wikipediaInfoForNetwork") {
     await handleWikipediaInfo(info, tab);
   }
 });
@@ -166,11 +168,11 @@ async function handleLinkInfo(info, tab) {
 
   (async () => {
     const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-    const response = await chrome.tabs.sendMessage(tab.id, { type: 'linkInfoRequestForNetwork', href: info.linkUrl });
+    const response = await chrome.tabs.sendMessage(tab.id, { type: 'linkInfoRequestForNetworkNavigator', href: info.linkUrl });
     console.log(response);
     // publish link details for use in side_panel.js
     chrome.runtime.sendMessage({
-      type: 'linkInfo',
+      type: 'linkInfoForNetworkNavigator',
       linkText: response.link.linkText,
       title: response.link.title,
       sourceUrl: response.link.sourceUrl,

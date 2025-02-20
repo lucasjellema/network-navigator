@@ -44,7 +44,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     let profile = getLinkedInProfile()
     profile.type = personPage ? 'person' : 'company'
     console.log("Profile:", profile)
-    sendResponse({ status: 'success', data: profile, linkedInUrl: window.location.href });
+    sendResponse({ status: 'success', data: profile, linkedInUrl: window.location.href , type: 'linkedInInfoForNetwork'});
     // }
     // else {
     //   sendResponse({ status: 'error', message });

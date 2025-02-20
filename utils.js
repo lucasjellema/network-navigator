@@ -128,6 +128,19 @@ export const findNodeByProperty = (cy,property, value) => {
     return currentNodes[0] || null;
 };
 
+export const findNodeByProperties = (cy,properties) => {
+    const currentNodes = cy.nodes().filter((node) =>
+    {
+        // iterate over all properties and test for each if the value in node.data is equal to the value in properties
+        for (const [key, value] of Object.entries(properties)) {
+            if (node.data(key) !== value) return false;
+        }
+        return true;
+    })
+    return currentNodes[0] || null;
+};
+
+
 export function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);

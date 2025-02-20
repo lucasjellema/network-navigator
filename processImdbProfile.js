@@ -1,4 +1,4 @@
-import { createEdge, createNode, findNodeByProperty } from './utils.js';
+import { createEdge, createNode, findNodeByProperty , findNodeByProperties, createEdgeWithLabel} from './utils.js';
 
 export const processImdbProfile = (cy, message) => {
     const contentDiv = document.getElementById('content');
@@ -11,7 +11,7 @@ export const processImdbProfile = (cy, message) => {
     let newNodes = cy.collection();
     const profile = message.profile;
     if (profile.type === 'name') {
-        let nameNode = findNodeByProperty(cy, 'label', profile.name);
+        let nameNode = findNodeByProperties(cy, {'label': profile.name, 'type': profile.type}); //findNodeByProperty(cy, 'label', profile.name);
         if (!nameNode) {
             nameNode = createNode(cy, profile.name);
             nameNode.data('url', message.imdbUrl);
@@ -27,7 +27,7 @@ export const processImdbProfile = (cy, message) => {
 
         if (profile.portfolio) {
             profile.portfolio.forEach(activity => {
-                let titleNode = findNodeByProperty(cy, 'label', activity.title);
+                let titleNode = findNodeByProperties(cy, {'label': activity.title, 'type': 'title'}); //findNodeByProperty(cy, 'label', activity.title);
                 if (!titleNode) {
                     titleNode = createNode(cy, activity.title);
                     titleNode.data('url', activity.url);
@@ -39,8 +39,9 @@ export const processImdbProfile = (cy, message) => {
                 if (activity.image) titleNode.data('image', activity.image);
                 if (activity.details) titleNode.data('year', activity.details[0]);
          
-                const edge = createEdge(cy, nameNode, titleNode);
-                edge.data('label', activity.perspective);
+                const edge =createEdgeWithLabel(cy, nameNode, titleNode,activity.perspective, true)
+                //  createEdge(cy, nameNode, titleNode);
+                // edge.data('label', activity.perspective);
                 edge.data('type', activity.perspective);
                 edge.data('character', activity.character[0]);
                 
@@ -49,7 +50,7 @@ export const processImdbProfile = (cy, message) => {
     }
 
     if (profile.type === 'title') {
-        let titleNode = findNodeByProperty(cy, 'label', profile.name);
+        let titleNode = findNodeByProperties(cy, {'label': profile.name, 'type': profile.type});
         if (!titleNode) {
             titleNode = createNode(cy, profile.name);
             titleNode.data('url', message.imdbUrl);
@@ -69,7 +70,7 @@ export const processImdbProfile = (cy, message) => {
         if (profile.Creators) titleNode.data('creators', profile.Creators.reduce((acc, creator) => acc + ', ' + creator.name + ', ', ''));
         if (profile.cast) {
             profile.cast.forEach(actor => {
-                let actorNode = findNodeByProperty(cy, 'label', actor.name);
+                let actorNode = findNodeByProperties(cy, {'label': actor.name, 'type': 'person'});
                 if (!actorNode) {
                     actorNode = createNode(cy, actor.name);
                     actorNode.data('url', actor.actorUrl);
@@ -79,8 +80,8 @@ export const processImdbProfile = (cy, message) => {
                     newNodes = newNodes.union(actorNode);
                 }
                 if (actor.image) actorNode.data('image', actor.image);
-                const edge = createEdge(cy, actorNode, titleNode);
-                edge.data('label', 'acted in');
+
+                const edge =  createEdgeWithLabel(cy, actorNode, titleNode,'acted in', true);
                 edge.data('type', 'actedIn');
                 edge.data('role', actor.characterName);
                 edge.data('details', actor.details);

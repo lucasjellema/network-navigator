@@ -1,4 +1,4 @@
-import { createEdge, createNode, findNodeByProperty } from './utils.js';
+import { createEdgeWithLabel, createNode, findNodeByProperty } from './utils.js';
 import {processLinkedInProfile} from './processLinkedInProfile.js';
 import {processImdbProfile} from './processImdbProfile.js';
 import {processOciProfile} from './processOciProfile.js';
@@ -61,7 +61,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     processGoodreadsProfile(cy, message);
   }
 
-  if (message.type === 'linkInfo') {
+  if (message.type === 'linkInfoForNetworkNavigator') {
     console.log("Received linkInfoForNetwork message:", message);
     addLink(cy, {
       targetUrl: message.href,
@@ -87,12 +87,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 
 const addLink = (cy, link) => {
+  let newNodes = cy.collection();
   const { targetUrl, targetLabel, sourceUrl, sourceTitle } = link;
   let sourceNode = findNodeByProperty(cy, 'url', sourceUrl);
   if (!sourceNode) {
     sourceNode = createNode(cy, sourceTitle);
     sourceNode.data('url', sourceUrl);
     sourceNode.data('type', 'webpage');
+    newNodes = newNodes.add(sourceNode);
   }
 
   let targetNode = findNodeByProperty(cy, 'url', targetUrl);
@@ -100,10 +102,25 @@ const addLink = (cy, link) => {
     targetNode = createNode(cy, targetLabel);
     targetNode.data('url', targetUrl);
     targetNode.data('type', 'webpage');
+    newNodes = newNodes.add(targetNode);
   }
   // add edge for hyperlink
-  const edge = createEdge(cy, sourceNode, targetNode)
-  edge.data('label', targetLabel);
+  const edge = createEdgeWithLabel(cy, sourceNode, targetNode, targetLabel, true)
+//  edge.data('label', targetLabel);
   edge.data('type', 'hyperlink');
+
+      // run layout for new nodes
+      newNodes.layout({
+        name: 'random',
+        animate: true,
+        animateFilter: function (node, i) {
+            return true;
+        },
+        animationDuration: 1000,
+        animationEasing: undefined,
+        fit: true,
+    })
+        .run();
+
 };
 

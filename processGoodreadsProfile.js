@@ -1,10 +1,9 @@
-import { createEdge, createNode, findNodeByProperty, createEdgeWithLabel } from './utils.js';
+import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from './utils.js';
 
 export const processGoodreadsProfile = (cy, message) => {
     const profile = message.profile;
     const contentDiv = document.getElementById('content');
     contentDiv.textContent = `
-          Profile Type: ${JSON.stringify(message.profile.type)} \n
           Profile: ${JSON.stringify(message.profile)}
           Goodreads URL: ${profile.pageUrl}
         `;
@@ -31,7 +30,7 @@ export const processGoodreadsProfile = (cy, message) => {
         .run();
 }
 function processBook(cy, profile, newNodes) {
-    let bookNode = findNodeByProperty(cy, 'label', profile.title);
+    let bookNode = findNodeByProperties(cy, {'label': profile.title, 'type': 'book'});
     if (!bookNode) {
         bookNode = createNode(cy, profile.title);
         bookNode.data('url', profile.pageUrl);
@@ -52,7 +51,7 @@ function processBook(cy, profile, newNodes) {
         for (const similarBook of profile.similarBooks) {
             if (i++ > 4) break;
             // TODO break after a user defined number
-            let similarBookNode = findNodeByProperty(cy, 'label', similarBook.title);
+            let similarBookNode = findNodeByProperties(cy, {'label': similarBook.title, 'type': 'book'}); 
             if (!similarBookNode) {
                 similarBookNode = createNode(cy, similarBook.title);
                 similarBookNode.data('url', similarBook.pageUrl);
@@ -66,7 +65,7 @@ function processBook(cy, profile, newNodes) {
             const similarBookEdge = createEdge(cy, bookNode, similarBookNode);
             similarBookEdge.data('label', 'similar to');
 
-            let authorOfSimilarBookNode = findNodeByProperty(cy, 'label', similarBook.author);
+            let authorOfSimilarBookNode = findNodeByProperties(cy, {'label': similarBook.author, 'type': 'person'});// findNodeByProperty(cy, 'label', similarBook.author);
             if (!authorOfSimilarBookNode) {
                 authorOfSimilarBookNode = createNode(cy, similarBook.author);
                 authorOfSimilarBookNode.data('type', 'person');
@@ -75,13 +74,13 @@ function processBook(cy, profile, newNodes) {
                 newNodes = newNodes.union(authorOfSimilarBookNode);
             }
             const similarWrittenByEdge  = createEdgeWithLabel  (cy,  authorOfSimilarBookNode, similarBookNode, 'author of', true)
-            edge.data('type', 'author');    
+            
             similarWrittenByEdge.data('type', 'author');
 
         }
     }
 
-    let authorNode = findNodeByProperty(cy, 'label', profile.author);
+    let authorNode = findNodeByProperties(cy, {'label': profile.author, 'type': 'person'}); //findNodeByProperty(cy, 'label', profile.author);
     if (!authorNode) {
         authorNode = createNode(cy, profile.author);
         authorNode.data('type', 'person');
@@ -97,7 +96,7 @@ function processBook(cy, profile, newNodes) {
 }
 
 function processAuthor(cy, profile, newNodes) {
-    let authorNode = findNodeByProperty(cy, 'label', profile.name);
+    let authorNode = findNodeByProperties(cy, {'label': profile.name, 'type': 'person'});
     if (!authorNode) {
         authorNode = createNode(cy, profile.name);
         authorNode.data('url', profile.pageUrl);
@@ -115,7 +114,7 @@ function processAuthor(cy, profile, newNodes) {
 
 if (profile.books)
     for (const book of profile.books) {
-        let bookNode = findNodeByProperty(cy, 'label', book.title);
+        let bookNode = findNodeByProperties(cy, {'label': book.title, 'type': 'book'});
         if (!bookNode) {
             bookNode = createNode(cy, book.title);
             bookNode.data('url', book.goodreadsUrl);

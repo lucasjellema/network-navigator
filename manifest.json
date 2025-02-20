@@ -13,7 +13,9 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content-scrapers/content.js"]
+      "js": ["content-scrapers/page-content.js"]
+      ,
+      "run_at": "document_end"
     },
     {
       "matches": [
@@ -21,7 +23,8 @@
       ],
       "js": [
         "content-scrapers/google-maps-content.js"
-      ]
+      ],
+      "run_at": "document_end"
     },
     {
       "matches": [

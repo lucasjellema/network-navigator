@@ -1,6 +1,11 @@
 let layoutButton, applyLayoutButton, layoutPanel, closePanelButton, layoutValueInput, onlyVisibleCheckBox, onlySelectedCheckBox
 
 document.addEventListener("networkNavigatorContentLoaded", () => {
+    console.log("networkNavigatorContentLoaded")
+})
+
+export const initializeLayout = (cy) => {
+    console.log("initializeLayout")
     layoutButton = document.getElementById('layoutButton');
     applyLayoutButton = document.getElementById('applyLayout');
     layoutPanel = document.getElementById('layoutPanel');
@@ -8,9 +13,9 @@ document.addEventListener("networkNavigatorContentLoaded", () => {
     layoutValueInput = document.getElementById('layoutValue'); // .value.toLowerCase();
     onlyVisibleCheckBox = document.getElementById('onlyVisible'); //.checked
     onlySelectedCheckBox = document.getElementById('onlySelected'); //.checked
-})
 
-export const initializeLayout = (cy) => {
+
+
     layoutButton.addEventListener('click', () => {
         layoutPanel.style.display = 'block';
     });
@@ -22,6 +27,8 @@ export const initializeLayout = (cy) => {
     closePanelButton.addEventListener('click', () => {
         closeLayoutPanel();
     });
+
+
 }
 
 
