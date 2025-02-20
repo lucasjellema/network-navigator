@@ -75,7 +75,8 @@ export const executeFilter = (filterValue, cy, includeVisible, includeSelected, 
 
         // https://js.cytoscape.org/#collection/traversing 
         // Select nodes with the matching prefix
-        const matchedNodes = cy.nodes().filter((node) => node.data('label')?.startsWith(filterValue)
+        const lowerCaseFilterValue = filterValue?.toLowerCase();
+        const matchedNodes = cy.nodes().filter((node) => node.data('label')?.toLowerCase().includes(lowerCaseFilterValue)
         );
         theElements.merge(matchedNodes);
         // Show matched nodes
@@ -89,6 +90,10 @@ export const executeFilter = (filterValue, cy, includeVisible, includeSelected, 
         }
         // Show edges connected to the matched nodes
         theElements.connectedEdges().show();
+
+        // bring selected nodes in center of viewbox
+        cy.center(theElements);
+
 
     }
 }
