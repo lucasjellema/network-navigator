@@ -176,6 +176,12 @@ const scrapeArtistData = async (profile) => {
   // section with data-testid="artist-page"
   const artistPageElement = document.querySelector('section[data-testid="artist-page"]');
   if (artistPageElement) {
+
+    // span with data-testid="adaptiveEntityTitle"
+    const span = artistPageElement.querySelector('span[data-testid="adaptiveEntityTitle"]');
+    if (span) {
+      profile.artist = span.textContent;
+    }
     // find h2 with text context equal to About
     const h2s = artistPageElement.querySelectorAll('h2');
     for (const h2 of h2s) {
@@ -192,14 +198,28 @@ const scrapeArtistData = async (profile) => {
             profile.description = textContent.substring(startIndex + 17).trim();
           }
         }
+
+        // the next sibling of the h2 element with text content "About" contains a button
+        const button = h2.nextElementSibling.querySelector('button');
+        if (button) {
+          // that button has a style attribute that contains a background image. This is the image of the artist
+          const backgroundImage = button.style.backgroundImage;
+          if (backgroundImage) {
+            // the background image contains not just a url but also linear-gradient etc.
+            //             linear-gradient(rgba(0, 0, 0, 0 0%, rgba(0, 0, 0, 0.7) 100%), \"https://i.scdn.co/image/ab6761670000ecd42eb94932f067684992264040\")"
+            // so we need to get the string that starts with https:// and ends with \")
+
+            const urlMatch = backgroundImage.match(/https?:\/\/[^")]+/)
+            if (urlMatch) {
+              profile.image = urlMatch[0]; //.slice(0, -2); // Remove the trailing \"
+            }
+
+          }
+        }
       }
     }
 
 
-    // find image
-    const imageElement = artistPageElement.querySelector('img');
-    profile.image = imageElement.src;
-    profile.artist = imageElement.alt;
   }
   // find section with aria-label="Fans also like" 
   const fansAlsoLikeSection = document.querySelector('section[aria-label="Fans also like"]');
@@ -213,12 +233,12 @@ const scrapeArtistData = async (profile) => {
           const artist = {}
           const image = element.querySelector('img');
           if (image) {
-            artist.image = image.src;            
+            artist.image = image.src;
           }
           const ref = element.querySelector('a');
           if (ref) {
             artist.url = ref.href;
-            artist.name = ref.textContent.trim();            
+            artist.name = ref.textContent.trim();
           }
           fansAlsoLike.push(artist)
         }
@@ -241,12 +261,12 @@ const scrapeArtistData = async (profile) => {
           const album = {}
           const image = element.querySelector('img');
           if (image) {
-            album.image = image.src;            
+            album.image = image.src;
           }
           const ref = element.querySelector('a');
           if (ref) {
             album.url = ref.href;
-            album.name = ref.textContent.trim();            
+            album.name = ref.textContent.trim();
 
             const divNotes = ref.nextElementSibling
             if (divNotes) {
@@ -279,7 +299,7 @@ const scrapeArtistData = async (profile) => {
           const ref = element.querySelector('a');
           if (ref) {
             album.url = ref.href;
-            album.name = ref.textContent.trim();            
+            album.name = ref.textContent.trim();
           }
           discography.push(album)
         }
