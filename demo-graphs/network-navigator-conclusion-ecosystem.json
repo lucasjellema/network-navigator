@@ -1,0 +1,2068 @@
+{
+  "id": "aba009bb-514d-40b6-b78e-a98fef2ee91c",
+  "title": "Conclusion ecosystem of expert companies",
+  "description": "February 2025",
+  "elements": {
+    "nodes": [
+      {
+        "data": {
+          "id": "9931b4b0-5d94-4635-b70a-2a82a4698844",
+          "label": "AMIS",
+          "timeOfCreation": "2/20/2025, 10:52:32 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/amis-services/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHXOAz0NNvODQ/company-logo_200_200/company-logo_200_200/0/1692023929092/amis_services_logo?e=1747872000&v=beta&t=iOli714I_zN1fAXAeJYdJH6DDU3cv9gfb3LnkhbMz50",
+          "tagline": "We helpen bedrijven IT optimaal in te zetten ǀ IoT, Data Analytics/Visualisatie, Data/Applicatie Integratie, Platforms",
+          "location": "Nieuwegein, Utrecht",
+          "industry": "Information Technology & Services",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -251.3630251837959,
+          "y": 293.75686271442856
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "d97a1c53-17b5-43b1-813a-31dae280d3c6",
+          "label": "Conclusion Enablement",
+          "timeOfCreation": 1740045164032,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusion-enablement/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHjLMoMc-ikxA/company-logo_200_200/company-logo_200_200/0/1728042541179/conclusion_enablement_logo?e=1747872000&v=beta&t=aWyvTwoDRoPCm9jJ8MrA0dNq1nwswRfYjltSiw48Jg8",
+          "tagline": "Dé specialist op het gebied van development, cloud, workspace en security dienstverlening.",
+          "location": "Utrecht",
+          "industry": "Information Technology & Services",
+          "numberOfEmployees": "201-500 employees"
+        },
+        "position": {
+          "x": -619.5956445963059,
+          "y": 94.16561874684005
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "0b401021-6cba-4f0f-90e7-982da3cb13af",
+          "label": "Conclusion Consulting",
+          "timeOfCreation": 1740045175277,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusion-consulting/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQG6C_W7HYwiDQ/company-logo_200_200/company-logo_200_200/0/1698843640497/conclusion_consulting_logo?e=1747872000&v=beta&t=rhg0vBm5MJ8WTa3LGkjU4HrfVMGqeT-aZEAoXizhX-I",
+          "tagline": "Conclusion Consulting is an energetic consultancy club. We ensure that your digital transformation is successful.",
+          "location": "Utrecht, Utrecht",
+          "industry": "Business Consulting and Services",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 276,
+          "y": 84
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": "Conclusion NL",
+          "timeOfCreation": "2/20/2025, 10:53:05 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusion/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQHsGUD6ypvK5g/company-logo_200_200/company-logo_200_200/0/1705484085196/conclusion_logo?e=1747872000&v=beta&t=8Vmd1xJep3NJHUMykUcoBWmYorOAKoeuTfDntMIOrPA",
+          "location": "Utrecht, Utrecht",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "1K-5K employees"
+        },
+        "position": {
+          "x": 173,
+          "y": -35
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "0984c1de-ac64-4b5f-b50f-e12d2cd25945",
+          "label": "Conclusion ForeyeT",
+          "timeOfCreation": 1740045196570,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/foreyet/",
+          "image": "https://media.licdn.com/dms/image/v2/C4D0BAQGneW2Jw1qGiA/company-logo_200_200/company-logo_200_200/0/1630478776597/foreyet_logo?e=1747872000&v=beta&t=bkFBUGZDg6NtsSodGTZM9YUYW_7CZlatNUmWEiOh-_Q",
+          "tagline": "Wij zijn Conclusion ForeyeT, een systeem integrator en specialist in reisinformatiesystemen.",
+          "location": "Capelle aan den IJssel, Zuid-Holland",
+          "industry": "Information Services",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -486.4241941847298,
+          "y": 129.30045277008725
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": "Conclusion Experience",
+          "timeOfCreation": 1740045293420,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusionexperience-nederland/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHou1popatRCg/company-logo_200_200/company-logo_200_200/0/1713768506827/conclusionexperience_nederland_logo?e=1747872000&v=beta&t=0d1YQj8Mt5KOWxyy5uY3biExY9dQGsYFT_NiF8vkoYw",
+          "tagline": "We grow digital business. Strategy, Experience, Tech & Marketing experts",
+          "location": "Driebergen-Rijsenburg, Utrecht",
+          "industry": "Technology, Information and Internet",
+          "numberOfEmployees": "201-500 employees"
+        },
+        "position": {
+          "x": 177.9802215457139,
+          "y": 200.12974671208968
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "de65737c-f8ca-479a-893a-5282f959cb1d",
+          "label": "Bikkelhart",
+          "timeOfCreation": "2/20/2025, 10:55:07 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/bikkelhart/",
+          "image": "https://media.licdn.com/dms/image/v2/C4E0BAQFpaLEVhR_-Aw/company-logo_200_200/company-logo_200_200/0/1641919596409/bikkelhart_logo?e=1747872000&v=beta&t=aU34LN75l9l9bEzyC6XCszlI3KvYhLv216VUR1T2gFY",
+          "location": "Amsterdam, Noord-Holland",
+          "industry": "Technology, Information and Internet",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": 89.53085444065918,
+          "y": 359.3061708881318
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "e1b007fb-8a77-4baf-b9a4-045901b4d7aa",
+          "label": "theFactor.e",
+          "timeOfCreation": "2/20/2025, 10:55:44 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/thefactor-e/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHqEmis4EEJmQ/company-logo_200_200/company-logo_200_200/0/1702633489229/thefactor_e_logo?e=1747872000&v=beta&t=yNQJg0nmYCcMskjhluEXBCCeAnE1BagoKUPkl2eaO0A",
+          "location": "Groningen",
+          "industry": "Technology, Information and Internet",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 307.6921914348052,
+          "y": 421.45278841625515
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "5b99e4a8-4c2b-431c-95b5-84b7d8ac4937",
+          "label": "Brainbrothers",
+          "timeOfCreation": 1740045452812,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/brain-brothers/",
+          "image": "https://media.licdn.com/dms/image/v2/D560BAQEV_3amwRAjPA/company-logo_200_200/company-logo_200_200/0/1713798587736/brain_brothers_logo?e=1747872000&v=beta&t=3vqsTDtFmcv0DbryDW0hSMKJZiUiwwLWycMXA9OnaCc",
+          "location": "Driebergen-Rijsenburg, Utrecht",
+          "industry": "Technology, Information and Internet",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 130.06170888131842,
+          "y": 466.2840189153856
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "69cd01be-01d8-4fe0-9167-0a286bf0519e",
+          "label": "4net Interactive",
+          "timeOfCreation": "2/20/2025, 10:58:16 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/4net-interactive/",
+          "image": "https://media.licdn.com/dms/image/v2/C4E0BAQFDX2NpxZk7MA/company-logo_200_200/company-logo_200_200/0/1630567344499/4net_interactive_logo?e=1747872000&v=beta&t=KpmbAn1bWRsJvpXrTKA4VNyj3TbXz8LgAOTaagRU3u4",
+          "tagline": "Wij tackelen al jouw digitale design, strategie en development uitdagingen.",
+          "location": "Driebergen-Rijsenburg, Utrecht",
+          "industry": "Software Development",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": 187.7531644747265,
+          "y": 315.4050631595624
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "659213d7-5f0c-4435-8fa9-b727220bc8f0",
+          "label": "Netvlies",
+          "timeOfCreation": "2/20/2025, 10:58:35 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/netvlies/",
+          "image": "https://media.licdn.com/dms/image/v2/C4E0BAQE6zpoPJee_pg/company-logo_200_200/company-logo_200_200/0/1631368570798?e=1747872000&v=beta&t=L_LMNf2DdaSOtoR4Vmog2HzrhuvzQLmByNbHVVn913s",
+          "tagline": "Digital agency met 25 jaar ervaring in digitalebusiness vraagstukken en complexe online projecten",
+          "location": "Breda, Noord-Brabant",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 231.2911394707658,
+          "y": 421.0395569085722
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "3c501141-0a97-47af-a07a-7b2df6086d98",
+          "label": "Arlanet",
+          "timeOfCreation": "2/20/2025, 10:58:58 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/arlanetsoftware/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQEmei8pz5_8gw/company-logo_200_200/company-logo_200_200/0/1713773943582/arlanetsoftware_logo?e=1747872000&v=beta&t=CJQX6Jn5mes1KPiYH3WQ_TmVvbzDs0eYGgfC3Bztr1w",
+          "tagline": "ᴅʀɪᴠɪɴɢ ᴅɪɢɪᴛᴀʟ /ғᴏʀᴡᴀʀᴅ",
+          "location": "Wormer, Nederland",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": 209.69145559340814,
+          "y": 527.0617088813185
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "821d1fb5-af37-46d9-a46e-702d6f483589",
+          "label": "Bright Alley",
+          "timeOfCreation": "2/20/2025, 10:59:34 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/bright-alley/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/C4D0BAQEZv2hy24vpmQ/company-logo_200_200/company-logo_200_200/0/1630488939182/bright_alley_logo?e=1747872000&v=beta&t=MjxaIuoJHnHWPuvduLiBM0Fb_gYY8JR9tbPedvBvzRg",
+          "tagline": "We empower your employees with our digital learning solutions!",
+          "location": "Utrecht, Utrecht",
+          "industry": "E-Learning Providers",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": 307.345727796704,
+          "y": 312.1827531254951
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "d285222b-033a-4c37-9903-0ee1c10241db",
+          "label": "diva-e",
+          "timeOfCreation": 1740045593643,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/divae/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQEbvNzyxGLBDA/company-logo_200_200/company-logo_200_200/0/1727340780064/divae_logo?e=1747872000&v=beta&t=JPGY44oDfVp_byozGgwJ8cj9QiPbxCh7uYPfRQz89_s",
+          "location": "München, Bayern",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "501-1K employees"
+        },
+        "position": {
+          "x": 772,
+          "y": 193
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "a952aeb8-cac4-405e-bc3a-a552dffebf2f",
+          "label": "Conclusion DACh",
+          "timeOfCreation": "2/20/2025, 11:00:09 AM",
+          "shape": "square"
+        },
+        "position": {
+          "x": 736,
+          "y": 43.84375
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "e7e8c91c-1bc7-4eb6-9c78-f70aa9b29784",
+          "label": "Conclusion Iberia",
+          "timeOfCreation": "2/20/2025, 11:01:11 AM",
+          "shape": "square"
+        },
+        "position": {
+          "x": 983,
+          "y": -35.15625
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "68919dc8-b7d7-4a75-9820-b8961052b8df",
+          "label": "Neotalent Conclusion",
+          "timeOfCreation": 1740045724507,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/neotalentconclusion/",
+          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQFPg0TIrO53Qw/company-logo_200_200/company-logo_200_200/0/1720087357986/neotalentconclusion_logo?e=1747872000&v=beta&t=zt4UcU2qrXdOH3uh9DIrQHb07gfI1Bh6ruWen7xThYc",
+          "tagline": "The responsive people",
+          "location": "Lisboa, Lisbon",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "501-1K employees"
+        },
+        "position": {
+          "x": 888,
+          "y": 95
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "c5824f06-92f7-464a-8d5c-b94af0971447",
+          "label": "SCORE | Conclusion",
+          "timeOfCreation": 1740045751867,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/score-consulting_165884/",
+          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQETmJIBm09J-Q/company-logo_200_200/company-logo_200_200/0/1703863668777/score_consulting_165884_logo?e=1747872000&v=beta&t=Av40G-ORxNw4Pyk-IxdzY7_ZKb3yx2vUYjO4jqIIqog",
+          "tagline": "IT Services and IT ConsultingYour Trusted Partner in Innovation and Efficiency.",
+          "location": "Lisbon, Lisboa",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 1077,
+          "y": 97
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "d42cf2c6-dc68-47ff-b82f-e357a35b3d13",
+          "label": "Conclusion Group",
+          "timeOfCreation": "2/20/2025, 11:02:43 AM",
+          "shape": "square",
+          "url": "https://conclusion.com"
+        },
+        "position": {
+          "x": 583.3306963793381,
+          "y": -159.85007911186815
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "cddea431-4468-4e91-99e0-c94981d221f8",
+          "label": "Lalandi Conclusion",
+          "timeOfCreation": 1740045991813,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/lalandi/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHvH6xlm0eCZQ/company-logo_200_200/company-logo_200_200/0/1687341773653/yellowtail_software_logo?e=1747872000&v=beta&t=yz--Kby_W7qrc3YelKz2dy1kS4A1Xs71lhbDN-fcjE4",
+          "tagline": "We develop high quality bespoke software development services from beautiful Cape Town, South Africa.",
+          "location": "Cape Town, Western Cape",
+          "industry": "IT System Custom Software Development",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 571,
+          "y": -40
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "a7d35ec4-5dcb-4fb1-b885-6f76755aaf4c",
+          "label": "Conclusion Intelligence",
+          "timeOfCreation": 1740046024936,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusion-intelligence/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHw0_DG93btXA/company-logo_200_200/company-logo_200_200/0/1708069734764?e=1747872000&v=beta&t=NHAiwPWJJDG__skuLVgbxE2Ebg-g6-lMw07HGcZ-wn4",
+          "tagline": "Conclusion Intelligence elevates business performance to create sustainable impact.",
+          "location": "Utrecht",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "501-1K employees"
+        },
+        "position": {
+          "x": -14.14085002063192,
+          "y": 202.31982422721498
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "435b71b2-e7c8-4ea0-9d79-272e6bd454ac",
+          "label": "Hot ITem",
+          "timeOfCreation": "2/20/2025, 11:08:04 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/hot-item/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQFMo03ffsIUXQ/company-logo_200_200/company-logo_200_200/0/1699864358719/hot_item_logo?e=1747872000&v=beta&t=9b6XTJCR3Dy_iViWZgTCFHU__oSq5R1dorhKU4pOE84",
+          "location": "Amsterdam, Noord-Holland",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "201-500 employees"
+        },
+        "position": {
+          "x": -91.9475095513175,
+          "y": 474.93149186087385
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "86f69b4f-08ba-4dd8-925b-1585b63983ad",
+          "label": "Future Facts",
+          "timeOfCreation": "2/20/2025, 11:08:15 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/future-facts/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQExhGvtKuOkFQ/company-logo_200_200/company-logo_200_200/0/1699867068455/future_facts_logo?e=1747872000&v=beta&t=ZihtiCEnj0353GuoylGZWWM5wvBI8eCSZ8YD-tKJfLQ",
+          "location": "Amsterdam, Noord-Holland",
+          "industry": "Information Technology & Services",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": -233.08014574659012,
+          "y": 468.2554002621492
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "06e0c196-47cd-433c-b53c-38ac588cdb97",
+          "label": "Mediaan",
+          "timeOfCreation": "2/20/2025, 11:08:30 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/mediaan/",
+          "image": "https://media.licdn.com/dms/image/v2/C560BAQHIrhQHSPoONg/company-logo_200_200/company-logo_200_200/0/1631332619588?e=1747872000&v=beta&t=r_GhF6sJf7VDbvwoC0n3WtN-AvAggSGJcz9E_PCmNsA",
+          "tagline": "Technology that makes a difference",
+          "location": "Heerlen, Limburg",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -366.67307125982904,
+          "y": 463.97684130733177
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "0b09b597-9b1f-4588-8293-1269da8d444f",
+          "label": "Conclusion AI360",
+          "timeOfCreation": 1740046128956,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusion-ai360/",
+          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQHJsYYl9MCm6w/company-logo_200_200/company-logo_200_200/0/1719221314947/conclusion_ai360_logo?e=1747872000&v=beta&t=Xmuig75vYhQIXYexjHfj_H-kaxf6__tLepkJWaxFO1M",
+          "location": "Amsterdam",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": -162.34810589871384,
+          "y": 355.21139928003015
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "701fe222-f2ba-45ca-9efc-63fcfcabf1ac",
+          "label": "Yellowtail Conclusion",
+          "timeOfCreation": 1740046143382,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/yellowtail/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/C4E0BAQGgoS3H6Yk5WQ/company-logo_200_200/company-logo_200_200/0/1651133020382/yellowtail_logo?e=1747872000&v=beta&t=nXF7ROETtyTQ4C5rCOlhFUXnCMM58byXSgM3HMokhK4",
+          "tagline": "Wij creëren datagedreven oplossingen die ertoe doen",
+          "location": "Naarden",
+          "industry": "Business Consulting and Services",
+          "numberOfEmployees": "201-500 employees"
+        },
+        "position": {
+          "x": -812.4432398772062,
+          "y": 146.9178270629164
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "994529cc-3cad-4c75-b66c-69e62f3a9bf9",
+          "label": "Davinci Conclusion",
+          "timeOfCreation": 1740046160707,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/davinci/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQGYGRsgHvVPfQ/company-logo_200_200/company-logo_200_200/0/1693495449601/davinci_logo?e=1747872000&v=beta&t=OlBSvhAgaqH0kbp3FeRjey1eDo5uPVk3FXhJvBSR95o",
+          "location": "Naarden, Noord-Holland",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": -803.2684927196981,
+          "y": 285.6774010667462
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "de2b63f4-6b66-42f8-92d7-4ba99922c911",
+          "label": "Virtual Sciences",
+          "timeOfCreation": "2/20/2025, 11:13:27 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/virtual-sciences/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHeMoFQIlav4Q/company-logo_200_200/company-logo_200_200/0/1681982716854/virtual_sciences_logo?e=1747872000&v=beta&t=c6x51uo3Ul3-9_reZOBMh11tSanW4-sI1PfeTTVZ0K4",
+          "tagline": "Kom thuis bij Virtual Sciences Conclusion",
+          "location": "Nieuwegein",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -307.70845033413735,
+          "y": 185.06061819243777
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "a4d0f3b0-4a19-4a8b-b6cd-e7c88f946929",
+          "label": "First8 Conclusion",
+          "timeOfCreation": 1740046423975,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/first8/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHPvwsp280aog/company-logo_200_200/company-logo_200_200/0/1681807771356/first8_logo?e=1747872000&v=beta&t=CrzSJxy9uzOq-FS4vbzsJEL6CMYfnWkwWXSndk0zkkA",
+          "tagline": "Java and Open Source software development.",
+          "location": "Nijmegen, GE",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": -61.6083089578625,
+          "y": 143.20603698362422
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "21822d8b-614e-4a46-8494-6f55e39ff1ef",
+          "label": "Conclusion Xforce",
+          "timeOfCreation": 1740046441621,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusionxforce/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHx8VhgIeh7AQ/company-logo_200_200/company-logo_200_200/0/1665755170496/conclusionxforce_logo?e=1747872000&v=beta&t=Nqdjnoei32JAimz5F853ZmTrVVBlcoNfjLhTMzdOJ2Y",
+          "tagline": "Gepassioneerde specialisten op het gebied van Automation, Containerization, Cloud en Monitoring/Observability.",
+          "location": "Nieuwegein, Utrecht",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -192.69281419819512,
+          "y": 145.12745592982373
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "6ce32df9-767e-4dc3-b814-0f594adf5be6",
+          "label": "Conclusion Mission Critical",
+          "timeOfCreation": 1740046476857,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusion-mission-critical-b-v-/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/C4D0BAQEU__tVJgHK8A/company-logo_200_200/company-logo_200_200/0/1631309558855?e=1747872000&v=beta&t=mE9fIwY0Qa6838_46D42Trr3TXzHjaNOdVfcjzHnuUo",
+          "tagline": "Nachtrust as a Service: Jouw bedrijfskritische processen 24x7 beschikbaar, wendbaar en weerbaar. Downtime is geen optie.",
+          "location": "UTRECHT",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -522.4683552527351,
+          "y": 186.54572262546995
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "c14d8f6b-27dc-4136-b7e4-d2771a6645c4",
+          "label": "KWD Result Management",
+          "timeOfCreation": 1740046543500,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/kwd-resultaatmanagement/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQFc3V0m4ETGNw/company-logo_200_200/company-logo_200_200/0/1710081709048/kwd_resultaatmanagement_logo?e=1747872000&v=beta&t=UsAt1OnB7Tf0wpfILCns1RjsssgQc9ElqxFntfyrirc",
+          "tagline": "Samen voor Resultaat!",
+          "location": "Nieuwegein, Utrecht",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 439.78955755823296,
+          "y": 14.407436678022442
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "169df2e8-21fe-4555-827a-276c0a0b4f32",
+          "label": "Morgens Conclusion",
+          "timeOfCreation": 1740046560654,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/morgens/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHHDgpBLacTsA/company-logo_200_200/company-logo_200_200/0/1702386429163/morgens_logo?e=1747872000&v=beta&t=4BbKj-035N4JqBgYqQNAphMhA5ZZk4NOh49w-IA9eZ8",
+          "tagline": "Consultants die de zorg, overheid en onderwijs klaar maken voor de uitdagingen van morgen",
+          "location": "Leiden",
+          "industry": "Business Consulting and Services",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 450.2586357192684,
+          "y": 105.51727143853681
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "f802e44f-8df3-4049-b47e-2896cbfe1e7d",
+          "label": "D&A Conclusion",
+          "timeOfCreation": 1740046582933,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/d-a-conclusion/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHenmD20es-jA/company-logo_200_200/company-logo_200_200/0/1703246573985/da_medical_group_logo?e=1747872000&v=beta&t=IsgXwBDiOFsluv6flzfJ0nebYKN2dwOs-sGwD9tuOGc",
+          "location": "Waardenburg",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 308.318038480432,
+          "y": 158.29113947076584
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "52728d74-712a-42a7-818f-e18423784948",
+          "label": "Conclusion Low Code Company",
+          "timeOfCreation": 1740046611748,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusionlowcodecompany/posts/?feedView=all",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQEl7JFX7ze4pw/company-logo_200_200/company-logo_200_200/0/1700562235765/conclusionlowcodecompany_logo?e=1747872000&v=beta&t=M_Wco9PoFl7aOcZjDRHSA8bXhARNr0mF7yLnlV4kubs",
+          "tagline": "HIGH TECH | LOW CODE",
+          "location": "Utrecht, Utrecht",
+          "industry": "Information Technology & Services",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -447.66685209516226,
+          "y": 15.586610024067529
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "1ad8b657-6a7c-4574-a642-a571a88a86e1",
+          "label": "Conclusion AFAS Solutions",
+          "timeOfCreation": 1740046633732,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusion-afas-solutions/",
+          "image": "https://media.licdn.com/dms/image/v2/C4D0BAQELcsAwk6WCpw/company-logo_200_200/company-logo_200_200/0/1631355810177?e=1747872000&v=beta&t=DunHigr8qzWrDJNPLBAEgKua3dznpPF-QaBsllDBaoI",
+          "tagline": "Meer profijt met Profit.",
+          "location": "Utrecht",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -194.13305795271404,
+          "y": -80.34314843658676
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "8c1d17a8-a1bc-40b8-afc6-0cadc0ae5637",
+          "label": "Conclusion MBS",
+          "timeOfCreation": 1740046649801,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusion-mbs/",
+          "image": "https://media.licdn.com/dms/image/v2/C560BAQGpekHctssGvg/company-logo_200_200/company-logo_200_200/0/1636734149000/kpmg_microsoft_business_solutions_logo?e=1747872000&v=beta&t=7FG6viJnx1KneNcaS8VmrTqehMdHGB1QsRphKxXbPUQ",
+          "tagline": "MICROSOFT BUSINESS SOLUTIONS  |  Achieving a successful transformation together with Microsoft Dynamics 365",
+          "location": "Utrecht",
+          "industry": "Business Consulting and Services",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -406.43482132273766,
+          "y": -45.91525579456476
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "21cd1a22-b3a8-481d-8307-6e43bb830730",
+          "label": "myBrand | Conclusion",
+          "timeOfCreation": 1740046664773,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/mybrand/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQHurXJoe9BZCg/company-logo_200_200/company-logo_200_200/0/1682017143936/mybrand_logo?e=1747872000&v=beta&t=3SMwxig7sFNivf_KUK9IfbIcijwXh_UbKOLA6J6-Yug",
+          "location": "Geertruidenberg, Noord Brabant",
+          "industry": "Information Technology & Services",
+          "numberOfEmployees": "201-500 employees"
+        },
+        "position": {
+          "x": -27.143971232320265,
+          "y": -105.71487163645182
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "e65d9b5f-0ff0-4165-a80d-68b4d7a2ab8a",
+          "label": "Conclusion Confidential",
+          "timeOfCreation": 1740046698443,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/conclusion-confidential/",
+          "image": "https://media.licdn.com/dms/image/v2/C4D0BAQE9XestqsY-mg/company-logo_200_200/company-logo_200_200/0/1641807889800?e=1747872000&v=beta&t=KjgEawpO0aBEUzGqT994dp-Derq6y9BQLtnBPWdlCk4",
+          "location": "Apeldoorn, Gelderland",
+          "industry": "Software Development",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": -808.5197797536075,
+          "y": 69.22705707098743
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "795bdb7d-2e14-4300-acd0-a556c0233bfc",
+          "label": "Furore Conclusion",
+          "timeOfCreation": 1740046757021,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/furore/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQGlB2CIRDFbJw/company-logo_200_200/company-logo_200_200/0/1704452613318/furore_logo?e=1747872000&v=beta&t=AeGgy9-S7y_-0BJe6RRIUa-u-y38YnKrskYk2LZ-kIs",
+          "tagline": "De ICT-kenner in de gezondheidszorg.",
+          "location": "Amsterdam, Noord Holland",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 186.90585476548952,
+          "y": 119.78006348439273
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "8af9cdec-84d8-4e96-b259-d962ab060a5c",
+          "label": "Nextfields",
+          "timeOfCreation": "2/20/2025, 11:29:27 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/nextfields/",
+          "image": "https://media.licdn.com/dms/image/v2/C4E0BAQFQ4kKePNrevg/company-logo_200_200/company-logo_200_200/0/1668514866200/nextfields_logo?e=1747872000&v=beta&t=Y5c-V6--D1-Yne5kswMrtf-q7cGlJ606jGY0vwHw6Os",
+          "tagline": "Stop. Think. Grow. That's how we help B2B companies achieve online growth.",
+          "location": "Amsterdam, North Holland",
+          "industry": "Marketing Services",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": 581.6139249881179,
+          "y": 285.1748422635091
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "92a47964-6e37-4cce-85db-b6f929b37c08",
+          "label": "Nexwork BV",
+          "timeOfCreation": 1740047392886,
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/nexwork-bv/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQFLTY7fudwQuQ/company-logo_200_200/company-logo_200_200/0/1713767166649/nexwork_bv_logo?e=1747872000&v=beta&t=FxOKhl4nI_Q6HdEXmk8UV_3alQM6-P34iaCf4t7hUvY",
+          "location": "Maastricht, Limburg",
+          "industry": "Advertising Services",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": 420.5055386428472,
+          "y": 325.6044309142777
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "2d04b61f-92c5-458b-a6d7-8a3a58257e25",
+          "label": "Blauwe Monsters",
+          "timeOfCreation": "2/20/2025, 11:30:10 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/blauwe-monsters/",
+          "image": "https://media.licdn.com/dms/image/v2/C4D0BAQHqbocOJpwl5g/company-logo_200_200/company-logo_200_200/0/1638779562807/blauwe_monsters_logo?e=1747872000&v=beta&t=ESRdWxNjTtVRh9npBlFGrBllv044YQcHHbdXfvDn_a4",
+          "location": "Haarlem, North Holland",
+          "industry": "Advertising Services",
+          "numberOfEmployees": "51-200 employees"
+        },
+        "position": {
+          "x": 512.4924169024459,
+          "y": 372.34641055596063
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "8f317473-a873-4752-a3ab-8cbb233b75b8",
+          "label": "PossibilIT",
+          "timeOfCreation": "2/20/2025, 11:30:29 AM",
+          "type": "company",
+          "subtype": "linkedIncompany",
+          "shape": "square",
+          "url": "https://www.linkedin.com/company/possibilit-bv/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQGLqjWb3xkK1g/company-logo_200_200/company-logo_200_200/0/1715159272652/possibilit_bv_logo?e=1747872000&v=beta&t=fClJhOO_2X3Lgzl3oZrhww-7Ejwv-raZG7wlFUFQg44",
+          "tagline": "Wij zijn dé expert in Subscription Management, leggen iedere integratie en optimaliseren al jouw CRM processen!",
+          "location": "Driebergen-Rijsenburg, Utrecht",
+          "industry": "IT Services and IT Consulting",
+          "numberOfEmployees": "11-50 employees"
+        },
+        "position": {
+          "x": 429.73022219537455,
+          "y": 454.54746906987947
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "3546e2fe-24d2-4fdf-a1c2-f98045f9a9b8",
+          "label": "Conclusion Accelerate!",
+          "timeOfCreation": "2/21/2025, 8:27:50 AM",
+          "shape": "rectangle",
+          "color": "gray"
+        },
+        "position": {
+          "x": -390.99722222222175,
+          "y": 257.4678819444441
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": ""
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "source": "de2b63f4-6b66-42f8-92d7-4ba99922c911",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740064936411,
+          "id": "d7174bff-9d59-4694-a77e-4a2ecd63446e"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "1ad8b657-6a7c-4574-a642-a571a88a86e1",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740064918150,
+          "id": "36bb8d1b-d37a-4fbc-821f-37225bf2e37d"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "21cd1a22-b3a8-481d-8307-6e43bb830730",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740064908043,
+          "id": "d016d3e7-cbed-4500-a645-fb66e8f2b507"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "52728d74-712a-42a7-818f-e18423784948",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740064942572,
+          "id": "b11f04cc-ede4-488c-8ed8-b31f880e3a52"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "169df2e8-21fe-4555-827a-276c0a0b4f32",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740065167326,
+          "id": "b481fbba-7ef4-440d-8182-f99421eef48f"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "21822d8b-614e-4a46-8494-6f55e39ff1ef",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740065819470,
+          "id": "0fa52539-fe75-4e06-8a88-0851dd189b1f"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "6ce32df9-767e-4dc3-b814-0f594adf5be6",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740065832747,
+          "id": "e5f70bdb-f6c2-4f91-8406-6f152c2023c6"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "a4d0f3b0-4a19-4a8b-b6cd-e7c88f946929",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740064933277,
+          "id": "64583ecb-a7fe-4729-9f21-1ccd09dc55e7"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "2d04b61f-92c5-458b-a6d7-8a3a58257e25",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740065339245,
+          "id": "4e43a728-f194-4770-b02c-2a8eb2a1181a"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "8c1d17a8-a1bc-40b8-afc6-0cadc0ae5637",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740064939611,
+          "id": "19a060f7-094e-4387-a517-b469d2d8920d"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "0984c1de-ac64-4b5f-b50f-e12d2cd25945",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740065828899,
+          "id": "fef90926-bd0c-415a-8348-2d5f727398cd"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "d97a1c53-17b5-43b1-813a-31dae280d3c6",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740064945944,
+          "id": "93cfae7c-5743-42e2-b23a-741331b86b4c"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "fde04656-3ba5-42d7-a47a-b3d8e8245cdc",
+          "source": "de65737c-f8ca-479a-893a-5282f959cb1d",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": "part of",
+          "timeOfCreation": "2/20/2025, 10:56:30 AM"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "9188638a-0ccc-4c96-a9e7-e76f4eceaade",
+          "source": "a7d35ec4-5dcb-4fb1-b885-6f76755aaf4c",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": "Edge: Conclusion Intelligence →  Conclusion NL",
+          "timeOfCreation": 1740046053697
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "121469ed-258d-4309-88d1-5dc6272ac7f5",
+          "source": "9931b4b0-5d94-4635-b70a-2a82a4698844",
+          "target": "a7d35ec4-5dcb-4fb1-b885-6f76755aaf4c",
+          "label": "Edge: AMIS Conclusion →  Conclusion Intelligence",
+          "timeOfCreation": 1740046065450
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "821d1fb5-af37-46d9-a46e-702d6f483589",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740062824743,
+          "id": "1380ea42-b790-4f57-9c31-2c8120ec7a57"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "69cd01be-01d8-4fe0-9167-0a286bf0519e",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740062838362,
+          "id": "8966275e-bfe8-484a-a98a-3e007a96e24f"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "659213d7-5f0c-4435-8fa9-b727220bc8f0",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740062994525,
+          "id": "33cd13c4-fb2a-45f6-9bc2-18fc6a1ed7cd"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "5b99e4a8-4c2b-431c-95b5-84b7d8ac4937",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740063030736,
+          "id": "32cb6096-99b5-4bbc-bf6c-b0c10ce951ba"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "3c501141-0a97-47af-a07a-7b2df6086d98",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740063039521,
+          "id": "f863fa61-ff3f-4888-849b-58e01fab4b7a"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "e1b007fb-8a77-4baf-b9a4-045901b4d7aa",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740063048498,
+          "id": "59f5f2da-eae7-4ec6-814d-b2e790157c0f"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "8af9cdec-84d8-4e96-b259-d962ab060a5c",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740063170671,
+          "id": "e7adce7d-646b-4149-b757-d151201060c9"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "d285222b-033a-4c37-9903-0ee1c10241db",
+          "target": "a952aeb8-cac4-405e-bc3a-a552dffebf2f",
+          "label": ">",
+          "timeOfCreation": 1740063479495,
+          "id": "fa298822-752b-4700-9b0c-eae5522119da"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "cddea431-4468-4e91-99e0-c94981d221f8",
+          "target": "d42cf2c6-dc68-47ff-b82f-e357a35b3d13",
+          "label": ">",
+          "timeOfCreation": 1740063692277,
+          "id": "19d596e3-9086-4806-ae86-5231bb05b101"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "0b401021-6cba-4f0f-90e7-982da3cb13af",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740063733553,
+          "id": "f1dae0ee-37c4-408c-a065-bd28e4e8b80e"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "68919dc8-b7d7-4a75-9820-b8961052b8df",
+          "target": "e7e8c91c-1bc7-4eb6-9c78-f70aa9b29784",
+          "label": ">",
+          "timeOfCreation": 1740063794449,
+          "id": "6ea4c35c-2f04-42d3-889c-45cc6c7cf8b0"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "c5824f06-92f7-464a-8d5c-b94af0971447",
+          "target": "e7e8c91c-1bc7-4eb6-9c78-f70aa9b29784",
+          "label": ">",
+          "timeOfCreation": 1740063798457,
+          "id": "49089643-e5c7-47b5-8531-a9f311c92008"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "92a47964-6e37-4cce-85db-b6f929b37c08",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740063816700,
+          "id": "72ac1e7c-3e79-481b-88b3-ebb2d199936f"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "0b09b597-9b1f-4588-8293-1269da8d444f",
+          "target": "a7d35ec4-5dcb-4fb1-b885-6f76755aaf4c",
+          "label": ">",
+          "timeOfCreation": 1740063831439,
+          "id": "618e2ba0-9e14-4080-ad4e-ca546c40a318"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "435b71b2-e7c8-4ea0-9d79-272e6bd454ac",
+          "target": "a7d35ec4-5dcb-4fb1-b885-6f76755aaf4c",
+          "label": ">",
+          "timeOfCreation": 1740063837190,
+          "id": "50c07f6f-98c3-4761-849a-36d16f141243"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "86f69b4f-08ba-4dd8-925b-1585b63983ad",
+          "target": "a7d35ec4-5dcb-4fb1-b885-6f76755aaf4c",
+          "label": ">",
+          "timeOfCreation": 1740063841438,
+          "id": "abcf4a75-b96d-4e82-adbe-124e0249e262"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "06e0c196-47cd-433c-b53c-38ac588cdb97",
+          "target": "a7d35ec4-5dcb-4fb1-b885-6f76755aaf4c",
+          "label": ">",
+          "timeOfCreation": 1740063846466,
+          "id": "41f6869c-d8ab-428a-8e93-d07bc34bb045"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "994529cc-3cad-4c75-b66c-69e62f3a9bf9",
+          "target": "701fe222-f2ba-45ca-9efc-63fcfcabf1ac",
+          "label": ">",
+          "timeOfCreation": 1740063860567,
+          "id": "f0f93255-f1dd-4b1e-8b5e-ccf65d89628b"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "795bdb7d-2e14-4300-acd0-a556c0233bfc",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740063911871,
+          "id": "22cf727f-dc22-4451-91a7-199dd902d850"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "f802e44f-8df3-4049-b47e-2896cbfe1e7d",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740063918201,
+          "id": "76b6c7e4-4280-499d-af83-210f3e46c3dc"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "d42cf2c6-dc68-47ff-b82f-e357a35b3d13",
+          "label": ">",
+          "timeOfCreation": 1740063929212,
+          "id": "209fa1a9-7bc3-4e0d-a634-57fe11aff732"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "a952aeb8-cac4-405e-bc3a-a552dffebf2f",
+          "target": "d42cf2c6-dc68-47ff-b82f-e357a35b3d13",
+          "label": ">",
+          "timeOfCreation": 1740063937974,
+          "id": "f9ac91f0-ad83-44f1-a23e-d62d6ab349a8"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "e7e8c91c-1bc7-4eb6-9c78-f70aa9b29784",
+          "target": "d42cf2c6-dc68-47ff-b82f-e357a35b3d13",
+          "label": ">",
+          "timeOfCreation": 1740063944560,
+          "id": "39fee969-d569-4ccc-a45f-7005f12938f5"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "c14d8f6b-27dc-4136-b7e4-d2771a6645c4",
+          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "label": ">",
+          "timeOfCreation": 1740064646038,
+          "id": "9e8085b2-22dd-4758-bc54-9d7db28d3ab1"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "3546e2fe-24d2-4fdf-a1c2-f98045f9a9b8",
+          "target": "de2b63f4-6b66-42f8-92d7-4ba99922c911",
+          "label": ">",
+          "timeOfCreation": 1740122909278,
+          "id": "8d82e01f-6832-4547-90f1-ca876af0b5b5"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      }
+    ]
+  },
+  "timestamp": 1740123103434
+}
