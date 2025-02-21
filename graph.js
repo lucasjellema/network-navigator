@@ -1,5 +1,5 @@
 import { addNodeContextMenu, hideNodeContextMenu } from "./node-context-menu.js";
-import { addGraphContextMenu, hideGraphContextMenu, hideGraphListModal , importGraphFromRemoteURL} from "./graph-context-menu.js";
+import { addGraphContextMenu, hideGraphContextMenu, hideGraphListModal, importGraphFromRemoteURL } from "./graph-context-menu.js";
 import { setTitle } from './ui.js';
 
 import { saveCurrentGraph, getCurrentGraph, loadGraph, getQueryParam } from "./utils.js";
@@ -22,7 +22,7 @@ document.addEventListener("networkNavigatorContentLoaded", async () => {
 
     const remoteURL = getQueryParam("remoteURL");
     if (remoteURL) {
-        console.log("load graph from ",remoteURL)
+        console.log("load graph from ", remoteURL)
         const _ = await importGraphFromRemoteURL(remoteURL, cy)
     }
 })
@@ -85,12 +85,12 @@ export const initializeCytoscape = () => {
                     'border-color': '#FF851B'     // Highlight border color
                 }
             },
-            { 
-              selector: 'edge:selected', 
-              style: { 
-                'line-color': 'red', // Change color when selected
-                'width': 5 
-              } 
+            {
+                selector: 'edge:selected',
+                style: {
+                    'line-color': 'red', // Change color when selected
+                    'width': 5
+                }
             },
             {
                 selector: '.highlighted',
@@ -100,6 +100,14 @@ export const initializeCytoscape = () => {
                     'target-arrow-color': '#FF4136',
                     'transition-property': 'background-color, line-color, target-arrow-color',
                     'transition-duration': '0.5s'
+                }
+            }, {
+
+                selector: '.pulse', // Dragged node effect
+                style: {
+                    'background-color': 'lightblue',
+                    'border-width': 4,
+                    'border-color': 'blue'
                 }
             }
         ],
@@ -145,7 +153,7 @@ export const initializeCytoscape = () => {
         event.originalEvent.preventDefault(); // Prevent default browser context menu
         const edge = event.target;
         let label = edge.data('label');
-        let additionalInfo ;
+        let additionalInfo;
         if (edge.data('type') === 'workAt') {
             label += ' ' + edge.target().data('label');
             additionalInfo = " as " + edge.data('role');
@@ -169,6 +177,89 @@ export const initializeCytoscape = () => {
         hideTooltip();
     });
 
+
+    let hoverTimer = null; // Timer for hover detection
+    let targetNode = null; // Node being hovered over
+    let initialPosition = {}; // Store the original position of the dragged node
+    let draggedNode
+    // Store initial position when dragging starts
+    cy.on('dragstart', 'node', function (event) {
+        draggedNode = event.target;
+        edgeCreated = false;
+        initialPosition[draggedNode.id()] = { ...draggedNode.position() }; // Store original position
+    });
+    let edgeCreated
+    cy.on('drag', 'node', function (event) {
+        let draggedNode = event.target;
+        let draggedPosition = draggedNode.position();
+        if (!initialPosition[draggedNode.id()]) initialPosition[draggedNode.id()] = { ...draggedNode.position() }; // Store original position
+
+        // Check for overlapping nodes
+        cy.nodes().not(draggedNode).forEach(otherNode => {
+            let otherPosition = otherNode.position();
+            let distance = Math.sqrt(
+                Math.pow(draggedPosition.x - otherPosition.x, 2) +
+                Math.pow(draggedPosition.y - otherPosition.y, 2)
+            );
+
+            if (distance < 30) { // Adjust hover threshold
+                if (targetNode !== otherNode) {
+                    targetNode = otherNode;
+
+                    // Start timer if not already running
+                    if (!hoverTimer) {
+                        hoverTimer = setTimeout(() => {
+                            // Create edge
+                            cy.add({
+                                group: 'edges',
+                                data: { source: draggedNode.id(), target: targetNode.id(), label: '>', timeOfCreation: Date.now() },
+                            });
+                            console.log(`Edge created between ${draggedNode.id()} and ${targetNode.id()}`);
+                            edgeCreated = true
+
+                            draggedNode.addClass('pulse');
+                            setTimeout(() => {
+                                draggedNode.removeClass('pulse');
+                            }, 500); // Remove pulse effect after 500ms
+
+                            hoverTimer = null;
+                        }, 700);
+                    }
+                }
+            } else if (targetNode === otherNode) {
+                clearTimeout(hoverTimer);
+                hoverTimer = null;
+                targetNode = null;
+            }
+        });
+    });
+
+    // Cancel the timer if dragging stops before connecting
+    cy.on('dragfree', 'node', function (event) {
+        let draggedNode = event.target;
+        clearTimeout(hoverTimer);
+        // Bounce back to original position
+        if (edgeCreated) {
+            let startPos = initialPosition[draggedNode.id()];
+            if (startPos) {
+                draggedNode.animate({
+                    position: startPos,
+                    duration: 300, // Smooth animation
+                    easing: 'ease-out'
+                });
+            }
+            edgeCreated = false
+        }
+        initialPosition[draggedNode.id()] = null;
+        hoverTimer = null;
+        targetNode = null;
+
+
+    });
+
+
+
+
     addNodeContextMenu(cy);
     addEdgeContextMenu(cy);
     addGraphContextMenu(cy);
@@ -182,9 +273,7 @@ export const initializeCytoscape = () => {
             changed = false
             saveCurrentGraph(cy);
         }
-    }, 5000); // check every 5 seconds for a change
-
-
+    }, 5000); // check every 5 seconds for a change and if there is one, save th graph (to local storage)
 
     // if tap on cy then close node context menu
     cy.on('tap', () => {
