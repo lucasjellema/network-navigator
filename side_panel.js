@@ -4,6 +4,7 @@ import {processImdbProfile} from './processImdbProfile.js';
 import {processOciProfile} from './processOciProfile.js';
 import {processGoodreadsProfile} from './processGoodreadsProfile.js';
 import {processWikipediaProfile} from './processWikipediaProfile.js';
+import { processSpotifyProfile } from './processSpotifyProfile.js';
 
 // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 //   if (message.type === 'linkInfo') {
@@ -63,6 +64,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
   if (message.type === 'wikipediaProfile') {
     processWikipediaProfile(cy, message);
+  }
+  if (message.type === 'spotifyProfile') {
+    processSpotifyProfile(cy, message);
   }
 
   if (message.type === 'linkInfoForNetworkNavigator') {
