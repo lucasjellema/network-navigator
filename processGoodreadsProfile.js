@@ -10,10 +10,10 @@ export const processGoodreadsProfile = (cy, message) => {
 
     let newNodes = cy.collection();
     if (profile.subtype === 'book') {
-        processBook(cy, profile, newNodes);
+        newNodes =processBook(cy, profile, newNodes);
     }            
     if (profile.subtype === 'person') {
-        processAuthor(cy, profile, newNodes);
+        newNodes =processAuthor(cy, profile, newNodes);
     }            
     
     // run layout for new nodes
@@ -93,6 +93,7 @@ function processBook(cy, profile, newNodes) {
     const edge = createEdgeWithLabel  (cy, authorNode, bookNode, 'author of', true)
 
     edge.data('type', 'author');
+    return newNodes
 }
 
 function processAuthor(cy, profile, newNodes) {
@@ -128,4 +129,5 @@ if (profile.books)
         const edge = createEdgeWithLabel  (cy, authorNode, bookNode, 'author of', true)
         edge.data('type', 'author');
     }
+    return newNodes
 }
