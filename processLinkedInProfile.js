@@ -106,7 +106,7 @@ export const processLinkedInProfile = (cy, message) => {
             companyNode.data('type', profile.type);
             companyNode.data('subtype', `linkedIn${profile.type}`);
             companyNode.data('shape', 'square');
-            newNodes = newNodes.union(companyNodeNode);
+            newNodes = newNodes.union(companyNode);
 
         }
         companyNode.data('url', message.linkedInUrl);
@@ -116,6 +116,11 @@ export const processLinkedInProfile = (cy, message) => {
         if (profile.location) companyNode.data('location', profile.location);
         if (profile.industry) companyNode.data('industry', profile.industry);
         if (profile.numberOfEmployees) companyNode.data('numberOfEmployees', profile.numberOfEmployees);
+        // foundedYear, websiteUrl, specialties
+        if (profile.foundedYear) companyNode.data('foundedYear', profile.foundedYear);
+        if (profile.websiteUrl) companyNode.data('websiteUrl', profile.websiteUrl);
+        if (profile.specialties) companyNode.data('specialties', profile.specialties);
+        if (profile.description) companyNode.data('description', profile.description);
     }
     // run layout for new nodes
     newNodes.layout({

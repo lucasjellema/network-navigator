@@ -93,6 +93,14 @@ const addCompanyDetails = (profile) => {
     profile.name = h1.textContent.replace(/\n/g, '').trim()
     const tagline = div.querySelector('p.org-top-card-summary__tagline')
     profile.tagline = tagline?.textContent.replace(/\n/g, '').trim()
+
+    // find section with class org-page-details-module__card-spacing
+    const section = document.querySelector('section.org-page-details-module__card-spacing')
+    if (section) {
+      const description = section.querySelector('p')
+      profile.description = description?.textContent.replace(/\n/g, '').trim()
+    }
+
     const infolistDiv = div.querySelector('div.org-top-card-summary-info-list')
     if (infolistDiv) {
       const infoList = infolistDiv.querySelectorAll('.org-top-card-summary-info-list__info-item')
@@ -126,6 +134,16 @@ const addCompanyDetails = (profile) => {
           const dd = h3.parentElement.nextElementSibling
           const anchor = dd.querySelector('a')
           profile.websiteUrl = anchor.href
+        }
+        if (h3.textContent && h3.textContent.includes('Founded')) {
+          // go from h3 to parent, to next sibling to anchor
+          const dd = h3.parentElement.nextElementSibling
+          profile.foundedYear = dd.textContent?.replace(/\n/g, '').trim()
+        }
+        if (h3.textContent && h3.textContent.includes('Specialties')) {
+          // go from h3 to parent, to next sibling to anchor
+          const dd = h3.parentElement.nextElementSibling
+          profile.specialties = dd.textContent?.replace(/\n/g, '').trim()
         }
       }
     }
