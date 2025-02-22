@@ -1,4 +1,4 @@
-import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from './utils.js';
+import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from '../utils.js';
 
 export const processLinkedInProfile = (cy, message) => {
     const contentDiv = document.getElementById('content');

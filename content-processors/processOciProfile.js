@@ -1,4 +1,4 @@
-import { createEdge, createNode, findNodeByProperty } from './utils.js';
+import { createEdge, createNode, findNodeByProperty } from '../utils.js';
 
 export const processOciProfile = (cy, message) => {
     const contentDiv = document.getElementById('content');

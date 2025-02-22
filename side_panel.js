@@ -1,10 +1,10 @@
 import { createEdgeWithLabel, createNode, findNodeByProperty } from './utils.js';
-import {processLinkedInProfile} from './processLinkedInProfile.js';
-import {processImdbProfile} from './processImdbProfile.js';
-import {processOciProfile} from './processOciProfile.js';
-import {processGoodreadsProfile} from './processGoodreadsProfile.js';
-import {processWikipediaProfile} from './processWikipediaProfile.js';
-import { processSpotifyProfile } from './processSpotifyProfile.js';
+import {processLinkedInProfile} from './content-processors/processLinkedInProfile.js';
+import {processImdbProfile} from './content-processors/processImdbProfile.js';
+import {processOciProfile} from './content-processors/processOciProfile.js';
+import {processGoodreadsProfile} from './content-processors/processGoodreadsProfile.js';
+import {processWikipediaProfile} from './content-processors/processWikipediaProfile.js';
+import { processSpotifyProfile } from './content-processors/processSpotifyProfile.js';
 
 // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 //   if (message.type === 'linkInfo') {

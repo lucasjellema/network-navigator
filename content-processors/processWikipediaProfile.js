@@ -1,4 +1,4 @@
-import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from './utils.js';
+import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from '../utils.js';
 
 export const processWikipediaProfile = (cy, message) => {
     const profile = message.profile;
@@ -10,7 +10,7 @@ export const processWikipediaProfile = (cy, message) => {
 
     let newNodes = cy.collection();
     if (profile.type === 'technology') {
-        processTechnology(cy, profile, newNodes);
+        newNodes = processTechnology(cy, profile, newNodes);
     }
 
     // run layout for new nodes
@@ -102,6 +102,7 @@ function processTechnology(cy, profile, newNodes) {
     // const edge = createEdgeWithLabel  (cy, authorNode, bookNode, 'author of', true)
 
     // edge.data('type', 'author');
+    return newNodes
 }
 
 function processAuthor(cy, profile, newNodes) {

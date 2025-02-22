@@ -1,4 +1,4 @@
-import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from './utils.js';
+import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from '../utils.js';
 
 export const processSpotifyProfile = (cy, message) => {
     const profile = message.profile;
