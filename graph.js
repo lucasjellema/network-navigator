@@ -2,7 +2,7 @@ import { addNodeContextMenu, hideNodeContextMenu } from "./node-context-menu.js"
 import { addGraphContextMenu, hideGraphContextMenu, hideGraphListModal, importGraphFromRemoteURL } from "./graph-context-menu.js";
 import { setTitle } from './ui.js';
 
-import { saveCurrentGraph, getCurrentGraph, loadGraph, getQueryParam } from "./utils.js";
+import { saveCurrentGraph, getCurrentGraph, loadGraph, getQueryParam, addMermaidContentToCurrentGraph } from "./utils.js";
 import { addEdgeContextMenu, hideEdgeContextMenu } from "./edge-context-menu.js";
 import { hideElementEditModal } from "./modal-element-editor.js";
 import { hideElementPropertiesModal } from "./modal-element-properties.js"
@@ -18,6 +18,9 @@ document.addEventListener("networkNavigatorContentLoaded", async () => {
     // Save graph button
     document.getElementById('save-graph').addEventListener('click', () => {
         saveCurrentGraph(cy);
+    });
+    document.getElementById('save-mermaid-graph-content').addEventListener('click', () => {
+        addMermaidContentToCurrentGraph(cy);
     });
 
     const remoteURL = getQueryParam("remoteURL");

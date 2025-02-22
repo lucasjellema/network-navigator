@@ -53,6 +53,75 @@ export function saveCurrentGraph(cy) {
     saveGraph(currentGraphId, title, description, elements);
 }
 
+function parseMermaidGraph(mermaidText) {
+    const lines = mermaidText.trim().split("\n");
+    const graphType = lines.shift().trim(); // e.g., "graph TD"
+
+    const nodes = new Set();
+    const edges = [];
+
+    for (const line of lines) {
+        // Remove extra spaces and match node connections
+        const match = line.trim().match(/^(\w+)\s*(-->|<-->|<--)\s*(\w+)$/);
+        if (match) {
+            const [, source, link, target] = match;
+
+            // Add nodes
+            nodes.add(source);
+            nodes.add(target);
+
+            // Add edges (handle bidirectional)
+            edges.push({ from: source, to: target });
+            if (link.includes("<")) {
+                edges.push({ from: target, to: source });
+            }
+        }
+    };
+
+    return {
+        nodes: Array.from(nodes),
+        edges: edges
+    };
+}
+
+
+
+
+export function addMermaidContentToCurrentGraph(cy) {
+    const content = document.getElementById('mermaid-graph-content').value;
+    const graphData = parseMermaidGraph(content);
+    const nodeMap = {};
+    let newNodes = cy.collection();
+    for (const node of graphData.nodes) {
+        let sourceNode = findNodeByProperties(cy, { 'label': node });
+        if (!sourceNode) {
+            sourceNode = createNode(cy, node);
+            newNodes = newNodes.union(sourceNode);
+        }
+        nodeMap[node] = sourceNode
+    }
+    for (const edge of graphData.edges) {
+        const { from, to, label } = edge;
+        const sourceNode = nodeMap[from];
+        const targetNode = nodeMap[to];
+        if (sourceNode && targetNode) {
+            console.log('Creating edge between', sourceNode.data('label'), 'and', targetNode.data('label'));
+            const edge = createEdgeWithLabel(cy, sourceNode, targetNode, '>', true);
+        }
+    }
+    newNodes.layout({
+        name: 'random',
+        animate: true,
+        animateFilter: function (node, i) {
+            return true;
+        },
+        animationDuration: 1000,
+        animationEasing: undefined,
+        fit: true,
+    })
+        .run();
+}
+
 export const getSelectedNodes = (cy) => {
     const selectedElements = cy.$(':selected');
     const selectedNodes = selectedElements.filter('node');
@@ -77,22 +146,22 @@ export const createEdgeWithLabel = (cy, sourceNode, targetNode, label, doNotCrea
         },
     });
     const newEdge = cy.getElementById(newEdgeId)
-    return newEdge 
+    return newEdge
 }
 
 export const createEdge = (cy, sourceNode, targetNode) => {
-    return createEdgeWithLabel (cy, sourceNode, targetNode, `Edge: ${sourceNode.data('label')} →  ${targetNode.data('label')}`) 
+    return createEdgeWithLabel(cy, sourceNode, targetNode, `Edge: ${sourceNode.data('label')} →  ${targetNode.data('label')}`)
 }
 
 export const edgeWithLabelExists = (sourceId, targetId, label) => {
-    return cy.$(`edge[source = "${sourceId}"][target = "${targetId}"][label = "${label}"]`).length > 0 
-       // ||            cy.$(`edge[source = "${targetId}"][target = "${sourceId}"][label = "${label}"]`).length > 0; // For undirected graphs
+    return cy.$(`edge[source = "${sourceId}"][target = "${targetId}"][label = "${label}"]`).length > 0
+    // ||            cy.$(`edge[source = "${targetId}"][target = "${sourceId}"][label = "${label}"]`).length > 0; // For undirected graphs
 }
 
 export const firstEdgeWithLabel = (cy, sourceId, targetId, label) => {
-    const edges= cy.$(`edge[source = "${sourceId}"][target = "${targetId}"][label = "${label}"]`)
-    return edges.length > 0 ? edges[0] : null 
-       // ||            cy.$(`edge[source = "${targetId}"][target = "${sourceId}"][label = "${label}"]`).length > 0; // For undirected graphs
+    const edges = cy.$(`edge[source = "${sourceId}"][target = "${targetId}"][label = "${label}"]`)
+    return edges.length > 0 ? edges[0] : null
+    // ||            cy.$(`edge[source = "${targetId}"][target = "${sourceId}"][label = "${label}"]`).length > 0; // For undirected graphs
 }
 
 
@@ -123,14 +192,13 @@ export const loadGraph = (cy, graph) => {
     setTitle(graph.title);
 }
 
-export const findNodeByProperty = (cy,property, value) => {
+export const findNodeByProperty = (cy, property, value) => {
     const currentNodes = cy.nodes().filter((node) => node.data(property) === value);
     return currentNodes[0] || null;
 };
 
-export const findNodeByProperties = (cy,properties) => {
-    const currentNodes = cy.nodes().filter((node) =>
-    {
+export const findNodeByProperties = (cy, properties) => {
+    const currentNodes = cy.nodes().filter((node) => {
         // iterate over all properties and test for each if the value in node.data is equal to the value in properties
         for (const [key, value] of Object.entries(properties)) {
             if (node.data(key) !== value) return false;
