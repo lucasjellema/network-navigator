@@ -67,6 +67,21 @@ const applyLayout = (cy) => {
             newLayout.springLength = 80
 
         }
+        if (layoutValue === 'dagre') {
+            newLayout.rankDir= 'BT' // this means that the nodes pointed at will be at the top. 
+/*
+// **Direction of the layout**
+  rankDir: 'TB',  // Options: 'TB' (top to bottom), 'BT' (bottom to top), 'LR' (left to right), 'RL' (right to left)
+
+  // **Spacing between nodes**
+  rankSep: 50,    // Vertical separation between ranks (default: 50)
+  edgeSep: 10,    // Minimum separation between adjacent edges (default: 10)
+  nodeSep: 10,    // Minimum separation between adjacent nodes (default: 10)
+
+  // **Alignment settings**
+  align: 'UL',    // Options: 'UL', 'UR', 'DL', 'DR' (undefined by default)
+*/
+        }
         const theElements = cy.collection();
         // add currently selected elements
         if (onlySelected) {

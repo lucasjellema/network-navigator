@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Network Navigator Application</title>
   <link rel="stylesheet" href="network-navigator.css">
+  <script src="dagre.min.js"></script>
   <script src="cytoscape.min.js"></script>
   <script src="cytoscape-euler.js"></script>
-  
-  <style>
-      body {
-          font-family: Arial, sans-serif;
-          margin: 10px;
-      }
+  <script src="cytoscape-dagre.js"></script>
 
-      #content {
-          white-space: pre-wrap;
-      }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+    }
+
+    #content {
+      white-space: pre-wrap;
+    }
   </style>
 </head>
+
 <body>
   <h1>Network Navigator</h1>
   <div id="network-navigator-app"></div>
   <script src="app.js" type="module"></script>
 </body>
+
 </html>
