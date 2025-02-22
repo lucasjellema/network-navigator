@@ -11,6 +11,7 @@ export const processSpotifyProfile = (cy, message) => {
     let newNodes = cy.collection();
 
     if (profile.subtype === 'artist') newNodes = processArtist(cy, profile, newNodes);
+    else if (profile.subtype === 'album') newNodes = processAlbum(cy, profile, newNodes);
     else
         newNodes = processSong(cy, profile, newNodes);
 
@@ -68,12 +69,33 @@ function processSong(cy, profile, newNodes) {
         albumNode.data('url', profile.albumUrl);
         albumNode.data('type', 'album');
         albumNode.data('subtype', 'album');
-        albumNode.data('shape', 'hexagon');
+        albumNode.data('shape', 'square');
         newNodes = newNodes.union(albumNode);
     }
     const albumEdge = createEdgeWithLabel(cy, songNode, albumNode, 'on', true);
     albumEdge.data('type', 'released on');
     // TODO writtenBy, producedBy, performedBy
+
+    // TODO recommended
+    if (profile.recommended) {
+        for (const song of profile.recommended) {
+            let recommendedSongNode = findNodeByProperties(cy, { 'label': song.songTitle, 'type': 'song' });
+            if (!recommendedSongNode) {
+                recommendedSongNode = createNode(cy, song.songTitle);
+                recommendedSongNode.data('url', song.songUrl);
+                recommendedSongNode.data('type', 'song');
+                recommendedSongNode.data('subtype', 'song');
+                recommendedSongNode.data('shape', 'octagon');
+                newNodes = newNodes.union(recommendedSongNode);
+            }
+            if (song.image) recommendedSongNode.data('image', song.image);
+            recommendedSongNode.data('artist', song.artist);
+            recommendedSongNode.data('artistUrl', song.artistUrl);
+            // TODO add artist of recommended song
+
+            createEdgeWithLabel(cy, songNode, recommendedSongNode, 'recommended', true);
+        }
+    }
     return newNodes
 }
 
@@ -121,12 +143,42 @@ function processArtist(cy, profile, newNodes) {
             if (otherArtist.image) otherArtistNode.data('image', otherArtist.image);
             const otherArtistEdge = createEdgeWithLabel(cy, artistNode, otherArtistNode, 'also liked', true);
             otherArtistEdge.data('type', 'also liked');
-
         }
     }
-
-
-
     // TODO writtenBy, producedBy, performedBy
+    return newNodes;
+}
+
+
+function processAlbum(cy, profile, newNodes) {
+
+    let albumNode = findNodeByProperties(cy, { 'label': profile.name, 'type': 'album' });
+    if (!albumNode) {
+        albumNode = createNode(cy, profile.name);
+        albumNode.data('url', profile.pageUrl);
+        albumNode.data('type', 'album');
+        albumNode.data('shape', 'square');
+        newNodes = newNodes.union(albumNode);
+    }
+    if (profile.image) albumNode.data('image', profile.image);
+    // also process properties duration, numberOfTracks, releaseYear
+    if (profile.duration) albumNode.data('duration', profile.duration);
+    if (profile.numberOfTracks) albumNode.data('numberOfTracks', profile.numberOfTracks);
+    if (profile.releaseYear) albumNode.data('year', profile.releaseYear);
+
+    let artistNode = findNodeByProperties(cy, { 'label': profile.artistName, 'type': 'person' });
+    if (!artistNode) {
+        artistNode = createNode(cy, profile.artistName);
+        artistNode.data('url', profile.artistUrl);
+        artistNode.data('type', 'person');
+        artistNode.data('subtype', 'artist');
+        newNodes = newNodes.union(artistNode);
+    }
+    if (profile.artistImage) artistNode.data('image', profile.artistImage);
+
+    const albumEdge = createEdgeWithLabel(cy, artistNode, albumNode, 'created', true);
+    albumEdge.data('type', 'created');
+// TODO create individual song nodes, if so desired
+
     return newNodes;
 }

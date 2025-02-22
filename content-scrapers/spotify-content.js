@@ -36,10 +36,14 @@ const getSpotifyProfile = async () => {
   if (window.location.href.includes('/artist/')) {
     profile.subtype = 'artist'
     const x = await scrapeArtistData(profile);
-  } else {
-    profile.subtype = 'song'
-    const x = await scrapeSongData(profile);
-  }
+  } else
+    if (window.location.href.includes('/album/')) {
+      profile.subtype = 'album'
+      const x = await scrapeAlbumData(profile);
+    } else {
+      profile.subtype = 'song'
+      const x = await scrapeSongData(profile);
+    }
   return profile
 }
 
@@ -95,6 +99,59 @@ const scrapeSongData = async (profile) => {
 
       }
     }
+
+    // recommended based on this song
+    // find div with aria-label="Recommended"
+    const recommendedElement = document.querySelector('div[aria-label="Recommended"]');
+    if (recommendedElement) {
+      // find all divs with data-testid="tracklist-row"
+      const tracklistRowDivs = recommendedElement.querySelectorAll('div[data-testid="tracklist-row"]');
+      // iterate over all divs and add their text content to the recommended property
+      const recommended = []
+      for (const tracklistRowDiv of tracklistRowDivs) {
+        const recommendedTrack = {}
+        const div = tracklistRowDiv.querySelector('div')
+        // find first child of div
+        const firstChild = div.firstElementChild
+        if (firstChild) {
+          // find image
+          const image = firstChild.querySelector('img')
+          if (image) {
+            recommendedTrack.image = image.src
+          }
+        }
+
+        // second div child of div 
+        const secondDiv = div.children[1]
+        if (secondDiv) {
+          // has anchor element
+          const anchor = secondDiv.querySelector('a')
+          if (anchor) {
+            recommendedTrack.songUrl = anchor.href
+            recommendedTrack.songTitle = anchor.textContent.trim()
+          }
+          // has span element
+          const span = secondDiv.querySelector('span')
+          if (span) {
+            recommendedTrack.artist = span.textContent.trim()
+            // span has anchor with href for artist
+            const artistAnchor = span.querySelector('a')
+            if (artistAnchor) {
+              recommendedTrack.artistUrl = artistAnchor.href
+            }
+          }
+        }
+        // fourth div has duration
+        const fourthDiv = div.children[3]
+        if (fourthDiv) {
+          recommendedTrack.duration = fourthDiv.textContent.trim()
+        }
+        recommended.push(recommendedTrack)
+      }
+      profile.recommended = recommended
+    }
+
+
     // find div with id context-menu
     const contextMenuElement = document.querySelector('div#context-menu');
     if (contextMenuElement) {
@@ -307,10 +364,79 @@ const scrapeArtistData = async (profile) => {
       profile.discography = discography
     }
   }
-
-
 }
 
+
+const scrapeAlbumData = async (profile) => {
+  // find button with aria-label="View album artwork" 
+  const button = document.querySelector('button[aria-label="View album artwork"]');
+  if (button) {
+    const image = button.querySelector('img');
+    if (image) {
+      profile.image = image.src;
+    }
+  }
+  // find h1 in the parent of the button
+  const h1 = button.parentElement.querySelector('h1');
+  if (h1) {
+    profile.name = h1.textContent.trim();
+  }
+  // h1 has a parent with a next element sibling  that is a div with children
+  const div = h1.parentElement.nextElementSibling;
+  if (div) {
+    const children = div.children;
+    // the first child is a div that  contains an img with artist's image and the artist's name
+    const artistDiv = children[0];
+    const artistImage = artistDiv.querySelector('img');
+    if (artistImage) {
+      profile.artistImage = artistImage.src;
+    }
+    const artistName = artistDiv.querySelector('a');
+    if (artistName) {
+      profile.artistName = artistName.textContent.trim();
+    }
+    // the third child is a span with the release year
+    const releaseYearSpan = children[2];
+    if (releaseYearSpan) {
+      profile.releaseYear = releaseYearSpan.textContent.trim();
+    }
+    // the 5th child is a div with 3 span children; the first has the number of tracks, the third the duration
+    const trackCountSpan = children[4].children[0];
+    if (trackCountSpan) {
+      profile.numberOfTracks = trackCountSpan.textContent.trim();
+    }
+    const durationSpan = children[4].children[2];
+    if (durationSpan) {
+      profile.duration = durationSpan.textContent.trim();
+    }
+  }
+
+  // find div with data-testid="track-list"
+  const trackList = document.querySelector('div[data-testid="track-list"]');
+  if (trackList) {
+    // iterate over child elements
+    const tracks = []
+    // find divs in tracklist with data-testid="tracklist-row"
+    const divs = trackList.querySelectorAll('div[data-testid="tracklist-row"]');
+    for (const div of divs) {
+      const track = {}
+      const ref = div.querySelector('a');
+      if (ref) {
+        track.url = ref.href;
+        track.name = ref.textContent.trim();
+
+        // the grand parent element of ref has a next element sibling that contains the track's duration
+        const grandParent = ref.parentElement.parentElement;
+        const duration = grandParent.nextElementSibling;
+        if (duration) {
+          track.duration = duration.textContent.trim();
+        }
+      }
+      tracks.push(track)
+    }
+    profile.tracks = tracks
+    
+}}
 
 function delay(milliseconds) {
   return new Promise(resolve => {
