@@ -90,21 +90,23 @@
       },
       {
         "data": {
-          "id": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "id": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": "Conclusion NL",
-          "timeOfCreation": "2/20/2025, 10:53:05 AM",
+          "timeOfCreation": 1740205965467,
           "type": "company",
           "subtype": "linkedIncompany",
           "shape": "square",
-          "url": "https://www.linkedin.com/company/conclusion/posts/?feedView=all",
-          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQHsGUD6ypvK5g/company-logo_200_200/company-logo_200_200/0/1705484085196/conclusion_logo?e=1747872000&v=beta&t=8Vmd1xJep3NJHUMykUcoBWmYorOAKoeuTfDntMIOrPA",
+          "url": "https://www.linkedin.com/company/conclusion/about/",
+          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQHsGUD6ypvK5g/company-logo_200_200/company-logo_200_200/0/1705484085196/conclusion_logo?e=1748476800&v=beta&t=ouMfFVQy44LkroGlTyiiWN8Z4Qazq2jC71sKN-v0wLI",
           "location": "Utrecht, Utrecht",
           "industry": "IT Services and IT Consulting",
-          "numberOfEmployees": "1K-5K employees"
+          "numberOfEmployees": "1K-5K employees",
+          "websiteUrl": "http://www.conclusion.nl/",
+          "description": "Conclusion is thé multidisciplinary service provider in the field of Business Transformation and IT Services. Our tagline? Business Done Differently. Our 1700 specialists and professionals live up to that every day by truly combining our IT knowledge with business and domain know-how. With dedication, creativity and flexibility we take responsibility for the social and mission critical business processes and systems of our customers and enable organizations to digitally transform their business model. Our primary focus is on the Dutch market and more specifically on the domains Public Transport, Healthcare, Finance and Industry.Conclusion. Business Done Differently."
         },
         "position": {
-          "x": 173,
-          "y": -35
+          "x": 178.9227067772461,
+          "y": -66.1768587677951
         },
         "group": "nodes",
         "removed": false,
@@ -310,22 +312,26 @@
       },
       {
         "data": {
-          "id": "3c501141-0a97-47af-a07a-7b2df6086d98",
+          "id": "e56aceee-c4f0-43d0-b116-72b53001a03f",
           "label": "Arlanet",
-          "timeOfCreation": "2/20/2025, 10:58:58 AM",
+          "timeOfCreation": 1740205835070,
           "type": "company",
           "subtype": "linkedIncompany",
           "shape": "square",
-          "url": "https://www.linkedin.com/company/arlanetsoftware/",
-          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQEmei8pz5_8gw/company-logo_200_200/company-logo_200_200/0/1713773943582/arlanetsoftware_logo?e=1747872000&v=beta&t=CJQX6Jn5mes1KPiYH3WQ_TmVvbzDs0eYGgfC3Bztr1w",
+          "url": "https://www.linkedin.com/company/arlanetsoftware/about/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQEmei8pz5_8gw/company-logo_200_200/company-logo_200_200/0/1713773943582/arlanetsoftware_logo?e=1748476800&v=beta&t=f7aHMOIHFo3dTPSAnBioSPVl-CGzfAK-p03JwS8Tvrk",
           "tagline": "ᴅʀɪᴠɪɴɢ ᴅɪɢɪᴛᴀʟ /ғᴏʀᴡᴀʀᴅ",
           "location": "Wormer, Nederland",
           "industry": "IT Services and IT Consulting",
-          "numberOfEmployees": "11-50 employees"
+          "numberOfEmployees": "11-50 employees",
+          "foundedYear": "2002",
+          "websiteUrl": "http://www.arlanet.nl/",
+          "specialties": "software, e-commerce, microsoft, episerver, umbraco, innovatie, development, ontwikkeling, .net, innovation, scrum, optimizely, shopify, bigcommerce, composabledxp, dxp, website, and cms",
+          "description": "Arlanet develops innovative software based on Microsoft .NET, Umbraco and EPiServer technology. Our team of around 30 professionals is always looking for new digital challenges."
         },
         "position": {
-          "x": 209.69145559340814,
-          "y": 527.0617088813185
+          "x": 190.35030184986962,
+          "y": 554.5891882621123
         },
         "group": "nodes",
         "removed": false,
@@ -372,11 +378,13 @@
           "type": "company",
           "subtype": "linkedIncompany",
           "shape": "square",
-          "url": "https://www.linkedin.com/company/divae/",
-          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQEbvNzyxGLBDA/company-logo_200_200/company-logo_200_200/0/1727340780064/divae_logo?e=1747872000&v=beta&t=JPGY44oDfVp_byozGgwJ8cj9QiPbxCh7uYPfRQz89_s",
+          "url": "https://www.linkedin.com/company/divae/about/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQEbvNzyxGLBDA/company-logo_200_200/company-logo_200_200/0/1727340780064/divae_logo?e=1748476800&v=beta&t=wwztf-GpLv8yOp7bOAQT4Pi9V9S3Ue7hwv7WKAQppgo",
           "location": "München, Bayern",
           "industry": "IT Services and IT Consulting",
-          "numberOfEmployees": "501-1K employees"
+          "numberOfEmployees": "501-1K employees",
+          "websiteUrl": "http://www.diva-e.com/",
+          "description": "As the leading Transactional Experience Partner (TXP), diva-e creates digital experiences that inspire customers and drive business forward. With more than 20 years of experience in digital business, diva-e covers the digital value chain from strategy to technology to creation. The holistic service and product offering in the areas of Planning & Innovation, Platforms & Experiences, Growth & Performance and Data & Intelligence ensures increased sales, competitive advantages and measurably more transactions - for all target groups, devices and products. diva-e cooperates with worldwide leading technology partners such as Adobe, akeneo, Amazon, Bloomreach, Google, e-Spirit, Microsoft, Salesforce, SAP, Spryker and Stibo.diva-e knows the challenges that companies face today and tomorrow and is an innovative partner of leading companies. Numerous top companies and love brands trust diva-e - including Carl Zeiss, EDEKA, E.ON, FC Bayern Munich, Lieferando, Ravensburger and Sky. Throughout Germany, diva-e employs around 800 people at nine locations.Further information: www.diva-e.com"
         },
         "position": {
           "x": 772,
@@ -439,12 +447,15 @@
           "type": "company",
           "subtype": "linkedIncompany",
           "shape": "square",
-          "url": "https://www.linkedin.com/company/neotalentconclusion/",
-          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQFPg0TIrO53Qw/company-logo_200_200/company-logo_200_200/0/1720087357986/neotalentconclusion_logo?e=1747872000&v=beta&t=zt4UcU2qrXdOH3uh9DIrQHb07gfI1Bh6ruWen7xThYc",
+          "url": "https://www.linkedin.com/company/neotalentconclusion/about/",
+          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQFPg0TIrO53Qw/company-logo_200_200/company-logo_200_200/0/1720087357986/neotalentconclusion_logo?e=1748476800&v=beta&t=c0Fy9umHKYq8AgEoUWCls5km0mjI6I_4ebCb6lPgBzg",
           "tagline": "The responsive people",
           "location": "Lisboa, Lisbon",
           "industry": "IT Services and IT Consulting",
-          "numberOfEmployees": "501-1K employees"
+          "numberOfEmployees": "501-1K employees",
+          "foundedYear": "1998",
+          "websiteUrl": "http://www.neotalent.pt/",
+          "description": "Neotalent Conclusion is one of the leading Iberian specialists in Information Technology and Engineering services. Focused on increasing the technological capacity of organizations and the digital transformation of their application ecosystems, Neotalent Conclusion ensures the best fit between specialized talent and the most ambitious projects. Our success comes from our investments in innovation, our focus on results and, above all, the guarantee that our people will have happy and rewarding careers.With over 25 years of solid experience, Neotalent Conclusion has established its presence in key locations, including Lisbon, Oporto, and Madrid. The company currently has more than 950 professionals in the different areas in which it operates."
         },
         "position": {
           "x": 888,
@@ -467,12 +478,16 @@
           "type": "company",
           "subtype": "linkedIncompany",
           "shape": "square",
-          "url": "https://www.linkedin.com/company/score-consulting_165884/",
-          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQETmJIBm09J-Q/company-logo_200_200/company-logo_200_200/0/1703863668777/score_consulting_165884_logo?e=1747872000&v=beta&t=Av40G-ORxNw4Pyk-IxdzY7_ZKb3yx2vUYjO4jqIIqog",
+          "url": "https://www.linkedin.com/company/score-consulting_165884/about/",
+          "image": "https://media.licdn.com/dms/image/v2/D4D0BAQETmJIBm09J-Q/company-logo_200_200/company-logo_200_200/0/1703863668777/score_consulting_165884_logo?e=1748476800&v=beta&t=_G-YlsOB_9wZtZ2B-2PoC9khAZXnUfSso73BBLw7IHc",
           "tagline": "IT Services and IT ConsultingYour Trusted Partner in Innovation and Efficiency.",
           "location": "Lisbon, Lisboa",
           "industry": "IT Services and IT Consulting",
-          "numberOfEmployees": "51-200 employees"
+          "numberOfEmployees": "51-200 employees",
+          "foundedYear": "2005",
+          "websiteUrl": "http://score.pt/",
+          "specialties": "Robotic Process Automation, SAP Services, Solutions Architecture, PMP/PMO, Outsourcing, SAP Application Maintenance, and SAP System Administration",
+          "description": "- We support our customers to plan and execute transformation initiatives, aggregating knowledge and expertise of industry, business process and IT reference architectures.- We are SAP Service Partners, with highly skilled consulting services with confirmed expertise and implementation best practices;- We support our customers digital transformation journey, improving operational efficiency via automation. - We support our customers to focus on core business processes, managing customers applications and IT platforms, via Global AMS Service, IT or Business Process Outsourcing."
         },
         "position": {
           "x": 1077,
@@ -620,22 +635,26 @@
       },
       {
         "data": {
-          "id": "06e0c196-47cd-433c-b53c-38ac588cdb97",
+          "id": "193c18e5-8af1-4fa4-9c2a-bce9349668b8",
           "label": "Mediaan",
-          "timeOfCreation": "2/20/2025, 11:08:30 AM",
+          "timeOfCreation": 1740205931874,
           "type": "company",
           "subtype": "linkedIncompany",
           "shape": "square",
-          "url": "https://www.linkedin.com/company/mediaan/",
-          "image": "https://media.licdn.com/dms/image/v2/C560BAQHIrhQHSPoONg/company-logo_200_200/company-logo_200_200/0/1631332619588?e=1747872000&v=beta&t=r_GhF6sJf7VDbvwoC0n3WtN-AvAggSGJcz9E_PCmNsA",
+          "url": "https://www.linkedin.com/company/mediaan/about/",
+          "image": "https://media.licdn.com/dms/image/v2/C560BAQHIrhQHSPoONg/company-logo_200_200/company-logo_200_200/0/1631332619588?e=1748476800&v=beta&t=rfxMx1YgOxYYCDQCmgj47D7rCFx0CvMOewcZOUdMGmw",
           "tagline": "Technology that makes a difference",
           "location": "Heerlen, Limburg",
           "industry": "IT Services and IT Consulting",
-          "numberOfEmployees": "51-200 employees"
+          "numberOfEmployees": "51-200 employees",
+          "foundedYear": "1969",
+          "websiteUrl": "https://www.mediaan.com/",
+          "specialties": "Cloud Solutions, Portals & Collaboration, Business in Control, App Development, Web Development, Application Development & Maintenance, Migration Services, Sourcing Services, Transparantie & Benchmarking Services, Security Services, Machine Learning, Artificial Intelligence , UX Design, IT, IT Consultancy, and Enterprise Architecture",
+          "description": "Mediaan Conclusion is an IT and consultancy company, founded in 1969 in Heerlen, The Netherlands. We serve our international customers from our offices in Heerlen, Düsseldorf and Hasselt. Technology can make a difference in every business, generating clear competitive advantages no matter the industry. We’re here to help you connect, inspire and grow by harnessing the power of new technologies and smart processes. Quick, transparent and effective.  You can count on our expertise and will be guided towards the best solution in 4 disciplines:TechnologyWe develop technology that is unique by quality design, ranging from complex backend systems to mobile apps.Data & IntelligenceWe analyze and extract insights from your data using machine learning and artificial intelligence techniques. In ControlOur project managers, business consultants and architects are in the lead of complex transitions. Digital TransformationWe develop the concepts, designs and technologies that get new digital products and services off the ground. Mediaan has been part of the Dutch company Conclusion since the end of 2021. Conclusion serves its clients through a unique ecosystem of IT and business-oriented companies. Each one is an authority in its field. We’re a diverse team that inspires and reinforces each other. But how can this help you? As a client, you’ll always get the best solution to your question that’s in line with your strategy and business goals."
         },
         "position": {
-          "x": -366.67307125982904,
-          "y": 463.97684130733177
+          "x": -375.29554420372926,
+          "y": 501.6208411394781
         },
         "group": "nodes",
         "removed": false,
@@ -682,15 +701,15 @@
           "subtype": "linkedIncompany",
           "shape": "square",
           "url": "https://www.linkedin.com/company/yellowtail/posts/?feedView=all",
-          "image": "https://media.licdn.com/dms/image/v2/C4E0BAQGgoS3H6Yk5WQ/company-logo_200_200/company-logo_200_200/0/1651133020382/yellowtail_logo?e=1747872000&v=beta&t=nXF7ROETtyTQ4C5rCOlhFUXnCMM58byXSgM3HMokhK4",
+          "image": "https://media.licdn.com/dms/image/v2/C4E0BAQGgoS3H6Yk5WQ/company-logo_200_200/company-logo_200_200/0/1651133020382/yellowtail_logo?e=1748476800&v=beta&t=1sPpkL_yQGITa7B9fuFSxCYrQU73uULg_2oTSPyBEWg",
           "tagline": "Wij creëren datagedreven oplossingen die ertoe doen",
           "location": "Naarden",
           "industry": "Business Consulting and Services",
           "numberOfEmployees": "201-500 employees"
         },
         "position": {
-          "x": -812.4432398772062,
-          "y": 146.9178270629164
+          "x": -793.6615048200898,
+          "y": 177.25755292441232
         },
         "group": "nodes",
         "removed": false,
@@ -709,11 +728,14 @@
           "type": "company",
           "subtype": "linkedIncompany",
           "shape": "square",
-          "url": "https://www.linkedin.com/company/davinci/posts/?feedView=all",
-          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQGYGRsgHvVPfQ/company-logo_200_200/company-logo_200_200/0/1693495449601/davinci_logo?e=1747872000&v=beta&t=OlBSvhAgaqH0kbp3FeRjey1eDo5uPVk3FXhJvBSR95o",
+          "url": "https://www.linkedin.com/company/davinci/about/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQGYGRsgHvVPfQ/company-logo_200_200/company-logo_200_200/0/1693495449601/davinci_logo?e=1748476800&v=beta&t=ZptRXnA74VOxvcL3xAbHMwlE43lHHKGUddmzGDNlhXw",
           "location": "Naarden, Noord-Holland",
           "industry": "IT Services and IT Consulting",
-          "numberOfEmployees": "11-50 employees"
+          "numberOfEmployees": "11-50 employees",
+          "websiteUrl": "http://www.davinci-consulting.nl/",
+          "specialties": "Consultancy, Process management, Project management, FinTech, Innovation, Notary services, Mortgages, Standardization, and Partnerships",
+          "description": "Consultancy | Mortgages | Real Estate | Notarial profession Innovative | Results-driven | Passionate | Davinci is open to new, distinctive talent, both starting and experienced. Always! Davinci is an experienced IT consultancy organization with a clear focus on partnerships and co-creation of industry and chain integration initiatives. We are the architect of the digital communication standards in the Dutch mortgage, real estate and notarial sector and advise our clients on this. We regard maintaining, expanding and innovating these standards and platforms as our responsibility. Our consultants have a wealth of material and technical knowledge and help clients to translate business challenges into (ICT) solutions. Our consultants advise on the improvement and further innovation of business processes, including in the field of the notarial profession. We specify, test and accept ICT solutions and are responsible for their functional management."
         },
         "position": {
           "x": -803.2684927196981,
@@ -721,7 +743,7 @@
         },
         "group": "nodes",
         "removed": false,
-        "selected": false,
+        "selected": true,
         "selectable": true,
         "locked": false,
         "grabbable": true,
@@ -931,12 +953,16 @@
           "type": "company",
           "subtype": "linkedIncompany",
           "shape": "square",
-          "url": "https://www.linkedin.com/company/conclusionlowcodecompany/posts/?feedView=all",
-          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQEl7JFX7ze4pw/company-logo_200_200/company-logo_200_200/0/1700562235765/conclusionlowcodecompany_logo?e=1747872000&v=beta&t=M_Wco9PoFl7aOcZjDRHSA8bXhARNr0mF7yLnlV4kubs",
+          "url": "https://www.linkedin.com/company/conclusionlowcodecompany/about/",
+          "image": "https://media.licdn.com/dms/image/v2/D4E0BAQEl7JFX7ze4pw/company-logo_200_200/company-logo_200_200/0/1700562235765/conclusionlowcodecompany_logo?e=1748476800&v=beta&t=SUFMFLICr08rxObLiI5qv3KKZfioh-tGjaHDcyBNoMw",
           "tagline": "HIGH TECH | LOW CODE",
           "location": "Utrecht, Utrecht",
           "industry": "Information Technology & Services",
-          "numberOfEmployees": "51-200 employees"
+          "numberOfEmployees": "51-200 employees",
+          "foundedYear": "2015",
+          "websiteUrl": "https://www.conclusionlowcodecompany.nl/",
+          "specialties": "Mendix, Modelling, maatwerkapplicaties, Lowcode, and Mendix Experts",
+          "description": "Conclusion Low Code Company is specialist in het bouwen van maatwerkapplicaties in Mendix. Gecertificeerde professionals met jarenlange ervaring in low code."
         },
         "position": {
           "x": -447.66685209516226,
@@ -1049,8 +1075,8 @@
           "numberOfEmployees": "51-200 employees"
         },
         "position": {
-          "x": -808.5197797536075,
-          "y": 69.22705707098743
+          "x": -804.1855332019651,
+          "y": 7.102856497448158
         },
         "group": "nodes",
         "removed": false,
@@ -1159,7 +1185,7 @@
           "numberOfEmployees": "51-200 employees"
         },
         "position": {
-          "x": 512.4924169024459,
+          "x": 642.8353007508009,
           "y": 372.34641055596063
         },
         "group": "nodes",
@@ -1187,7 +1213,7 @@
           "numberOfEmployees": "11-50 employees"
         },
         "position": {
-          "x": 429.73022219537455,
+          "x": 421.18314784466276,
           "y": 454.54746906987947
         },
         "group": "nodes",
@@ -1224,8 +1250,29 @@
     "edges": [
       {
         "data": {
+          "source": "3546e2fe-24d2-4fdf-a1c2-f98045f9a9b8",
+          "target": "de2b63f4-6b66-42f8-92d7-4ba99922c911",
+          "label": ">",
+          "timeOfCreation": 1740122909278,
+          "id": "8d82e01f-6832-4547-90f1-ca876af0b5b5"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
           "source": "de2b63f4-6b66-42f8-92d7-4ba99922c911",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740064936411,
           "id": "d7174bff-9d59-4694-a77e-4a2ecd63446e"
@@ -1246,7 +1293,7 @@
       {
         "data": {
           "source": "1ad8b657-6a7c-4574-a642-a571a88a86e1",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740064918150,
           "id": "36bb8d1b-d37a-4fbc-821f-37225bf2e37d"
@@ -1267,7 +1314,7 @@
       {
         "data": {
           "source": "21cd1a22-b3a8-481d-8307-6e43bb830730",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740064908043,
           "id": "d016d3e7-cbed-4500-a645-fb66e8f2b507"
@@ -1288,7 +1335,7 @@
       {
         "data": {
           "source": "52728d74-712a-42a7-818f-e18423784948",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740064942572,
           "id": "b11f04cc-ede4-488c-8ed8-b31f880e3a52"
@@ -1309,7 +1356,7 @@
       {
         "data": {
           "source": "169df2e8-21fe-4555-827a-276c0a0b4f32",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740065167326,
           "id": "b481fbba-7ef4-440d-8182-f99421eef48f"
@@ -1330,7 +1377,7 @@
       {
         "data": {
           "source": "21822d8b-614e-4a46-8494-6f55e39ff1ef",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740065819470,
           "id": "0fa52539-fe75-4e06-8a88-0851dd189b1f"
@@ -1351,7 +1398,7 @@
       {
         "data": {
           "source": "6ce32df9-767e-4dc3-b814-0f594adf5be6",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740065832747,
           "id": "e5f70bdb-f6c2-4f91-8406-6f152c2023c6"
@@ -1372,7 +1419,7 @@
       {
         "data": {
           "source": "a4d0f3b0-4a19-4a8b-b6cd-e7c88f946929",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740064933277,
           "id": "64583ecb-a7fe-4729-9f21-1ccd09dc55e7"
@@ -1414,7 +1461,7 @@
       {
         "data": {
           "source": "8c1d17a8-a1bc-40b8-afc6-0cadc0ae5637",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740064939611,
           "id": "19a060f7-094e-4387-a517-b469d2d8920d"
@@ -1435,7 +1482,7 @@
       {
         "data": {
           "source": "0984c1de-ac64-4b5f-b50f-e12d2cd25945",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740065828899,
           "id": "fef90926-bd0c-415a-8348-2d5f727398cd"
@@ -1456,7 +1503,7 @@
       {
         "data": {
           "source": "d97a1c53-17b5-43b1-813a-31dae280d3c6",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740064945944,
           "id": "93cfae7c-5743-42e2-b23a-741331b86b4c"
@@ -1499,7 +1546,7 @@
         "data": {
           "id": "9188638a-0ccc-4c96-a9e7-e76f4eceaade",
           "source": "a7d35ec4-5dcb-4fb1-b885-6f76755aaf4c",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": "Edge: Conclusion Intelligence →  Conclusion NL",
           "timeOfCreation": 1740046053697
         },
@@ -1623,7 +1670,7 @@
       },
       {
         "data": {
-          "source": "3c501141-0a97-47af-a07a-7b2df6086d98",
+          "source": "e56aceee-c4f0-43d0-b116-72b53001a03f",
           "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
           "label": ">",
           "timeOfCreation": 1740063039521,
@@ -1729,7 +1776,7 @@
       {
         "data": {
           "source": "0b401021-6cba-4f0f-90e7-982da3cb13af",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740063733553,
           "id": "f1dae0ee-37c4-408c-a065-bd28e4e8b80e"
@@ -1875,7 +1922,7 @@
       },
       {
         "data": {
-          "source": "06e0c196-47cd-433c-b53c-38ac588cdb97",
+          "source": "193c18e5-8af1-4fa4-9c2a-bce9349668b8",
           "target": "a7d35ec4-5dcb-4fb1-b885-6f76755aaf4c",
           "label": ">",
           "timeOfCreation": 1740063846466,
@@ -1918,7 +1965,7 @@
       {
         "data": {
           "source": "795bdb7d-2e14-4300-acd0-a556c0233bfc",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740063911871,
           "id": "22cf727f-dc22-4451-91a7-199dd902d850"
@@ -1939,7 +1986,7 @@
       {
         "data": {
           "source": "f802e44f-8df3-4049-b47e-2896cbfe1e7d",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740063918201,
           "id": "76b6c7e4-4280-499d-af83-210f3e46c3dc"
@@ -1959,7 +2006,7 @@
       },
       {
         "data": {
-          "source": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "source": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "target": "d42cf2c6-dc68-47ff-b82f-e357a35b3d13",
           "label": ">",
           "timeOfCreation": 1740063929212,
@@ -2023,7 +2070,7 @@
       {
         "data": {
           "source": "c14d8f6b-27dc-4136-b7e4-d2771a6645c4",
-          "target": "2351079c-3f4f-4b0c-8ff1-5b6c9b2ee903",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
           "timeOfCreation": 1740064646038,
           "id": "9e8085b2-22dd-4758-bc54-9d7db28d3ab1"
@@ -2043,11 +2090,53 @@
       },
       {
         "data": {
-          "source": "3546e2fe-24d2-4fdf-a1c2-f98045f9a9b8",
-          "target": "de2b63f4-6b66-42f8-92d7-4ba99922c911",
+          "source": "701fe222-f2ba-45ca-9efc-63fcfcabf1ac",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
           "label": ">",
-          "timeOfCreation": 1740122909278,
-          "id": "8d82e01f-6832-4547-90f1-ca876af0b5b5"
+          "timeOfCreation": 1740205525639,
+          "id": "ae7b675e-c768-40b4-8045-28456d6575f1"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "e65d9b5f-0ff0-4165-a80d-68b4d7a2ab8a",
+          "target": "ee5ccf3d-4b5c-46b2-af83-1ffbc2240219",
+          "label": ">",
+          "timeOfCreation": 1740205528871,
+          "id": "0f01e925-30ee-4250-bb22-a37e26978172"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "source": "8f317473-a873-4752-a3ab-8cbb233b75b8",
+          "target": "5c71cd22-6dbd-4acf-a0d8-20dc0e9f3878",
+          "label": ">",
+          "timeOfCreation": 1740206111949,
+          "id": "be013fbf-df63-4b11-b231-b15242434b15"
         },
         "position": {
           "x": 0,
@@ -2064,5 +2153,5 @@
       }
     ]
   },
-  "timestamp": 1740123103434
+  "timestamp": 1740206165063
 }
