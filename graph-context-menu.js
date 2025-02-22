@@ -1,8 +1,8 @@
-import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurrentGraph, loadGraph, getCurrentGraph, saveGraph, createNode, getJSONFile } from './utils.js';
+import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurrentGraph, loadGraph, getCurrentGraph, saveGraph, createNode, getJSONFile ,exportGraphToMermaid} from './utils.js';
 import { setTitle } from './ui.js';
 
 
-let graphContextMenu, addNodeButton, addEdgeButton, selectAllNodesButton, editModeButton, createGraphButton, viewGraphsButton, exportGraphButton, exportOnlyVisibleGraphButton, importGraphButton, importRemoteGraphButton, importMergeGraphButton, minimumSpanningTreeButton, allEdgesButton
+let graphContextMenu, addNodeButton, addEdgeButton, selectAllNodesButton, editModeButton, createGraphButton, viewGraphsButton, exportGraphButton, exportOnlyVisibleGraphButton, exportVisibleGraphAsMermaidButton, importGraphButton, importRemoteGraphButton, importMergeGraphButton, minimumSpanningTreeButton, allEdgesButton
 
 document.addEventListener('networkNavigatorContentLoaded', function () {
     graphContextMenu = document.getElementById('graph-context-menu');
@@ -13,6 +13,7 @@ document.addEventListener('networkNavigatorContentLoaded', function () {
     viewGraphsButton = document.getElementById('view-saved-graphs');
     exportGraphButton = document.getElementById('export-graph');
     exportOnlyVisibleGraphButton = document.getElementById('export-visible-graph');
+    exportVisibleGraphAsMermaidButton = document.getElementById('export-visible-graph-as-mermaid');
     importGraphButton = document.getElementById('import-graph');
     importRemoteGraphButton = document.getElementById('import-remote-graph');
     importMergeGraphButton = document.getElementById('import-merge-graph');
@@ -35,6 +36,7 @@ export const addGraphContextMenu = (cy) => {
     initialiseEditModeButton(cy);
     initialiseExportGraphButton(cy);
     initialiseExportVisibleGraphButton(cy);
+    initialiseExportVisibleGraphAsMermaidButton(cy);
     initialiseImportGraphButton(cy);
     initialiseImportRemoteGraphButton(cy);
     initialiseImportMergeGraphButton(cy);
@@ -65,6 +67,21 @@ const initialiseExportVisibleGraphButton = (cy) => {
         hideGraphContextMenu(); // Hide the context menu
     });
 }
+
+const initialiseExportVisibleGraphAsMermaidButton = (cy) => {
+    exportVisibleGraphAsMermaidButton.addEventListener('click', () => {
+        const mermaid = exportGraphToMermaid(cy, true); // onlyVisible = false
+        hideGraphContextMenu(); // Hide the context menu
+
+        // TODO copy to clipboard
+        navigator.clipboard.writeText(mermaid);
+        // also write in textarea
+        document.getElementById('mermaid-graph-content').value = mermaid
+    });
+}
+
+
+
 
 
 const initialiseEditModeButton = (cy) => {

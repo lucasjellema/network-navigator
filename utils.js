@@ -229,3 +229,34 @@ export const getJSONFile = (url) => {
     })
 }
 
+export const exportGraphToMermaid = (cy, onlyVisible) => {
+    let mermaid = "graph TD\n";
+
+    // Get all nodes
+    cy.nodes().forEach(node => {
+        if (node.visible() || !onlyVisible) {
+            const label = node.data('label').replace(/\s+/g, '-');
+            mermaid += `  ${label}\n`;
+        }
+    });
+
+    // Get all edges
+    cy.edges().forEach(edge => {
+        if (edge.visible() || !onlyVisible) {
+            const sourceLabel = edge.source().data('label').replace(/\s+/g, '-');
+            const targetLabel = edge.target().data('label').replace(/\s+/g, '-');
+            const source = edge.source().id();
+            const target = edge.target().id();
+            const bidirectional = cy.edges(`[source="${target}"][target="${source}"]`).length > 0;
+            if (bidirectional) {
+                if (source < target) {
+                    mermaid += `  ${sourceLabel} <--> ${targetLabel}\n`;
+                }
+            } else {
+                mermaid += `  ${sourceLabel} --> ${targetLabel}\n`;
+            }
+        }
+    });
+
+    return mermaid;
+}
