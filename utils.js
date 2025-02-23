@@ -314,11 +314,11 @@ function processImportedProjectData(jsonData, treeNode) {
         projectData.children.forEach(importedChild => {
             if (importedChild.type === 'project') {
                 importedChild.id = `proj-${generateGUID()}`; // Unique ID
-                node.children.push(importedChild);
+                treeNode.children.push(importedChild);
             }
         });
     } else {
-        node.children.push(projectData);
+        treeNode.children.push(projectData);
     }
     document.dispatchEvent(new CustomEvent('treeRefresh', { detail: treeNode }));
 }
@@ -386,6 +386,23 @@ export function exportGraphToJsonFile(cy, onlyVisible) {
     URL.revokeObjectURL(url);
 }
 
+export const exportProjectToJsonFile = (node) => {
+    // TODO also export Graph inside project JSON file ??
+    const json = JSON.stringify(node, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    const today = new Date();
+    const dateStr = today.toISOString().slice(0, 10).replace(/-/g, "");
+    if (node.type === "project") {
+        a.download = `network-navigator-project-${node.name}-${dateStr}.json`;
+    } else if (node.type === "root") {
+        a.download = `network-navigator-all-projects-${dateStr}.json`;
+    }
+    a.click();
+    URL.revokeObjectURL(url);
+}
 
 const NETWORK_NAVIGATOR_PROJECTS_STORAGE_KEY = 'network-navigator-projects';   // LocalStorage key for the network-navigator projects data
 

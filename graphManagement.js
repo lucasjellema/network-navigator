@@ -1,4 +1,4 @@
-import { getSavedGraphs, getGraphById, loadGraph, generateGUID, saveCurrentGraph, deleteGraph, importFile,importFileFromRemoteURL, exportGraphToJsonFile, saveProjects, getSavedProjects } from './utils.js';
+import { getSavedGraphs, getGraphById, loadGraph, generateGUID, saveCurrentGraph, deleteGraph, importFile,importFileFromRemoteURL, exportProjectToJsonFile,exportGraphToJsonFile, saveProjects, getSavedProjects } from './utils.js';
 import { setTitle } from './ui.js';
 
 
@@ -245,7 +245,7 @@ function showContextMenu(x, y, node) {
     if (node?.type === "project" || node?.type === "root") {
         exportProjectOption.style.display = "block";
         exportProjectOption.textContent = `Export Project ${node?.type === "root" ? "All Projects" : node?.name}`
-        exportProjectOption.onclick = () => exportGraphToJsonFile(node, false);
+        exportProjectOption.onclick = () => exportProjectToJsonFile(node, false);
     } else {
         exportProjectOption.style.display = "none";
     }
