@@ -82,16 +82,16 @@ const initialiseEditModeButton = (cy) => {
         document.dispatchEvent(new CustomEvent("editModeToggled", { detail: { editMode: editMode } })); // inform any consumers that editMode is toggled
         updateGraphContextMenuForEditMode(cy, editMode);
         editModeButton.innerHTML = editMode ? 'Exit Edit Mode' : 'Enter Edit Mode';
-        hideGraphContextMenu(); // Hide the context menu
+     //   hideGraphContextMenu(); // Hide the context menu
     });
 }
 const updateGraphContextMenuForEditMode = (cy, editMode) => {
     if (!editMode) {
         addNodeButton.style.display = 'none';
-        createGraphButton.style.display = 'none';
+        importMergeGraphButton.style.display = 'none';
     } else {
         addNodeButton.style.display = 'block';
-        createGraphButton.style.display = 'block';
+        importMergeGraphButton.style.display = 'block';
     }
 }
 
@@ -154,10 +154,18 @@ const importMergeGraph = (cy) => {
                     const graphData = JSON.parse(reader.result);
                     // merge newly imported nodes into existing graph
                     const nodeIdMap = {};
+                    let nodes, edges
+if (graphData.elements.nodes) {
+    nodes = graphData.elements.nodes
+    edges = graphData.elements.edges
+} else {
+    nodes = graphData.elements.filter(node => node.group === 'nodes');
+    edges = graphData.elements.filter(edge => edge.group === 'edges');
+}
+
                     // iterate over all nodes in the imported graph
-                    for (const node of graphData.elements) {
+                    for (const node of nodes) {
                         // check if the node already exists in the current graph
-                        if (node.group === 'nodes') {
                             let existingNode = cy.$id(node.data.id)[0] || null;
                             if (!existingNode) {
                                 // find node of same type and with same label
@@ -178,13 +186,11 @@ const importMergeGraph = (cy) => {
                                 cy.add(node);
                                 nodeIdMap[node.data.id] = node.data.id;
                             }
-                        }
                     }
                     console.log(nodeIdMap);
                     console.log('Start on edges');
-                    for (const edge of graphData.elements) {
+                    for (const edge of edges) {
 
-                        if (edge.group === 'edges') {
                             console.log(`Edge ${edge.data.id} is processed:`, edge.data.id);
 
                             const sourceId = edge.data.source;
@@ -214,7 +220,6 @@ const importMergeGraph = (cy) => {
                                 console.log(`Edge ${edge.data.id} already exists:`, existingEdge.data('id'));
                                 mergeNodes(edge, existingEdge);
                             }
-                        }
                     }
 
 
