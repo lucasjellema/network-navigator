@@ -1,9 +1,9 @@
 import { createEdgeWithLabel, createNode, findNodeByProperty } from './utils.js';
-import {processLinkedInProfile} from './content-processors/processLinkedInProfile.js';
-import {processImdbProfile} from './content-processors/processImdbProfile.js';
-import {processOciProfile} from './content-processors/processOciProfile.js';
-import {processGoodreadsProfile} from './content-processors/processGoodreadsProfile.js';
-import {processWikipediaProfile} from './content-processors/processWikipediaProfile.js';
+import { processLinkedInProfile } from './content-processors/processLinkedInProfile.js';
+import { processImdbProfile } from './content-processors/processImdbProfile.js';
+import { processOciProfile } from './content-processors/processOciProfile.js';
+import { processGoodreadsProfile } from './content-processors/processGoodreadsProfile.js';
+import { processWikipediaProfile } from './content-processors/processWikipediaProfile.js';
 import { processSpotifyProfile } from './content-processors/processSpotifyProfile.js';
 
 // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -22,30 +22,24 @@ import { processSpotifyProfile } from './content-processors/processSpotifyProfil
 import { initializeCytoscape } from './graph.js';
 
 document.addEventListener('DOMContentLoaded', function () {
-    fetch("network-navigator.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("network-navigator-app").innerHTML = data;
-    
-        // The DOMContentLoaded event fires when the initial HTML document has been completely parsed, but it does not wait for external resources like images, stylesheets, or scripts fetched asynchronously (e.g., via fetch()).
-    
-    // Why is DOMContentLoaded not enough for fetch()?
-    // DOMContentLoaded fires when the HTML is parsed but before fetch() completes.
-    // The fetch() request is asynchronous, so the external HTML content is loaded after DOMContentLoaded.
-    // Instead of relying on DOMContentLoaded, you should ensure the content is fully loaded before using it.
-        console.log("Content loaded:");
-        // Fire a custom event to notify that content has been loaded
-        document.dispatchEvent(new Event("networkNavigatorContentLoaded"));
-        
+  fetch("network-navigator.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("network-navigator-app").innerHTML = data;
 
-        // find button contentScrapeConfigurationButton
-        const contentScrapeConfigurationButton = document.getElementById("contentScrapeConfigurationButton")
-        if (contentScrapeConfigurationButton) {
-          contentScrapeConfigurationButton.style.display="block"
-          contentScrapeConfigurationButton.addEventListener('click', () => openScrapeConfigurationPanel(cy))
-        }
-      });
-    })
+      // The DOMContentLoaded event fires when the initial HTML document has been completely parsed, but it does not wait for external resources like images, stylesheets, or scripts fetched asynchronously (e.g., via fetch()).
+
+      // Why is DOMContentLoaded not enough for fetch()?
+      // DOMContentLoaded fires when the HTML is parsed but before fetch() completes.
+      // The fetch() request is asynchronous, so the external HTML content is loaded after DOMContentLoaded.
+      // Instead of relying on DOMContentLoaded, you should ensure the content is fully loaded before using it.
+      console.log("Content loaded:");
+      // Fire a custom event to notify that content has been loaded
+      document.dispatchEvent(new Event("networkNavigatorContentLoaded"));
+      initializeScrapeConfiguration()
+
+    });
+})
 
 
 let cy
@@ -62,10 +56,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
   if (message.type === 'imdbProfile') {
     processImdbProfile(cy, message);
-  }  
+  }
   if (message.type === 'ociProfile') {
     processOciProfile(cy, message);
-  }  
+  }
   if (message.type === 'goodreadsProfile') {
     processGoodreadsProfile(cy, message);
   }
@@ -121,24 +115,44 @@ const addLink = (cy, link) => {
   }
   // add edge for hyperlink
   const edge = createEdgeWithLabel(cy, sourceNode, targetNode, targetLabel, true)
-//  edge.data('label', targetLabel);
+  //  edge.data('label', targetLabel);
   edge.data('type', 'hyperlink');
 
-      // run layout for new nodes
-      newNodes.layout({
-        name: 'random',
-        animate: true,
-        animateFilter: function (node, i) {
-            return true;
-        },
-        animationDuration: 1000,
-        animationEasing: undefined,
-        fit: true,
-    })
-        .run();
+  // run layout for new nodes
+  newNodes.layout({
+    name: 'random',
+    animate: true,
+    animateFilter: function (node, i) {
+      return true;
+    },
+    animationDuration: 1000,
+    animationEasing: undefined,
+    fit: true,
+  })
+    .run();
 
 };
 
-const openScrapeConfigurationPanel = (cy) => {
-  alert("go confiure scrape settings")
+const initializeScrapeConfiguration = () => {
+      // find button contentScrapeConfigurationButton
+      const contentScrapeConfigurationButton = document.getElementById("contentScrapeConfigurationButton")
+      if (contentScrapeConfigurationButton) {
+        contentScrapeConfigurationButton.style.display = "block"
+        contentScrapeConfigurationButton.addEventListener('click', () => openScrapeConfigurationPanel(cy))
+      }
+
+
+  const select = document.getElementById("selectContentScraper")
+  select.addEventListener("change", function () {
+    console.log("Selected:", this.value);
+  });
 }
+
+const openScrapeConfigurationPanel = (cy) => {
+
+  const panel = document.getElementById("scrapeConfigurationPanel")
+  panel.style.display = "block"
+
+
+}
+

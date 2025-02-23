@@ -8,7 +8,7 @@
     <script src="cytoscape.min.js"></script>
     <script src="cytoscape-euler.js"></script>
     <script src="cytoscape-dagre.js"></script>
-  
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,9 +22,19 @@
 </head>
 
 <body>
-  <div id="network-navigator-app"></div>
-
-    <script src="side_panel.js" type="module"></script> 
+    <div id="network-navigator-app"></div>
+    <script src="side_panel.js" type="module"></script>
+    <div id="scrapeConfigurationPanel" style="display: none;" class="modal">
+        <h2>Content Scraping Configuration</h2>
+        <!-- TODO select with the scraped sources: spotify, linkedin, imdb, wikipedia goodreads -->
+        <select id="selectContentScraper">
+            <option value="spotify">Spotify</option>
+            <option value="imdb">IMDb</option>
+            <option value="goodreads">Goodreads</option>
+            <option value="linkedin">LinkedIn</option>        
+            <option value="wikipedia">Wikipedia</option>
+          </select>
+    </div>
 </body>
 
 </html>
