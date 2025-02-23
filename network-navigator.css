@@ -33,7 +33,7 @@ body {
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  z-index: 10;
+  z-index: 1200;
   font-family: Arial, sans-serif;
   font-size: 14px;
   padding: 5px 0;
@@ -247,4 +247,63 @@ body {
   border-radius: 4px;
   padding: 8px 16px;
   cursor: pointer;
+}
+
+#tree-container {
+  font-family: Arial, sans-serif;
+  padding: 10px;
+}
+
+.tree-node {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.tree-node span {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.tree-node span:hover {
+  background-color: #e0e0e0;
+}
+
+.tree-node .toggle {
+  font-weight: bold;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.node-label {
+  padding: 5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.node-label:hover {
+  background-color: #e0e0e0;
+}
+
+.node-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.selected {
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+}
+
+#tree-node-tooltip {
+  background: #ffffff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }

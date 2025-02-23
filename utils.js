@@ -39,6 +39,12 @@ export function saveGraph(id, title, description, elements) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(graphs));
 }
 
+export const deleteGraph = (id) => {
+    const graphs = getSavedGraphs();
+    const updatedGraphs = graphs.filter((graph) => graph.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedGraphs));
+}
+
 // Get a graph by ID
 export function getGraphById(id) {
     const graphs = getSavedGraphs();
@@ -259,4 +265,137 @@ export const exportGraphToMermaid = (cy, onlyVisible) => {
     });
 
     return mermaid;
+}
+
+
+export const importFile = async (cy, treeNode) => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".json";
+    input.onchange = () => {
+        const file = input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = () => {
+                try {
+                    const jsonData = JSON.parse(reader.result);
+                    // check if this file is project or graph file
+                    console.log(jsonData)
+                    // if jsonData has property elements then it is a graph file
+                    const isGraph = (jsonData.elements || jsonData.type == "network-navigator.graph")
+                    const isProject = (jsonData.children || jsonData.type == "project" || jsonData.type == "root")
+
+                    if (isGraph) {
+                        processImportedGraphData(jsonData, cy, treeNode);
+                    }
+                    // TODO if project nodes are of type Graph they refer to a graph that itself may not exist in the receiving environment - the graph needs to be imported separately
+                    if (isProject) {
+                        processImportedProjectData(jsonData, treeNode);
+                    }
+
+                } catch (error) {
+                    console.error('Invalid JSON file:', error);
+                    alert('Failed to import file. Please make sure the file is a valid JSON.');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+    };
+    input.click();
+}
+
+function processImportedProjectData(jsonData, treeNode) {
+    const projectData = jsonData;
+    if (!treeNode.children) treeNode.children = [];
+    //TODO reassign new id values
+    // check if file contains a root project that itself has multiple projects
+    if (projectData.type === 'root') {
+        projectData.children.forEach(importedChild => {
+            if (importedChild.type === 'project') {
+                importedChild.id = `proj-${generateGUID()}`; // Unique ID
+                node.children.push(importedChild);
+            }
+        });
+    } else {
+        node.children.push(projectData);
+    }
+    document.dispatchEvent(new CustomEvent('treeRefresh', { detail: treeNode }));
+}
+
+export async function importFileFromRemoteURL(cy, treeNode, remoteURL) {
+    let remoteFileURL = remoteURL || prompt("Enter URL for remote Web Memo Project:");
+    try {
+        const jsonData = await getJSONFile(remoteFileURL);
+        const isGraph = (jsonData.elements || jsonData.type == "network-navigator.graph")
+        const isProject = (jsonData.children || jsonData.type == "project" || jsonData.type == "root")
+
+        if (isGraph) {
+            processImportedGraphData(jsonData, cy, treeNode);
+        }
+        // TODO if project nodes are of type Graph they refer to a graph that itself may not exist in the receiving environment - the graph needs to be imported separately
+        if (isProject) {
+            processImportedProjectData(jsonData, treeNode);
+        }
+
+    } catch (error) {
+        console.error('Invalid JSON file:', error);
+        alert(`Failed to import graph ${remoteGraphURL}. Please make sure the file is a valid JSON.`);
+    }
+}
+
+function processImportedGraphData(graphData, cy, treeNode) {
+    const newId = generateGUID(); // TODO only assign new id if the current id already occurs ?!
+    saveGraph(newId, graphData.title, graphData.description, graphData.elements);
+    console.log('Graph successfully imported:', graphData);
+    loadGraph(cy, getGraphById(newId));
+    // create tree node for new graph under treeNode
+    const graphTreeNode = { id: newId, name: graphData.title, type: "graph", show: true };
+    if (!treeNode.children) treeNode.children = [];
+    treeNode.children.push(graphTreeNode);
+
+    // TODO dispatch event to refresh tree
+    document.dispatchEvent(new CustomEvent('treeRefresh', { detail: treeNode }));
+}
+
+/**
+ * Exports the current graph to a JSON file for download
+ * @param {Core} cy - The cytoscape instance
+ * @param {boolean} onlyVisible - If true, only export the visible elements
+ */
+export function exportGraphToJsonFile(cy, onlyVisible) {
+    let graphJson = getCurrentGraph(cy);
+
+    if (onlyVisible) graphJson.elements = cy.elements(':visible').map(ele => ele.json());
+    graphJson.type = "network-navigator.graph"
+    graphJson.version = "1.0.0"
+    graphJson.dateOfExport = Date.now()
+
+    //
+    // Convert JSON to a downloadable file
+    const blob = new Blob([JSON.stringify(graphJson, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    // Create a temporary link to download the file
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'graph.json'; // File name for the download
+    a.click();
+
+    // Revoke the object URL to free up memory
+    URL.revokeObjectURL(url);
+}
+
+
+const NETWORK_NAVIGATOR_PROJECTS_STORAGE_KEY = 'network-navigator-projects';   // LocalStorage key for the network-navigator projects data
+
+// Get all saved projects from local storage
+export function getSavedProjects() {
+    const projects = localStorage.getItem(NETWORK_NAVIGATOR_PROJECTS_STORAGE_KEY);
+    return projects && "undefined" !== projects ? JSON.parse(projects) : [];
+}
+
+// Save projects to  local storage
+export function saveProjects(data) {
+    localStorage.setItem(NETWORK_NAVIGATOR_PROJECTS_STORAGE_KEY, JSON.stringify(data));
 }

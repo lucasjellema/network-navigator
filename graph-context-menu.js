@@ -2,20 +2,16 @@ import { getSelectedNodes, getSavedGraphs, getGraphById, generateGUID, saveCurre
 import { setTitle } from './ui.js';
 
 
-let graphContextMenu, addNodeButton, addEdgeButton, selectAllNodesButton, editModeButton, createGraphButton, viewGraphsButton, exportGraphButton, exportOnlyVisibleGraphButton, exportVisibleGraphAsMermaidButton, importGraphButton, importRemoteGraphButton, importMergeGraphButton, minimumSpanningTreeButton, allEdgesButton
+let graphContextMenu, addNodeButton, addEdgeButton, selectAllNodesButton, editModeButton, exportGraphButton, exportOnlyVisibleGraphButton, exportVisibleGraphAsMermaidButton,importMergeGraphButton, minimumSpanningTreeButton, allEdgesButton
 
 document.addEventListener('networkNavigatorContentLoaded', function () {
     graphContextMenu = document.getElementById('graph-context-menu');
     addNodeButton = document.getElementById('add-node');
     selectAllNodesButton = document.getElementById('select-all-nodes');
     editModeButton = document.getElementById('edit-mode-toggle');
-    createGraphButton = document.getElementById('create-new-graph');
-    viewGraphsButton = document.getElementById('view-saved-graphs');
     exportGraphButton = document.getElementById('export-graph');
     exportOnlyVisibleGraphButton = document.getElementById('export-visible-graph');
     exportVisibleGraphAsMermaidButton = document.getElementById('export-visible-graph-as-mermaid');
-    importGraphButton = document.getElementById('import-graph');
-    importRemoteGraphButton = document.getElementById('import-remote-graph');
     importMergeGraphButton = document.getElementById('import-merge-graph');
     minimumSpanningTreeButton = document.getElementById('minimum-spanning-tree')
     allEdgesButton = document.getElementById('all-edges')
@@ -29,16 +25,12 @@ let clickedPosition
 let editMode = false
 
 export const addGraphContextMenu = (cy) => {
-    initialiseViewGraphsButton(cy);
-    initialiseCreateGraphsButton(cy);
     initialiseAddNodeButton(cy);
     initialiseSelectAllNodesButton(cy);
     initialiseEditModeButton(cy);
     initialiseExportGraphButton(cy);
     initialiseExportVisibleGraphButton(cy);
     initialiseExportVisibleGraphAsMermaidButton(cy);
-    initialiseImportGraphButton(cy);
-    initialiseImportRemoteGraphButton(cy);
     initialiseImportMergeGraphButton(cy);
     initialiseMinimumSpanningTreeButton(cy);
     initialiseAllEdgesButton(cy);
@@ -278,12 +270,6 @@ const initialiseSelectAllNodesButton = (cy) => {
     });
 }
 
-const initialiseCreateGraphsButton = (cy) => {
-    createGraphButton.addEventListener('click', () => {
-        createNewGraph(cy);
-        hideGraphContextMenu(); // Hide the context menu
-    });
-}
 
 const initialiseMinimumSpanningTreeButton = (cy) => {
     minimumSpanningTreeButton.addEventListener('click', () => {
@@ -332,64 +318,9 @@ export const hideGraphListModal = () => {
     graphListModal.style.display = 'none';
 }
 
-const initialiseViewGraphsButton = (cy) => {
-    viewGraphsButton.addEventListener('click', (event) => {
-        hideGraphContextMenu();
-        const savedGraphs = getSavedGraphs();
-        const graphList = savedGraphs
-            .map((graph) => `<div class="graph-item" data-id="${graph.id}">${graph.title} - ${graph.description}</div>`)
-            .join('');
-
-        const graphListModal = document.getElementById('graphs-overview');
-        graphListModal.innerHTML = `
-      <div style="background: white; padding: 20px; border: 1px solid #ccc;">
-        <h3>Saved Graphs</h3>
-        ${graphList || '<p>No graphs saved.</p>'}
-        <button id="close-modal">Close</button>
-      </div>
-    `;
-        graphListModal.style.left = `${event.x + 15}px`;
-        graphListModal.style.top = `${event.y + 15}px`;
-        graphListModal.style.display = "block";
-        // Handle graph selection
-        document.querySelectorAll('.graph-item').forEach((item) => {
-            item.addEventListener('click', (event) => {
-                const graphId = event.target.getAttribute('data-id');
-                const selectedGraph = getGraphById(graphId);
-                if (selectedGraph) {
-                    loadGraph(cy, selectedGraph);
-                }
-                hideGraphListModal();
-            });
-        });
-
-        // Close modal
-        document.getElementById('close-modal').addEventListener('click', () => {
-            hideGraphListModal();
-        });
-
-
-    });
-}
 
 export const hideGraphContextMenu = () => {
     graphContextMenu.style.display = 'none';
-}
-
-export async function importGraphFromRemoteURL(remoteGraphURL, cy) {
-    try {
-        const graphData = await getJSONFile(remoteGraphURL);
-        // assign new graphData.id ??
-        const newId = generateGUID();
-        saveGraph(newId, graphData.title, graphData.description, graphData.elements);
-        console.log('Graph successfully imported:', graphData);
-        const newGraph = getGraphById(graphData.id)
-        console.log('newgraph ', newGraph)
-        loadGraph(cy, graphData);
-    } catch (error) {
-        console.error('Invalid JSON file:', error);
-        alert(`Failed to import graph ${remoteGraphURL}. Please make sure the file is a valid JSON.`);
-    }
 }
 
 function exportGraphToJsonFile(cy, onlyVisible) {

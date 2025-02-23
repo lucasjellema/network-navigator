@@ -1,19 +1,21 @@
 import { addNodeContextMenu, hideNodeContextMenu } from "./node-context-menu.js";
-import { addGraphContextMenu, hideGraphContextMenu, hideGraphListModal, importGraphFromRemoteURL } from "./graph-context-menu.js";
+import { addGraphContextMenu, hideGraphContextMenu, hideGraphListModal } from "./graph-context-menu.js";
 import { setTitle } from './ui.js';
 
-import { saveCurrentGraph, getCurrentGraph, loadGraph, getQueryParam, addMermaidContentToCurrentGraph } from "./utils.js";
+import { saveCurrentGraph, getCurrentGraph, loadGraph, getQueryParam, addMermaidContentToCurrentGraph , importFileFromRemoteURL} from "./utils.js";
 import { addEdgeContextMenu, hideEdgeContextMenu } from "./edge-context-menu.js";
 import { hideElementEditModal } from "./modal-element-editor.js";
 import { hideElementPropertiesModal } from "./modal-element-properties.js"
 import { initializeFilter } from "./filter.js";
 import { initializeLayout } from "./layout.js";
+import { initializeGraphManagement } from "./graphManagement.js";
 
 let cy
 document.addEventListener("networkNavigatorContentLoaded", async () => {
     cy = initializeCytoscape();
     initializeFilter(cy);
     initializeLayout(cy);
+    const treeRootNode = initializeGraphManagement(cy);
 
     // Save graph button
     document.getElementById('save-graph').addEventListener('click', () => {
@@ -26,7 +28,7 @@ document.addEventListener("networkNavigatorContentLoaded", async () => {
     const remoteURL = getQueryParam("remoteURL");
     if (remoteURL) {
         console.log("load graph from ", remoteURL)
-        const _ = await importGraphFromRemoteURL(remoteURL, cy)
+        const _ = await importFileFromRemoteURL(cy, treeRootNode ,remoteURL); // TODO set tree node to root of tree??
     }
 })
 
