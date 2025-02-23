@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Fire a custom event to notify that content has been loaded
         document.dispatchEvent(new Event("networkNavigatorContentLoaded"));
         
+
+        // find button contentScrapeConfigurationButton
+        const contentScrapeConfigurationButton = document.getElementById("contentScrapeConfigurationButton")
+        if (contentScrapeConfigurationButton) {
+          contentScrapeConfigurationButton.style.display="block"
+          contentScrapeConfigurationButton.addEventListener('click', () => openScrapeConfigurationPanel(cy))
+        }
       });
     })
 
@@ -132,3 +139,6 @@ const addLink = (cy, link) => {
 
 };
 
+const openScrapeConfigurationPanel = (cy) => {
+  alert("go confiure scrape settings")
+}
