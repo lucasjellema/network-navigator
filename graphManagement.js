@@ -431,6 +431,7 @@ function hideTreePanel() {
 
 const typeImageMap = {
     "project": "folder.png",
+    "graph": "graph.png",
     "object": "object.png",
     "page": "page.png",
     "link": "link.png",
