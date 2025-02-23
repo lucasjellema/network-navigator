@@ -133,13 +133,21 @@ const addLink = (cy, link) => {
 
 };
 
+let contentScrapeConfigurationButton
 const initializeScrapeConfiguration = () => {
-      // find button contentScrapeConfigurationButton
-      const contentScrapeConfigurationButton = document.getElementById("contentScrapeConfigurationButton")
-      if (contentScrapeConfigurationButton) {
-        contentScrapeConfigurationButton.style.display = "block"
-        contentScrapeConfigurationButton.addEventListener('click', () => openScrapeConfigurationPanel(cy))
-      }
+  // find button contentScrapeConfigurationButton
+  contentScrapeConfigurationButton = document.getElementById("contentScrapeConfigurationButton")
+
+  document.addEventListener('click', (event) => {
+    // TODO if click is not on panel then
+    const panel = document.getElementById("scrapeConfigurationPanel")
+
+    if (!panel.contains(event.target) && !contentScrapeConfigurationButton.contains(event.target)) hideScrapeConfigurationPanel()
+  })
+  if (contentScrapeConfigurationButton) {
+    contentScrapeConfigurationButton.style.display = "block"
+    contentScrapeConfigurationButton.addEventListener('click', () => openScrapeConfigurationPanel(cy))
+  }
 
 
   const select = document.getElementById("selectContentScraper")
@@ -149,10 +157,16 @@ const initializeScrapeConfiguration = () => {
 }
 
 const openScrapeConfigurationPanel = (cy) => {
-
   const panel = document.getElementById("scrapeConfigurationPanel")
   panel.style.display = "block"
+}
+
+const hideScrapeConfigurationPanel = (cy) => {
+
+  const panel = document.getElementById("scrapeConfigurationPanel")
+  panel.style.display = "none"
 
 
 }
+
 
