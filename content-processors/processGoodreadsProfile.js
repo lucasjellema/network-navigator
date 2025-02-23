@@ -62,8 +62,7 @@ function processBook(cy, profile, newNodes) {
             }
             if (similarBook.image) similarBookNode.data('image', similarBook.image);
             if (similarBook.rating) similarBookNode.data('rating', similarBook.rating);
-            const similarBookEdge = createEdge(cy, bookNode, similarBookNode);
-            similarBookEdge.data('label', 'similar to');
+            const similarBookEdge = createEdgeWithLabel(cy, bookNode, similarBookNode,'similar to', true);  
 
             let authorOfSimilarBookNode = findNodeByProperties(cy, {'label': similarBook.author, 'type': 'person'});// findNodeByProperty(cy, 'label', similarBook.author);
             if (!authorOfSimilarBookNode) {
