@@ -30,11 +30,155 @@
             <option value="spotify">Spotify</option>
             <option value="imdb">IMDb</option>
             <option value="goodreads">Goodreads</option>
-            <option value="linkedin">LinkedIn</option>        
+            <option value="linkedin">LinkedIn</option>
             <option value="wikipedia">Wikipedia</option>
-          </select>
-<!-- TODO panel per content source - with checkboxes to indicate what should be scraped/processed -->
+        </select>
+        <!-- TODO panel per content source - with checkboxes to indicate what should be scraped/processed -->
+        <div id="spotifyConfig">
+            <h3>Spotify Scrape Settings</h3>
 
+
+            // checkboxes for artist with discography (albums), similar artists,
+            // song: recommended, performed by, written by, produced by , album, artist, fans also like (artists)
+
+
+        </div>
+        <div id="goodreadsConfig">
+            <h3>Goodreads Scrape Settings</h3>
+            <div class="panel">
+                <h3>Author</h3>
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                    <label><input type="radio" name="author" value="update" checked> Update</label>
+                    <label style="margin-left: 16px;"><input type="radio" name="author" value="add"> Add</label>
+                    <label style="margin-left: 16px;"><input type="radio" name="author" value="none">
+                        None</label>
+                </div>
+                <h4>Genres</h4>
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                    <label style="margin-right: 16px;"><input type="radio" name="author-genres" value="add" checked>
+                        Add</label>
+                    <label style="margin-right: 16px;"><input type="radio" name="author-genres" value="edge">
+                        Edge</label>
+                    <label style="margin-right: 16px;"><input type="radio" name="author-genres" value="tags">
+                        Tags</label>
+                    <label style="margin-right: 16px;"><input type="radio" name="author-genres" value="property">
+                        Property</label>
+                    <label><input type="radio" name="author-genres" value="none"> None</label>
+                </div>
+<!-- could include country and / or state, city of birth? -->
+
+                <div class="sub-options">
+                    <h4>Books</h4>
+
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <label style="margin-right: 16px;"
+                            title="Select to update books if they exist and add books if they do not yet exist"><input
+                                type="radio" name="books" value="update" checked>
+                            Update</label>
+                        <label style="margin-right: 16px;" title="Select to add books if they do not yet exist"><input
+                                type="radio" name="books" value="add"> Add</label>
+                        <label style="margin-right: 16px;"
+                            title="Select to only create an edge from the author to the book if the book is already there "><input
+                                type="radio" name="books" value="edge"> Edge</label>
+                        <label><input type="radio" name="books" value="none"> None</label>
+                    </div>
+                    <br>
+                    <label title="Only include books if they have a rating of at least this value">For rating at least
+                        <span id="book-rating-value"></span> <input type="range" min="1" max="5" step="0.5"
+                            id="book-rating"
+                            oninput="document.getElementById('book-rating-value').innerText = this.value;"></label>
+                    <br>
+                    <label title="Do not process more than the specified number of books">Limit the number of books to
+                        (no more than)<input type="number" min="1" max="159" size="3" id="book-limit"></label>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Book</h3>
+                <div style="display: flex; flex-direction: row; align-items: center;">
+                    <label style="margin-right: 16px;"><input type="radio" name="book" value="update" checked>
+                        Update</label>
+                    <label style="margin-right: 16px;"><input type="radio" name="book" value="add"> Add</label>
+                    <label><input type="radio" name="book" value="none"> None</label>
+                </div>
+
+                <div class="sub-options">
+                    <h4>Author</h4>
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <label style="margin-right: 16px;"><input type="radio" name="book-author" value="update" checked>
+                            Update</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="book-author" value="add">
+                            Add</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="book-author" value="edge">
+                            Edge</label>
+                        <label><input type="radio" name="book-author" value="none" > None</label>
+                    </div>
+
+                    <h4>Genres</h4>
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <label style="margin-right: 16px;"><input type="radio" name="genres" value="add" checked>
+                            Add</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="genres" value="edge">
+                            Edge</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="genres" value="tags">
+                            Tags</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="genres" value="property">
+                            Property</label>
+                        <label><input type="radio" name="genres" value="none"> None</label>
+                    </div>
+                    <h4>Setting</h4>
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <label style="margin-right: 16px;"><input type="radio" name="setting" value="add" checked>
+                            Add</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="setting" value="edge">
+                            Edge</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="setting" value="tags">
+                            Tags</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="setting" value="property">
+                            Property</label>
+                        <label><input type="radio" name="setting" value="none"> None</label>
+                    </div>
+                    <h4>Characters</h4>
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <label style="margin-right: 16px;"><input type="radio" name="characters" value="add" checked>
+                            Add</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="characters" value="edge">
+                            Edge</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="characters" value="tags">
+                            Tags</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="characters" value="property">
+                            Property</label>
+                        <label><input type="radio" name="characters" value="none"> None</label>
+                    </div>
+                    <h4>Similar Books</h4>
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <label style="margin-right: 16px;"><input type="radio" name="similar-books" value="update" checked>
+                            Update</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="similar-books" value="add">
+                            Add</label>
+                        <label style="margin-right: 16px;"><input type="radio" name="similar-books" value="edge">
+                            Edge</label>
+                        <label><input type="radio" name="similar-books" value="none" > None</label>
+                    </div>
+                    <br>
+                    <label  title="Only include similars books if they have a rating of at least this value">For rating at least<input type="range" min="1" max="5" step="0.5" id="similar-rating"></label>
+                    <br>
+                    <label title="Do not process more than the specified number of similar books">Limit the number of similar books to
+                        (no more than)<input type="number" min="1" size="2" id="similar-limit" ></label>
+                </div>
+            </div>
+        </div>
+
+        <div id="imdbConfig">
+            <h3>IMDb Scrape Settings</h3>
+            <div class="panel">
+            </div>
+        </div>
+        <div id="linkedinConfig">
+            <h3>LinkedIn Scrape Settings</h3>
+            <div class="panel">
+            </div>
+        </div>
     </div>
 </body>
 

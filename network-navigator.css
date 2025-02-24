@@ -92,12 +92,14 @@ body {
 
 .modal input,
 .modal datalist {
-  width: 100%;
   margin-bottom: 10px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+/*  width: 100%;
+*/
+
 
 .modal button {
   padding: 10px 20px;
@@ -318,4 +320,17 @@ body {
   font-size: 12px;
   color: #333;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.panel {
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 380px;
+}
+.section {
+  margin-bottom: 15px;
+}
+.sub-options {
+  margin-left: 20px;
 }

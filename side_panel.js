@@ -134,13 +134,24 @@ const addLink = (cy, link) => {
 };
 
 let contentScrapeConfigurationButton
+let panel
+
+const hideAllScrapeConfiguration = () => {
+  // hide all divs
+  if (!panel)panel = document.getElementById("scrapeConfigurationPanel")
+
+  const divs = panel.querySelectorAll(":scope >div");
+  divs.forEach((div) => {
+    div.style.display = "none";
+  });
+}
 const initializeScrapeConfiguration = () => {
   // find button contentScrapeConfigurationButton
   contentScrapeConfigurationButton = document.getElementById("contentScrapeConfigurationButton")
 
   document.addEventListener('click', (event) => {
     // TODO if click is not on panel then
-    const panel = document.getElementById("scrapeConfigurationPanel")
+    panel = document.getElementById("scrapeConfigurationPanel")
 
     if (!panel.contains(event.target) && !contentScrapeConfigurationButton.contains(event.target)) hideScrapeConfigurationPanel()
   })
@@ -148,11 +159,17 @@ const initializeScrapeConfiguration = () => {
     contentScrapeConfigurationButton.style.display = "block"
     contentScrapeConfigurationButton.addEventListener('click', () => openScrapeConfigurationPanel(cy))
   }
-
+  hideAllScrapeConfiguration()
 
   const select = document.getElementById("selectContentScraper")
   select.addEventListener("change", function () {
     console.log("Selected:", this.value);
+    hideAllScrapeConfiguration()
+    // show the selected div
+    const selectedDiv = document.getElementById(this.value + "Config");
+    if (selectedDiv) {
+      selectedDiv.style.display = "block";
+    }
   });
 }
 
@@ -164,6 +181,27 @@ const openScrapeConfigurationPanel = (cy) => {
 const hideScrapeConfigurationPanel = (cy) => {
 
   const panel = document.getElementById("scrapeConfigurationPanel")
+console.log("collect all value and store in localstorage")
+
+
+// read value set in radio group similar-books 
+const similarBooks = document.querySelector('input[name="similar-books"]:checked').value;
+// read value set in radio group characters 
+const characters = document.querySelector('input[name="characters"]:checked').value;
+// read value set in radio group author 
+const author = document.querySelector('input[name="author"]:checked').value;
+// read value set in radio group books 
+const books = document.querySelector('input[name="books"]:checked').value;
+console.log("collect all value and store in localstorage")
+const scrapeConfiguration = {
+  similarBooks: similarBooks,
+  characters: characters,
+  author: author,
+  books: books
+}
+
+localStorage.setItem("scrapeConfiguration", JSON.stringify(scrapeConfiguration));
+console.log("collect all value and store in localstorage", scrapeConfiguration)
   panel.style.display = "none"
 
 
