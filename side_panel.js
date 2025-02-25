@@ -138,7 +138,7 @@ let panel
 
 const hideAllScrapeConfiguration = () => {
   // hide all divs
-  if (!panel)panel = document.getElementById("scrapeConfigurationPanel")
+  if (!panel) panel = document.getElementById("scrapeConfigurationPanel")
 
   const divs = panel.querySelectorAll(":scope >div");
   divs.forEach((div) => {
@@ -176,35 +176,97 @@ const initializeScrapeConfiguration = () => {
 const openScrapeConfigurationPanel = (cy) => {
   const panel = document.getElementById("scrapeConfigurationPanel")
   panel.style.display = "block"
+  const scrapeConfiguration = getScrapeConfiguration()
+  // TODO prepare scrape configuration panels based on scrapeConfiguration
+  prepareGoodreadsPanelFromScrapeConfiguration(scrapeConfiguration)
 }
+
 
 const hideScrapeConfigurationPanel = (cy) => {
-
   const panel = document.getElementById("scrapeConfigurationPanel")
-console.log("collect all value and store in localstorage")
-
-
-// read value set in radio group similar-books 
-const similarBooks = document.querySelector('input[name="similar-books"]:checked').value;
-// read value set in radio group characters 
-const characters = document.querySelector('input[name="characters"]:checked').value;
-// read value set in radio group author 
-const author = document.querySelector('input[name="author"]:checked').value;
-// read value set in radio group books 
-const books = document.querySelector('input[name="books"]:checked').value;
-console.log("collect all value and store in localstorage")
-const scrapeConfiguration = {
-  similarBooks: similarBooks,
-  characters: characters,
-  author: author,
-  books: books
+  console.log("collect all value and store in localstorage")
+  const scrapeConfiguration = getScrapeConfiguration()
+  addGoodreadsScrapeConfiguration(scrapeConfiguration)
+  // TODO add other scrapeconfigurations
+  saveScrapeConfiguration(scrapeConfiguration)
+  console.log("collect all value and store in localstorage", scrapeConfiguration)
+  panel.style.display = "none"
 }
 
-localStorage.setItem("scrapeConfiguration", JSON.stringify(scrapeConfiguration));
-console.log("collect all value and store in localstorage", scrapeConfiguration)
-  panel.style.display = "none"
+
+const prepareGoodreadsPanelFromScrapeConfiguration = (scrapeConfiguration) => {
+  // set checked value in radio group author based on scrapeConfiguration.goodreads.author
+  const author = document.querySelector('input[name="author"][value="' + scrapeConfiguration.goodreads?.author??"update" + '"]');
+  if (author) {
+    author.checked = true;
+  }
+
+  // set checked value in radio group books based on scrapeConfiguration.goodreads.books
+  const books = document.querySelector('input[name="books"][value="' + scrapeConfiguration.goodreads?.books??"update" + '"]');
+  if (books) {
+    books.checked = true;
+  }
+
+  const bookRating = document.getElementById("book-rating");
+  bookRating.value = scrapeConfiguration.goodreads?.bookRating;
+  // set value for bookLimit
+  const bookLimit = document.getElementById("book-limit");
+  bookLimit.value = scrapeConfiguration.goodreads?.bookLimit;
 
 
+
+  // set value for similarLimit
+  const similarLimit = document.getElementById("similar-limit");
+  similarLimit.value = scrapeConfiguration.goodreads?.similarLimit;
+  // set value for similarLimit
+  const similarRating = document.getElementById("similar-rating");
+  similarRating.value = scrapeConfiguration.goodreads?.similarRating;
+
+}
+
+const addGoodreadsScrapeConfiguration = (scrapeConfiguration) => {
+
+  const author = document.querySelector('input[name="author"]:checked').value;
+  // read value set in radio group books 
+  const books = document.querySelector('input[name="books"]:checked').value;
+  const bookRating = document.getElementById("book-rating").value;
+  // get value from input book-limit
+  const bookLimit = document.getElementById("book-limit").value;
+
+
+  const book = document.querySelector('input[name="book"]:checked').value;
+  const bookAuthor = document.querySelector('input[name="book-author"]:checked').value;
+  const genres = document.querySelector('input[name="genres"]:checked').value;
+  const setting = document.querySelector('input[name="setting"]:checked').value;
+
+  const characters = document.querySelector('input[name="characters"]:checked').value;
+  const similarBooks = document.querySelector('input[name="similar-books"]:checked').value;
+  const similarLimit = document.getElementById("similar-limit").value;
+  const similarRating = document.getElementById("similar-rating").value;
+
+
+  scrapeConfiguration.goodreads = {
+    author: author,
+    books: books,
+    bookRating: bookRating,
+    bookLimit: bookLimit,
+    book: book,
+    bookAuthor: bookAuthor,
+    genres: genres,
+    setting: setting,
+    characters: characters,
+    similarBooks: similarBooks,
+    similarLimit: similarLimit,
+    similarRating: similarRating
+  }
+
+}
+const saveScrapeConfiguration = (scrapeConfiguration) => {
+  localStorage.setItem("scrapeConfiguration", JSON.stringify(scrapeConfiguration));
+}
+const getScrapeConfiguration = () => {
+  const scrapeConfiguration = localStorage.getItem("scrapeConfiguration");
+  return scrapeConfiguration && "undefined" !== scrapeConfiguration ? JSON.parse(scrapeConfiguration) : {};
 }
 
 
