@@ -1,21 +1,22 @@
 import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from '../utils.js';
 
-export const processGoodreadsProfile = (cy, message) => {
+export const processGoodreadsProfile = (cy, message, goodreadsScrapeConfiguration) => {
     const profile = message.profile;
     const contentDiv = document.getElementById('content');
     contentDiv.textContent = `
           Profile: ${JSON.stringify(message.profile)}
           Goodreads URL: ${profile.pageUrl}
+          Scrapeconfiguration: ${JSON.stringify(goodreadsScrapeConfiguration)}
         `;
 
     let newNodes = cy.collection();
     if (profile.subtype === 'book') {
-        newNodes =processBook(cy, profile, newNodes);
-    }            
+        newNodes = processBook(cy, profile, newNodes, goodreadsScrapeConfiguration);
+    }
     if (profile.subtype === 'person') {
-        newNodes =processAuthor(cy, profile, newNodes);
-    }            
-    
+        newNodes = processAuthor(cy, profile, newNodes, goodreadsScrapeConfiguration);
+    }
+
     // run layout for new nodes
     newNodes.layout({
         name: 'random',
@@ -29,8 +30,8 @@ export const processGoodreadsProfile = (cy, message) => {
     })
         .run();
 }
-function processBook(cy, profile, newNodes) {
-    let bookNode = findNodeByProperties(cy, {'label': profile.title, 'type': 'book'});
+function processBook(cy, profile, newNodes, goodreadsScrapeConfiguration) {
+    let bookNode = findNodeByProperties(cy, { 'label': profile.title, 'type': 'book' });
     if (!bookNode) {
         bookNode = createNode(cy, profile.title);
         bookNode.data('url', profile.pageUrl);
@@ -45,13 +46,91 @@ function processBook(cy, profile, newNodes) {
     if (profile.truncatedContent) bookNode.data('synopsis', profile.truncatedContent);
     if (profile.publicationInfo) bookNode.data('publicationInfo', profile.publicationInfo);
     if (profile.rating) bookNode.data('rating', profile.rating);
+    // GENRES - add, edge  tags, property
+    if (profile.genres) {
+        if (goodreadsScrapeConfiguration.genres === "tags") {
+            bookNode.genres = profile.genres
+        }
+        if (goodreadsScrapeConfiguration.genres === "property") {
+            bookNode.genres = profile.genres.map((genre) => genre).join(', ')
+        }
+        if (goodreadsScrapeConfiguration.genres === "edge" || goodreadsScrapeConfiguration.genres === "add") {
+            // for each genre, find node
+            for (const genre of profile.genres) {
+                let genreNode = findNodeByProperties(cy, { 'label': genre, 'type': 'genre' });
+
+                // if node found, then create edge 
+
+                if (!genreNode && goodreadsScrapeConfiguration.genres === "add") {
+                    genreNode = createNode(cy, genre);
+                    genreNode.data('type', 'genre');
+                    genreNode.data('shape', 'round-rectangle');
+                    newNodes = newNodes.union(genreNode);
+                    
+                }
+                const bookGenreEdge = createEdgeWithLabel(cy, bookNode, genreNode, 'is', true);
+            }
+        }
+    }
+
+    if (profile.setting) {
+        if (goodreadsScrapeConfiguration.setting === "tags") {
+            bookNode.setting = profile.setting
+        }
+        if (goodreadsScrapeConfiguration.setting === "property") {
+            bookNode.setting = profile.setting.map((setting) => setting).join(', ')
+        }
+        if (goodreadsScrapeConfiguration.setting === "edge" || goodreadsScrapeConfiguration.setting === "add") {
+            // for each setting, find node
+            for (const setting of profile.setting.split(',')) {
+                let settingNode = findNodeByProperties(cy, { 'label': setting, 'type': 'setting' });
+
+                // if node found, then create edge 
+
+                if (!settingNode && goodreadsScrapeConfiguration.setting === "add") {
+                    settingNode = createNode(cy, setting);
+                    settingNode.data('type', 'setting');
+                    settingNode.data('shape', 'round-rectangle');
+                    newNodes = newNodes.union(settingNode);
+                    
+                }
+                const bookSettingEdge = createEdgeWithLabel(cy, bookNode, settingNode, 'is', true);
+            }
+        }
+    }
+    if (profile.characters) {
+        if (goodreadsScrapeConfiguration.characters === "tags") {
+            bookNode.characters = profile.characters
+        }
+        if (goodreadsScrapeConfiguration.characters === "property") {
+            bookNode.characters = profile.characters.map((character) => character).join(', ')
+        }
+        if (goodreadsScrapeConfiguration.characters === "edge" || goodreadsScrapeConfiguration.characters === "add") {
+            // for each character, find node
+            for (const character of profile.characters.split(',')) {
+                let characterNode = findNodeByProperties(cy, { 'label': character, 'type': 'character' });
+    
+                // if node found, then create edge 
+    
+                if (!characterNode && goodreadsScrapeConfiguration.characters === "add") {
+                    characterNode = createNode(cy, character);
+                    characterNode.data('type', 'character');
+                    characterNode.data('shape', 'round-rectangle');
+                    newNodes = newNodes.union(characterNode);
+                    
+                }
+                const bookcharacterEdge = createEdgeWithLabel(cy, bookNode, characterNode, 'is', true);
+            }
+        }
+    }
 
     if (profile.similarBooks) {
         let i = 0;
+        const upperLimit = goodreadsScrapeConfiguration.similarLimit ?? 4
         for (const similarBook of profile.similarBooks) {
-            if (i++ > 4) break;
+            if (i++ > upperLimit) break;
             // TODO break after a user defined number
-            let similarBookNode = findNodeByProperties(cy, {'label': similarBook.title, 'type': 'book'}); 
+            let similarBookNode = findNodeByProperties(cy, { 'label': similarBook.title, 'type': 'book' });
             if (!similarBookNode) {
                 similarBookNode = createNode(cy, similarBook.title);
                 similarBookNode.data('url', similarBook.pageUrl);
@@ -62,9 +141,9 @@ function processBook(cy, profile, newNodes) {
             }
             if (similarBook.image) similarBookNode.data('image', similarBook.image);
             if (similarBook.rating) similarBookNode.data('rating', similarBook.rating);
-            const similarBookEdge = createEdgeWithLabel(cy, bookNode, similarBookNode,'similar to', true);  
+            const similarBookEdge = createEdgeWithLabel(cy, bookNode, similarBookNode, 'similar to', true);
 
-            let authorOfSimilarBookNode = findNodeByProperties(cy, {'label': similarBook.author, 'type': 'person'});// findNodeByProperty(cy, 'label', similarBook.author);
+            let authorOfSimilarBookNode = findNodeByProperties(cy, { 'label': similarBook.author, 'type': 'person' });// findNodeByProperty(cy, 'label', similarBook.author);
             if (!authorOfSimilarBookNode) {
                 authorOfSimilarBookNode = createNode(cy, similarBook.author);
                 authorOfSimilarBookNode.data('type', 'person');
@@ -72,14 +151,14 @@ function processBook(cy, profile, newNodes) {
                 authorOfSimilarBookNode.data('shape', 'triangle');
                 newNodes = newNodes.union(authorOfSimilarBookNode);
             }
-            const similarWrittenByEdge  = createEdgeWithLabel  (cy,  authorOfSimilarBookNode, similarBookNode, 'author of', true)
-            
+            const similarWrittenByEdge = createEdgeWithLabel(cy, authorOfSimilarBookNode, similarBookNode, 'author of', true)
+
             similarWrittenByEdge.data('type', 'author');
 
         }
     }
 
-    let authorNode = findNodeByProperties(cy, {'label': profile.author, 'type': 'person'}); //findNodeByProperty(cy, 'label', profile.author);
+    let authorNode = findNodeByProperties(cy, { 'label': profile.author, 'type': 'person' }); //findNodeByProperty(cy, 'label', profile.author);
     if (!authorNode) {
         authorNode = createNode(cy, profile.author);
         authorNode.data('type', 'person');
@@ -89,14 +168,14 @@ function processBook(cy, profile, newNodes) {
     }
     authorNode.data('url', profile.authorUrl);
     authorNode.data('image', profile.authorImage);
-    const edge = createEdgeWithLabel  (cy, authorNode, bookNode, 'author of', true)
+    const edge = createEdgeWithLabel(cy, authorNode, bookNode, 'author of', true)
 
     edge.data('type', 'author');
     return newNodes
 }
 
 function processAuthor(cy, profile, newNodes) {
-    let authorNode = findNodeByProperties(cy, {'label': profile.name, 'type': 'person'});
+    let authorNode = findNodeByProperties(cy, { 'label': profile.name, 'type': 'person' });
     if (!authorNode) {
         authorNode = createNode(cy, profile.name);
         authorNode.data('url', profile.pageUrl);
@@ -112,21 +191,21 @@ function processAuthor(cy, profile, newNodes) {
     if (profile.died) authorNode.data('died', profile.died);
     if (profile.genres) authorNode.data('genres', profile.genres);
 
-if (profile.books)
-    for (const book of profile.books) {
-        let bookNode = findNodeByProperties(cy, {'label': book.title, 'type': 'book'});
-        if (!bookNode) {
-            bookNode = createNode(cy, book.title);
-            bookNode.data('url', book.goodreadsUrl);
-            bookNode.data('image', book.image);
-            bookNode.data('rating', book.avgRating);
-            bookNode.data('type', 'book');
-            bookNode.data('subtype', `goodreads-book`);
-            bookNode.data('shape', 'square');
-            newNodes = newNodes.union(bookNode);
+    if (profile.books)
+        for (const book of profile.books) {
+            let bookNode = findNodeByProperties(cy, { 'label': book.title, 'type': 'book' });
+            if (!bookNode) {
+                bookNode = createNode(cy, book.title);
+                bookNode.data('url', book.goodreadsUrl);
+                bookNode.data('image', book.image);
+                bookNode.data('rating', book.avgRating);
+                bookNode.data('type', 'book');
+                bookNode.data('subtype', `goodreads-book`);
+                bookNode.data('shape', 'square');
+                newNodes = newNodes.union(bookNode);
+            }
+            const edge = createEdgeWithLabel(cy, authorNode, bookNode, 'author of', true)
+            edge.data('type', 'author');
         }
-        const edge = createEdgeWithLabel  (cy, authorNode, bookNode, 'author of', true)
-        edge.data('type', 'author');
-    }
     return newNodes
 }

@@ -1,12 +1,13 @@
 import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from '../utils.js';
 
-export const processSpotifyProfile = (cy, message) => {
+export const processSpotifyProfile = (cy, message, spotifyScrapeConfiguration) => {
     const profile = message.profile;
     const contentDiv = document.getElementById('content');
     contentDiv.textContent = `
           Profile: ${JSON.stringify(message.profile)}
           Spotify URL: ${profile.pageUrl}
-        `;
+                  Scrapeconfiguration: ${JSON.stringify(spotifyScrapeConfiguration)}
+`;
 
     let newNodes = cy.collection();
 

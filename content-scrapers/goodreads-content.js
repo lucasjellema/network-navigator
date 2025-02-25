@@ -17,7 +17,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       if (message.type === 'goodreadsRequestForNetwork') {
         console.log("Network Navigator Goodreads Info request received: ");
         let profile = await getGoodreadsProfile();
-        console.log("Profile:", profile)
+        console.log("Sending Profile Asynch:", profile)
         sendResponse({ status: 'success', data: profile, pageUrl: window.location.href });
       }
     } catch (error) {
@@ -122,7 +122,7 @@ const scrapeBookData = async (profile) => {
       const bookDetailsButton = bookDetailsElement.querySelector('button');
       if (bookDetailsButton) {
         bookDetailsButton.click();
-        await delay(300)
+        await delay(700)
         const dtElements = bookDetailsElement.querySelectorAll('dt');
         for (const dtElement of dtElements) {
           const dtText = dtElement.textContent.trim();
@@ -167,10 +167,10 @@ const scrapeBookData = async (profile) => {
           book.image = imageElement.src;
           // div element with data-testid="title"
           const titleElement = similarBook.querySelector('div[data-testid="title"]');
-          book.title = titleElement.textContent.trim();
+          book.title = titleElement.textContent?.trim();
           const authorElement = similarBook.querySelector('div[data-testid="author"]');
-          book.author = authorElement.textContent.trim();
-          book.pageUrl = similarBook.querySelector('a').href;
+          book.author = authorElement.textContent?.trim();
+          book.pageUrl = similarBook.querySelector('a')?.href;
           // find span with class AverageRating__ratingValue
           const ratingElement = similarBook.querySelector('span.AverageRating__ratingValue');
           book.rating = ratingElement.textContent.trim();

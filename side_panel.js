@@ -5,6 +5,8 @@ import { processOciProfile } from './content-processors/processOciProfile.js';
 import { processGoodreadsProfile } from './content-processors/processGoodreadsProfile.js';
 import { processWikipediaProfile } from './content-processors/processWikipediaProfile.js';
 import { processSpotifyProfile } from './content-processors/processSpotifyProfile.js';
+import { initializeGoodreadsScrapeConfiguration, prepareGoodreadsPanelFromScrapeConfiguration, addGoodreadsScrapeConfiguration} from './goodreadsScrapeConfiguration.js'
+import { initializeSpotifyScrapeConfiguration, prepareSpotifyPanelFromScrapeConfiguration, addSpotifyScrapeConfiguration} from './spotifyScrapeConfiguration.js'
 
 // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 //   if (message.type === 'linkInfo') {
@@ -50,7 +52,7 @@ document.addEventListener("cyInitialized", (event) => {
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-
+const scrapeConfig = getScrapeConfiguration()
   if (message.type === 'linkedInProfile') {
     processLinkedInProfile(cy, message);
   }
@@ -61,13 +63,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     processOciProfile(cy, message);
   }
   if (message.type === 'goodreadsProfile') {
-    processGoodreadsProfile(cy, message);
+    processGoodreadsProfile(cy, message, scrapeConfig.goodreads);
   }
   if (message.type === 'wikipediaProfile') {
     processWikipediaProfile(cy, message);
   }
   if (message.type === 'spotifyProfile') {
-    processSpotifyProfile(cy, message);
+    processSpotifyProfile(cy, message, scrapeConfig.spotify);
   }
 
   if (message.type === 'linkInfoForNetworkNavigator') {
@@ -155,6 +157,7 @@ const initializeScrapeConfiguration = () => {
 
     if (!panel.contains(event.target) && !contentScrapeConfigurationButton.contains(event.target)) hideScrapeConfigurationPanel()
   })
+
   if (contentScrapeConfigurationButton) {
     contentScrapeConfigurationButton.style.display = "block"
     contentScrapeConfigurationButton.addEventListener('click', () => openScrapeConfigurationPanel(cy))
@@ -171,6 +174,9 @@ const initializeScrapeConfiguration = () => {
       selectedDiv.style.display = "block";
     }
   });
+
+  initializeGoodreadsScrapeConfiguration();
+  initializeSpotifyScrapeConfiguration();
 }
 
 const openScrapeConfigurationPanel = (cy) => {
@@ -179,6 +185,7 @@ const openScrapeConfigurationPanel = (cy) => {
   const scrapeConfiguration = getScrapeConfiguration()
   // TODO prepare scrape configuration panels based on scrapeConfiguration
   prepareGoodreadsPanelFromScrapeConfiguration(scrapeConfiguration)
+  prepareSpotifyPanelFromScrapeConfiguration(scrapeConfiguration)
 }
 
 
@@ -187,6 +194,7 @@ const hideScrapeConfigurationPanel = (cy) => {
   console.log("collect all value and store in localstorage")
   const scrapeConfiguration = getScrapeConfiguration()
   addGoodreadsScrapeConfiguration(scrapeConfiguration)
+  addSpotifyScrapeConfiguration(scrapeConfiguration)
   // TODO add other scrapeconfigurations
   saveScrapeConfiguration(scrapeConfiguration)
   console.log("collect all value and store in localstorage", scrapeConfiguration)
@@ -194,73 +202,6 @@ const hideScrapeConfigurationPanel = (cy) => {
 }
 
 
-const prepareGoodreadsPanelFromScrapeConfiguration = (scrapeConfiguration) => {
-  // set checked value in radio group author based on scrapeConfiguration.goodreads.author
-  const author = document.querySelector('input[name="author"][value="' + scrapeConfiguration.goodreads?.author??"update" + '"]');
-  if (author) {
-    author.checked = true;
-  }
-
-  // set checked value in radio group books based on scrapeConfiguration.goodreads.books
-  const books = document.querySelector('input[name="books"][value="' + scrapeConfiguration.goodreads?.books??"update" + '"]');
-  if (books) {
-    books.checked = true;
-  }
-
-  const bookRating = document.getElementById("book-rating");
-  bookRating.value = scrapeConfiguration.goodreads?.bookRating;
-  // set value for bookLimit
-  const bookLimit = document.getElementById("book-limit");
-  bookLimit.value = scrapeConfiguration.goodreads?.bookLimit;
-
-
-
-  // set value for similarLimit
-  const similarLimit = document.getElementById("similar-limit");
-  similarLimit.value = scrapeConfiguration.goodreads?.similarLimit;
-  // set value for similarLimit
-  const similarRating = document.getElementById("similar-rating");
-  similarRating.value = scrapeConfiguration.goodreads?.similarRating;
-
-}
-
-const addGoodreadsScrapeConfiguration = (scrapeConfiguration) => {
-
-  const author = document.querySelector('input[name="author"]:checked').value;
-  // read value set in radio group books 
-  const books = document.querySelector('input[name="books"]:checked').value;
-  const bookRating = document.getElementById("book-rating").value;
-  // get value from input book-limit
-  const bookLimit = document.getElementById("book-limit").value;
-
-
-  const book = document.querySelector('input[name="book"]:checked').value;
-  const bookAuthor = document.querySelector('input[name="book-author"]:checked').value;
-  const genres = document.querySelector('input[name="genres"]:checked').value;
-  const setting = document.querySelector('input[name="setting"]:checked').value;
-
-  const characters = document.querySelector('input[name="characters"]:checked').value;
-  const similarBooks = document.querySelector('input[name="similar-books"]:checked').value;
-  const similarLimit = document.getElementById("similar-limit").value;
-  const similarRating = document.getElementById("similar-rating").value;
-
-
-  scrapeConfiguration.goodreads = {
-    author: author,
-    books: books,
-    bookRating: bookRating,
-    bookLimit: bookLimit,
-    book: book,
-    bookAuthor: bookAuthor,
-    genres: genres,
-    setting: setting,
-    characters: characters,
-    similarBooks: similarBooks,
-    similarLimit: similarLimit,
-    similarRating: similarRating
-  }
-
-}
 const saveScrapeConfiguration = (scrapeConfiguration) => {
   localStorage.setItem("scrapeConfiguration", JSON.stringify(scrapeConfiguration));
 }
