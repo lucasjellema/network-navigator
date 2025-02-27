@@ -44,7 +44,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     let profile = getLinkedInProfile()
     profile.type = personPage ? 'person' : 'company'
     console.log("Profile:", profile)
-    sendResponse({ status: 'success', data: profile, linkedInUrl: window.location.href , type: 'linkedInInfoForNetwork'});
+    sendResponse({ status: 'success', data: profile, linkedInUrl: window.location.href, type: 'linkedInInfoForNetwork' });
     // }
     // else {
     //   sendResponse({ status: 'error', message });
@@ -72,6 +72,7 @@ const getLinkedInProfile = () => {
     addCurrentEducation(profile)
     addAbout(profile)
     addExperience(profile)
+    addEducation(profile)
   }
   if (companyPage) {
     addCompanyDetails(profile)
@@ -492,3 +493,37 @@ const addExperience = (profile) => {
 }
 
 
+
+
+const addEducation = (profile) => {
+  profile.education = []
+  //try {
+    const educationDiv = document.getElementById('education')
+    if (educationDiv) {
+      // find UL in second next sibling
+      const ulEducation = educationDiv.nextElementSibling.nextElementSibling.querySelector(':scope > ul')
+      console.log("ulEducation ", ulEducation);
+      const liEducations = ulEducation.querySelectorAll(':scope > li')
+      for (let i = 0; i < liEducations.length; i++) {
+        const newEducation = {}
+        const educationElement = liEducations[i]
+        // find first img element
+        const img = educationElement.querySelector('img')
+        if (img) {
+          newEducation.image = img.src
+        }
+        // find second div under first div under educationElement
+        const secondDiv = educationElement.querySelector(':scope > div').querySelector(':scope > div:nth-of-type(2)')
+        // find anchor under second div
+        const anchor = secondDiv.querySelector('a')
+        if (anchor) {
+          newEducation.url = anchor.href
+          newEducation.name = anchor.querySelector('div').querySelector('span').textContent
+          newEducation.subject = anchor.querySelector(':scope > span').querySelector('span').textContent
+          newEducation.period = anchor.querySelector(':scope > span:nth-of-type(2)').querySelector('span').textContent
+        }
+        profile.education.push(newEducation)
+      }
+    }
+  //} catch (error) { console.error("AddEducation" + error) }
+}
