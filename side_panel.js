@@ -7,6 +7,7 @@ import { processWikipediaProfile } from './content-processors/processWikipediaPr
 import { processSpotifyProfile } from './content-processors/processSpotifyProfile.js';
 import { initializeGoodreadsScrapeConfiguration, prepareGoodreadsPanelFromScrapeConfiguration, addGoodreadsScrapeConfiguration} from './goodreadsScrapeConfiguration.js'
 import { initializeSpotifyScrapeConfiguration, prepareSpotifyPanelFromScrapeConfiguration, addSpotifyScrapeConfiguration} from './spotifyScrapeConfiguration.js'
+import { initializeLinkedinScrapeConfiguration, prepareLinkedinPanelFromScrapeConfiguration, addLinkedinScrapeConfiguration} from './linkedinScrapeConfiguration.js'
 
 // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 //   if (message.type === 'linkInfo') {
@@ -54,7 +55,7 @@ document.addEventListener("cyInitialized", (event) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 const scrapeConfig = getScrapeConfiguration()
   if (message.type === 'linkedInProfile') {
-    processLinkedInProfile(cy, message);
+    processLinkedInProfile(cy, message, scrapeConfig.linkedin);
   }
   if (message.type === 'imdbProfile') {
     processImdbProfile(cy, message);
@@ -177,6 +178,7 @@ const initializeScrapeConfiguration = () => {
 
   initializeGoodreadsScrapeConfiguration();
   initializeSpotifyScrapeConfiguration();
+  initializeLinkedinScrapeConfiguration();
 }
 
 const openScrapeConfigurationPanel = (cy) => {
@@ -186,6 +188,7 @@ const openScrapeConfigurationPanel = (cy) => {
   // TODO prepare scrape configuration panels based on scrapeConfiguration
   prepareGoodreadsPanelFromScrapeConfiguration(scrapeConfiguration)
   prepareSpotifyPanelFromScrapeConfiguration(scrapeConfiguration)
+  prepareLinkedinPanelFromScrapeConfiguration(scrapeConfiguration)
 }
 
 
@@ -195,6 +198,7 @@ const hideScrapeConfigurationPanel = (cy) => {
   const scrapeConfiguration = getScrapeConfiguration()
   addGoodreadsScrapeConfiguration(scrapeConfiguration)
   addSpotifyScrapeConfiguration(scrapeConfiguration)
+  addLinkedinScrapeConfiguration(scrapeConfiguration)
   // TODO add other scrapeconfigurations
   saveScrapeConfiguration(scrapeConfiguration)
   console.log("collect all value and store in localstorage", scrapeConfiguration)
