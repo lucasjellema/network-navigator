@@ -32,20 +32,26 @@ export const processGoodreadsProfile = (cy, message, goodreadsScrapeConfiguratio
 }
 function processBook(cy, profile, newNodes, goodreadsScrapeConfiguration) {
     let bookNode = findNodeByProperties(cy, { 'label': profile.title, 'type': 'book' });
-    if (!bookNode) {
+    let newbook = false
+    if (!bookNode && (goodreadsScrapeConfiguration.book === 'update' || goodreadsScrapeConfiguration.book === 'add')) {
         bookNode = createNode(cy, profile.title);
         bookNode.data('url', profile.pageUrl);
         bookNode.data('type', profile.subtype);
         bookNode.data('subtype', `goodreads${profile.subtype}`);
         bookNode.data('shape', 'square');
         newNodes = newNodes.union(bookNode);
+        newbook = true
+    } else {
+        return newNodes
     }
-    if (profile.image) bookNode.data('image', profile.image);
-    if (profile.isbn) bookNode.data('isbn', profile.isbn);
-    if (profile.language) bookNode.data('language', profile.language);
-    if (profile.truncatedContent) bookNode.data('synopsis', profile.truncatedContent);
-    if (profile.publicationInfo) bookNode.data('publicationInfo', profile.publicationInfo);
-    if (profile.rating) bookNode.data('rating', profile.rating);
+    if (newbook || goodreadsScrapeConfiguration.book === 'update') {
+        if (profile.image) bookNode.data('image', profile.image);
+        if (profile.isbn) bookNode.data('isbn', profile.isbn);
+        if (profile.language) bookNode.data('language', profile.language);
+        if (profile.truncatedContent) bookNode.data('synopsis', profile.truncatedContent);
+        if (profile.publicationInfo) bookNode.data('publicationInfo', profile.publicationInfo);
+        if (profile.rating) bookNode.data('rating', profile.rating);
+    }
     // GENRES - add, edge  tags, property
     if (profile.genres) {
         if (goodreadsScrapeConfiguration.genres === "tags") {
@@ -66,7 +72,7 @@ function processBook(cy, profile, newNodes, goodreadsScrapeConfiguration) {
                     genreNode.data('type', 'genre');
                     genreNode.data('shape', 'round-rectangle');
                     newNodes = newNodes.union(genreNode);
-                    
+
                 }
                 const bookGenreEdge = createEdgeWithLabel(cy, bookNode, genreNode, 'is', true);
             }
@@ -92,7 +98,7 @@ function processBook(cy, profile, newNodes, goodreadsScrapeConfiguration) {
                     settingNode.data('type', 'setting');
                     settingNode.data('shape', 'round-rectangle');
                     newNodes = newNodes.union(settingNode);
-                    
+
                 }
                 const bookSettingEdge = createEdgeWithLabel(cy, bookNode, settingNode, 'is', true);
             }
@@ -109,15 +115,15 @@ function processBook(cy, profile, newNodes, goodreadsScrapeConfiguration) {
             // for each character, find node
             for (const character of profile.characters.split(',')) {
                 let characterNode = findNodeByProperties(cy, { 'label': character, 'type': 'character' });
-    
+
                 // if node found, then create edge 
-    
+
                 if (!characterNode && goodreadsScrapeConfiguration.characters === "add") {
                     characterNode = createNode(cy, character);
                     characterNode.data('type', 'character');
                     characterNode.data('shape', 'round-rectangle');
                     newNodes = newNodes.union(characterNode);
-                    
+
                 }
                 const bookcharacterEdge = createEdgeWithLabel(cy, bookNode, characterNode, 'is', true);
             }
@@ -176,21 +182,26 @@ function processBook(cy, profile, newNodes, goodreadsScrapeConfiguration) {
 
 function processAuthor(cy, profile, newNodes) {
     let authorNode = findNodeByProperties(cy, { 'label': profile.name, 'type': 'person' });
-    if (!authorNode) {
+
+    let newauthor = false
+
+    if (!authorNode && (goodreadsScrapeConfiguration.author === 'update' || goodreadsScrapeConfiguration.author === 'add')) {
         authorNode = createNode(cy, profile.name);
         authorNode.data('url', profile.pageUrl);
         authorNode.data('type', profile.subtype);
         authorNode.data('subtype', `goodreads-author`);
         authorNode.data('shape', 'triangle');
         newNodes = newNodes.union(authorNode);
+        newauthor = true
+    } else {return newNodes}
+    if (newbook || goodreadsScrapeConfiguration.author === 'update') {
+        if (profile.image) authorNode.data('image', profile.image);
+        if (profile.description) authorNode.data('biography', profile.description);
+        if (profile.birthplace) authorNode.data('birthplace', profile.birthplace);
+        if (profile.birthdate) authorNode.data('birthdate', profile.birthdate);
+        if (profile.died) authorNode.data('died', profile.died);
+        if (profile.genres) authorNode.data('genres', profile.genres);
     }
-    if (profile.image) authorNode.data('image', profile.image);
-    if (profile.description) authorNode.data('biography', profile.description);
-    if (profile.birthplace) authorNode.data('birthplace', profile.birthplace);
-    if (profile.birthdate) authorNode.data('birthdate', profile.birthdate);
-    if (profile.died) authorNode.data('died', profile.died);
-    if (profile.genres) authorNode.data('genres', profile.genres);
-
     if (profile.books)
         for (const book of profile.books) {
             let bookNode = findNodeByProperties(cy, { 'label': book.title, 'type': 'book' });
