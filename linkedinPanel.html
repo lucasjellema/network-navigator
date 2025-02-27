@@ -1,0 +1,65 @@
+<div id="linkedinConfigPanel">
+    <h3>LinkedIn Scrape Settings</h3>
+    <div class="panel">
+        <h3>Person</h3>
+        <!-- education
+jobs
+diplomas
+recommendations?
+-->
+        <div style="display: flex; flex-direction: row; align-items: center;">
+            <label><input type="radio" name="person" value="update" checked> Update</label>
+            <label style="margin-left: 16px;"><input type="radio" name="person" value="add"> Add</label>
+            <label style="margin-left: 16px;"><input type="radio" name="person" value="none">
+                None</label>
+        </div>
+        <div class="sub-options">
+            <h4>Experience</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="person-experience" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="person-experience" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="person-experience" value="property">
+                    Property</label>
+                <label><input type="radio" name="person-experience" value="none"> None</label>
+                <label title="Do not process experience from before year">Earliest year for scraping experience<input
+                        type="number" min="1900" max="2030" size="4" id="person-experience-startyear"></label>
+                <label title="Do not process more than the specified number of jobs">Limit the number of jobs to
+                    (no more than)<input type="number" min="0" max="159" size="3" id="person-experience-limit"></label>
+
+            </div>
+
+            <h4>Education</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="person-education" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="person-education" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="person-education" value="property">
+                    Property</label>
+                <label><input type="radio" name="person-education" value="none"> None</label>
+                <label title="Do not process education records from before year">Earliest year for scraping
+                    education<input type="number" min="1900" max="2030" size="4" id="person-education-startyear"></label>
+                <label title="Do not process more than the specified number of education records">Limit the number of
+                    education references to
+                    (no more than)<input type="number" min="0" max="159" size="3" id="person-education-limit"></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h3>Company</h3>
+        <div style="display: flex; flex-direction: row; align-items: center;">
+            <label><input type="radio" name="company" value="update" checked> Update</label>
+            <label style="margin-left: 16px;"><input type="radio" name="company" value="add"> Add</label>
+            <label style="margin-left: 16px;"><input type="radio" name="company" value="none">
+                None</label>
+        </div>
+        <!--
+        locations
+
+    -->
+
+    </div>
+</div>
