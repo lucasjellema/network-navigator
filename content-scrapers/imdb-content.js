@@ -242,7 +242,7 @@ const addPortfolio = (profile) => {
   let filmographyDiv = document.querySelector('div[data-testid="Filmography"]');
   if (filmographyDiv) {
 
-    const portfolioDiv = filmographyDiv.querySelector(':scope > section:nth-of-type(2)').querySelector(':scope > div:nth-of-type(5)')
+    const portfolioDiv = filmographyDiv.querySelector(':scope > section:nth-of-type(1)')?.querySelector(':scope > div:nth-of-type(5)')
     if (portfolioDiv) {
       // const portfolioUl = portfolioDiv.querySelector('ul:nth-of-type(2)');
       // console.log('portfolioUl', portfolioUl)
