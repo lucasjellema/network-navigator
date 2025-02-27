@@ -2,9 +2,127 @@
     <h3>Spotify Scrape Settings</h3>
     <div class="panel">
         <h3>Artist</h3>
+
+        <div style="display: flex; flex-direction: row; align-items: center;">
+            <label><input type="radio" name="artist" value="update" checked> Update</label>
+            <label style="margin-left: 16px;"><input type="radio" name="artist" value="add"> Add</label>
+            <label style="margin-left: 16px;"><input type="radio" name="artist" value="none">
+                None</label>
+        </div>
+        <div class="sub-options">
+            <h4>Discography</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="artist-discography" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="artist-discography" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="artist-discography" value="property">
+                    Property</label>
+                <label><input type="radio" name="artist-discography" value="none"> None</label>
+                <label title="Do not process more than the specified number of albums">Limit the number of albums to
+                    (no more than)<input type="number" min="0" max="159" size="3" id="artist-discography-limit"></label>
+
+            </div>
+
+            <h4>Fans also like</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="artist-fans-also-like" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="artist-fans-also-like" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="artist-fans-also-like" value="property">
+                    Property</label>
+                <label><input type="radio" name="artist-fans-also-like" value="none"> None</label>
+                <label title="Do not process more than the specified number of artists">Limit the number of also liked
+                    artists to
+                    (no more than)<input type="number" min="0" max="159" size="3"
+                        id="artist-fans-also-like-limit"></label>
+            </div>
+        </div>
     </div>
 
     <div class="panel">
         <h3>Song</h3>
+
+
+        <div style="display: flex; flex-direction: row; align-items: center;">
+            <label><input type="radio" name="song" value="update" checked> Update</label>
+            <label style="margin-left: 16px;"><input type="radio" name="song" value="add"> Add</label>
+            <label style="margin-left: 16px;"><input type="radio" name="song" value="none">
+                None</label>
+        </div>
+        <div class="sub-options">
+            <h4>Album</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="song-album" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-album" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-album" value="property">
+                    Property</label>
+                <label><input type="radio" name="song-album" value="none"> None</label>
+            </div>
+
+
+            <h4>Written by</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="song-writtenby" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-writtenby" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-writtenby" value="tags">
+                    Tags</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-writtenby" value="property">
+                    Property</label>
+                <label><input type="radio" name="song-writtenby" value="none"> None</label>
+
+            </div>
+
+            <h4>Performed by</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="song-performedby" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-performedby" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-performedby" value="tags">
+                    Tags</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-performedby" value="property">
+                    Property</label>
+                <label><input type="radio" name="song-performedby" value="none"> None</label>
+
+            </div>
+
+
+            <h4>Produced by</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="song-producedby" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-producedby" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-producedby" value="tags">
+                    Tags</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-producedby" value="property">
+                    Property</label>
+                <label><input type="radio" name="song-producedby" value="none"> None</label>
+
+
+
+            </div>
+
+            <h4>Recommended Songs</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="song-recommended" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-recommended" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="song-recommended" value="property">
+                    Property</label>
+                <label><input type="radio" name="song-recommended" value="none"> None</label>
+                <label title="Do not process more than the specified number of recommended songs">Limit the number of
+                    recommendations to
+                    (no more than)<input type="number" min="0" max="159" size="3" id="song-recommended-limit"></label>
+
+
+            </div>
+        </div>
     </div>
-</div>
