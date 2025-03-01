@@ -208,10 +208,10 @@ const addKnownFor = (profile) => {
       const knownFor = []
       for (const child of parentKnownForDiv.children) {
         const production = {}
-        production.image = child.querySelector('img').src
-        production.movieUrl = child.querySelector('a').href
-        production.description = child.querySelector('a').ariaLabel
-        production.rating = child.querySelector('span.ipc-rating-star--rating').textContent
+        production.image = child.querySelector('img')?.src
+        production.movieUrl = child.querySelector('a')?.href
+        production.description = child.querySelector('a')?.ariaLabel
+        production.rating = child.querySelector('span.ipc-rating-star--rating')?.textContent
         production.type = child.querySelector('div.ipc-primary-image-list-card__title-type')?.textContent
 
         const div = child.querySelector(':scope > div:nth-of-type(2)')
@@ -269,6 +269,15 @@ const addPortfolio = (profile) => {
               performance.title = anchor.textContent.trim();
               performance.url = anchor.href;
             }
+            const divWithRating = anchor.nextElementSibling
+            if (divWithRating) {
+                performance.rating = divWithRating.querySelector('span').textContent?.trim(); // first span in div is rating , second span (if is there) is type
+                if (divWithRating.querySelector('span:nth-of-type(2)')) { 
+                  performance.type = divWithRating.querySelector('span:nth-of-type(2)').textContent?.trim(); 
+                }
+            }
+
+
             const ul = anchor.nextElementSibling.nextElementSibling
             if (ul) {
               const characterLIs = ul.querySelectorAll(':scope > li');

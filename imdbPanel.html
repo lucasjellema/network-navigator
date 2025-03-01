@@ -1,4 +1,4 @@
-<div id="spotifyConfigPanel">
+<div id="imdbConfigPanel">
     <h3>IMDb Scrape Settings</h3>
     <div class="panel">
         <h3>Movie / TV Series</h3>
@@ -10,39 +10,20 @@
                 None</label>
         </div>
         <div class="sub-options">
-            <h4>Cast</h4>
+
+            <h4>Stars</h4>
             <div style="display: flex; flex-direction: row; align-items: center;">
-                <label style="margin-right: 16px;"><input type="radio" name="cast" value="add" checked>
+                <label style="margin-right: 16px;"><input type="radio" name="stars" value="add" checked>
                     Add</label>
-                <label style="margin-right: 16px;"><input type="radio" name="cast" value="edge">
+                <label style="margin-right: 16px;"><input type="radio" name="stars" value="edge">
                     Edge</label>
-                <label style="margin-right: 16px;"><input type="radio" name="cast" value="property">
+                <label style="margin-right: 16px;"><input type="radio" name="stars" value="property">
                     Property</label>
-                <label><input type="radio" name="cast" value="none"> None</label>
-                <label title="Do not process more than the specified number of cast members">Limit # cast
-                    members to
-                    <input type="number" min="0" max="159" size="3" id="cast-limit"></label>
-
+                <label><input type="radio" name="stars" value="none"> None</label>
+                <label title="Do not process more than the specified number of stars">Limit # stars
+                    to
+                    <input type="number" min="0" max="159" size="3" id="stars-limit"></label>
             </div>
-
-            <h4>More like this</h4>
-            <div style="display: flex; flex-direction: row; align-items: center;">
-                <label style="margin-right: 16px;"><input type="radio" name="more-like-this" value="add" checked>
-                    Add</label>
-                <label style="margin-right: 16px;"><input type="radio" name="more-like-this" value="edge">
-                    Edge</label>
-                <label style="margin-right: 16px;"><input type="radio" name="more-like-this" value="property">
-                    Property</label>
-                <label><input type="radio" name="more-like-this" value="none"> None</label>
-                <label title="Do not process more than the specified number of more like this suggestions">No more
-                    <i>like this</i>
-                    than<input type="number" min="0" max="159" size="3" id="more-like-this-limit"></label>
-                <label title="Do not process more like this suggestions with a rating under">Only <i>more like this</i>
-
-                    with rating at least<input type="number" min="0" max="159" size="3"
-                        id="more-like-this-rating-limit"></label>
-            </div>
-
             <h4>Chips (Genres)</h4>
             <div style="display: flex; flex-direction: row; align-items: center;">
                 <label style="margin-right: 16px;"><input type="radio" name="chips" value="add" checked>
@@ -55,6 +36,80 @@
                     Property</label>
                 <label><input type="radio" name="chips" value="none"> None</label>
             </div>
+            <h4>Creators</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="creators" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="creators" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="creators" value="property">
+                    Property</label>
+                <label><input type="radio" name="creators" value="none"> None</label>
+                <label title="Do not process more than the specified number of creators">Limit # creators
+                    to
+                    <input type="number" min="0" max="159" size="3" id="creators-limit"></label>
+            </div>
+            <h4>Director(s)</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="directors" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="directors" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="directors" value="property">
+                    Property</label>
+                <label><input type="radio" name="directors" value="none"> None</label>
+                <label title="Do not process more than the specified number of directors">Limit # directors
+                    to
+                    <input type="number" min="0" max="159" size="3" id="directors-limit"></label>
+            </div>
+            <h4>Writers</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="writers" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="writers" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="writers" value="property">
+                    Property</label>
+                <label><input type="radio" name="writers" value="none"> None</label>
+                <label title="Do not process more than the specified number of writers">Limit # writers
+                    to
+                    <input type="number" min="0" max="159" size="3" id="writers-limit"></label>
+            </div>
+
+            <h4>Cast</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="cast" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="cast" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="cast" value="property">
+                    Property</label>
+                <label><input type="radio" name="cast" value="none"> None</label>
+                <label title="Do not process more than the specified number of cast members">Limit # cast
+                    members to
+                    <input type="number" min="0" max="159" size="3" id="cast-limit"></label>
+            </div>
+
+            <h4>More like this</h4>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <label style="margin-right: 16px;"><input type="radio" name="more-like-this" value="add" checked>
+                    Add</label>
+                <label style="margin-right: 16px;"><input type="radio" name="more-like-this" value="edge">
+                    Edge</label>
+                <label style="margin-right: 16px;"><input type="radio" name="more-like-this" value="property">
+                    Property</label>
+                <label><input type="radio" name="more-like-this" value="none"> None</label>
+                <br />
+
+                <label title="Do not process more than the specified number of more like this suggestions">No more
+                    <i>like this</i>
+                    than<input type="number" min="0" max="159" size="3" id="more-like-this-limit"></label>
+                <label title="Do not process more like this suggestions with a rating under">Only <i>more like this</i>
+                    with rating at least<input type="number" min="0" max="159" size="3"
+                        id="more-like-this-rating-limit"></label>
+
+            </div>
+
 
         </div>
     </div>
@@ -70,76 +125,51 @@
                 None</label>
         </div>
         <div class="sub-options">
-            <h4>Album</h4>
+            <h4>Known for</h4>
             <div style="display: flex; flex-direction: row; align-items: center;">
-                <label style="margin-right: 16px;"><input type="radio" name="song-album" value="add" checked>
+                <label style="margin-right: 16px;"><input type="radio" name="known-for" value="update" checked>
+                    Update</label>
+                <label style="margin-right: 16px;"><input type="radio" name="known-for" value="add">
                     Add</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-album" value="edge">
+                <label style="margin-right: 16px;"><input type="radio" name="known-for" value="edge">
                     Edge</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-album" value="property">
+                <label style="margin-right: 16px;"><input type="radio" name="known-for" value="property">
                     Property</label>
-                <label><input type="radio" name="song-album" value="none"> None</label>
+                <label><input type="radio" name="known-for" value="none"> None</label>
+                <label title="Do not process more than the specified number of more like this suggestions">No more
+                    <i>known for</i>
+                    than<input type="number" min="0" max="159" size="3" id="known-for-limit"></label>
+                <label title="Do not process <i>known for</i> titles with a rating under">Only <i>known for</i>
+
+                    with rating at least<input type="number" min="0" max="159" size="3"
+                        id="known-for-rating-limit"></label>
+                <label title="Do not process <i>known for</i> titles older than">Only <i>known for</i>
+
+                    from year<input type="number" min="1900" max="2030" size="4" id="known-for-startyear"></label>
             </div>
-
-
-            <h4>Written by</h4>
+            <h4>Portfolio</h4>
             <div style="display: flex; flex-direction: row; align-items: center;">
-                <label style="margin-right: 16px;"><input type="radio" name="song-writtenby" value="add" checked>
+                <label style="margin-right: 16px;"><input type="radio" name="portfolio" value="update" checked>
+                    Update</label>
+                <label style="margin-right: 16px;"><input type="radio" name="portfolio" value="add">
                     Add</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-writtenby" value="edge">
+                <label style="margin-right: 16px;"><input type="radio" name="portfolio" value="edge">
                     Edge</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-writtenby" value="tags">
-                    Tags</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-writtenby" value="property">
+                <label style="margin-right: 16px;"><input type="radio" name="portfolio" value="property">
                     Property</label>
-                <label><input type="radio" name="song-writtenby" value="none"> None</label>
+                <label><input type="radio" name="portfolio" value="none"> None</label>
+                <label title="Do not process more than the specified number of portfolio entries">No more
+                    <i>portfolio entries</i>
+                    than<input type="number" min="0" max="159" size="3" id="portfolio-limit"></label>
+                <label title="Do not process <i>portfolio</i> titles with a rating under">Only <i>portfolio</i>
 
-            </div>
+                    with rating at least<input type="number" min="0" max="159" size="3"
+                        id="portfolio-rating-limit"></label>
+                <label title="Do not process <i>portfolio</i> titles older than">Only <i>portfolio
 
-            <h4>Performed by</h4>
-            <div style="display: flex; flex-direction: row; align-items: center;">
-                <label style="margin-right: 16px;"><input type="radio" name="song-performedby" value="add" checked>
-                    Add</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-performedby" value="edge">
-                    Edge</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-performedby" value="tags">
-                    Tags</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-performedby" value="property">
-                    Property</label>
-                <label><input type="radio" name="song-performedby" value="none"> None</label>
+                    </i>
 
-            </div>
-
-
-            <h4>Produced by</h4>
-            <div style="display: flex; flex-direction: row; align-items: center;">
-                <label style="margin-right: 16px;"><input type="radio" name="song-producedby" value="add" checked>
-                    Add</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-producedby" value="edge">
-                    Edge</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-producedby" value="tags">
-                    Tags</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-producedby" value="property">
-                    Property</label>
-                <label><input type="radio" name="song-producedby" value="none"> None</label>
-
-
-
-            </div>
-
-            <h4>Recommended Songs</h4>
-            <div style="display: flex; flex-direction: row; align-items: center;">
-                <label style="margin-right: 16px;"><input type="radio" name="song-recommended" value="add" checked>
-                    Add</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-recommended" value="edge">
-                    Edge</label>
-                <label style="margin-right: 16px;"><input type="radio" name="song-recommended" value="property">
-                    Property</label>
-                <label><input type="radio" name="song-recommended" value="none"> None</label>
-                <label title="Do not process more than the specified number of recommended songs">Limit the number of
-                    recommendations to
-                    (no more than)<input type="number" min="0" max="159" size="3" id="song-recommended-limit"></label>
-
+                    from year<input type="number" min="1900" max="2030" size="4" id="portfolio-startyear"></label>
 
             </div>
         </div>
