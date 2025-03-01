@@ -519,8 +519,8 @@ const addEducation = (profile) => {
         if (anchor) {
           newEducation.url = anchor.href
           newEducation.name = anchor.querySelector('div').querySelector('span').textContent
-          newEducation.subject = anchor.querySelector(':scope > span').querySelector('span').textContent
-          newEducation.period = anchor.querySelector(':scope > span:nth-of-type(2)').querySelector('span').textContent
+          newEducation.subject = anchor.querySelector(':scope > span')?.querySelector('span')?.textContent
+          newEducation.period = anchor.querySelector(':scope > span:nth-of-type(2)')?.querySelector('span')?.textContent
         }
         profile.education.push(newEducation)
       }
