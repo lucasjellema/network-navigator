@@ -8,6 +8,8 @@ import { processSpotifyProfile } from './content-processors/processSpotifyProfil
 import { initializeGoodreadsScrapeConfiguration, prepareGoodreadsPanelFromScrapeConfiguration, addGoodreadsScrapeConfiguration} from './goodreadsScrapeConfiguration.js'
 import { initializeSpotifyScrapeConfiguration, prepareSpotifyPanelFromScrapeConfiguration, addSpotifyScrapeConfiguration} from './spotifyScrapeConfiguration.js'
 import { initializeLinkedinScrapeConfiguration, prepareLinkedinPanelFromScrapeConfiguration, addLinkedinScrapeConfiguration} from './linkedinScrapeConfiguration.js'
+import { initializeImdbScrapeConfiguration, prepareImdbPanelFromScrapeConfiguration, addImdbScrapeConfiguration} from './imdbScrapeConfiguration.js'
+
 
 // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 //   if (message.type === 'linkInfo') {
@@ -58,7 +60,7 @@ const scrapeConfig = getScrapeConfiguration()
     processLinkedInProfile(cy, message, scrapeConfig.linkedin);
   }
   if (message.type === 'imdbProfile') {
-    processImdbProfile(cy, message);
+    processImdbProfile(cy, message, scrapeConfig.imdb);
   }
   if (message.type === 'ociProfile') {
     processOciProfile(cy, message);
@@ -168,17 +170,14 @@ const initializeScrapeConfiguration = () => {
   const select = document.getElementById("selectContentScraper")
   select.addEventListener("change", function () {
     console.log("Selected:", this.value);
-    hideAllScrapeConfiguration()
-    // show the selected div
-    const selectedDiv = document.getElementById(this.value + "Config");
-    if (selectedDiv) {
-      selectedDiv.style.display = "block";
-    }
+    selectScrapeConfiguration(this.value);
   });
 
   initializeGoodreadsScrapeConfiguration();
   initializeSpotifyScrapeConfiguration();
   initializeLinkedinScrapeConfiguration();
+  initializeImdbScrapeConfiguration();
+  selectScrapeConfiguration("spotify")
 }
 
 const openScrapeConfigurationPanel = (cy) => {
@@ -189,6 +188,8 @@ const openScrapeConfigurationPanel = (cy) => {
   prepareGoodreadsPanelFromScrapeConfiguration(scrapeConfiguration)
   prepareSpotifyPanelFromScrapeConfiguration(scrapeConfiguration)
   prepareLinkedinPanelFromScrapeConfiguration(scrapeConfiguration)
+  prepareImdbPanelFromScrapeConfiguration(scrapeConfiguration)
+  
 }
 
 
@@ -199,6 +200,7 @@ const hideScrapeConfigurationPanel = (cy) => {
   addGoodreadsScrapeConfiguration(scrapeConfiguration)
   addSpotifyScrapeConfiguration(scrapeConfiguration)
   addLinkedinScrapeConfiguration(scrapeConfiguration)
+  addImdbScrapeConfiguration(scrapeConfiguration)
   // TODO add other scrapeconfigurations
   saveScrapeConfiguration(scrapeConfiguration)
   console.log("collect all value and store in localstorage", scrapeConfiguration)
@@ -214,4 +216,14 @@ const getScrapeConfiguration = () => {
   return scrapeConfiguration && "undefined" !== scrapeConfiguration ? JSON.parse(scrapeConfiguration) : {};
 }
 
+
+function selectScrapeConfiguration(configuration) {
+
+  hideAllScrapeConfiguration();
+  // show the selected div
+  const selectedDiv = document.getElementById(configuration + "Config");
+  if (selectedDiv) {
+    selectedDiv.style.display = "block";
+  }
+}
 
