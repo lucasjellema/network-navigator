@@ -1,4 +1,5 @@
 import { createEdge, createNode, findNodeByProperty, findNodeByProperties, createEdgeWithLabel } from '../utils.js';
+import { determineLimit } from './content-processor-utils.js';
 
 export const processGoodreadsProfile = (cy, message, goodreadsScrapeConfiguration) => {
     const profile = message.profile;
@@ -33,17 +34,18 @@ export const processGoodreadsProfile = (cy, message, goodreadsScrapeConfiguratio
 function processBook(cy, profile, newNodes, goodreadsScrapeConfiguration) {
     let bookNode = findNodeByProperties(cy, { 'label': profile.title, 'type': 'book' });
     let newbook = false
-    if (!bookNode && (goodreadsScrapeConfiguration.book === 'update' || goodreadsScrapeConfiguration.book === 'add')) {
-        bookNode = createNode(cy, profile.title);
-        bookNode.data('url', profile.pageUrl);
-        bookNode.data('type', profile.subtype);
-        bookNode.data('subtype', `goodreads${profile.subtype}`);
-        bookNode.data('shape', 'square');
-        newNodes = newNodes.union(bookNode);
-        newbook = true
-    } else {
-        return newNodes
-    }
+    if (!bookNode)
+        if (goodreadsScrapeConfiguration.book === 'update' || goodreadsScrapeConfiguration.book === 'add') {
+            bookNode = createNode(cy, profile.title);
+            bookNode.data('url', profile.pageUrl);
+            bookNode.data('type', profile.subtype);
+            bookNode.data('subtype', `goodreads${profile.subtype}`);
+            bookNode.data('shape', 'square');
+            newNodes = newNodes.union(bookNode);
+            newbook = true
+        } else {
+            return newNodes
+        }
     if (newbook || goodreadsScrapeConfiguration.book === 'update') {
         if (profile.image) bookNode.data('image', profile.image);
         if (profile.isbn) bookNode.data('isbn', profile.isbn);
@@ -132,9 +134,9 @@ function processBook(cy, profile, newNodes, goodreadsScrapeConfiguration) {
 
     if (profile.similarBooks) {
         let i = 0;
-        const upperLimit = goodreadsScrapeConfiguration.similarLimit ?? 4
+        let limit = determineLimit(goodreadsScrapeConfiguration.similarLimit, 1000)
         for (const similarBook of profile.similarBooks) {
-            if (i++ > upperLimit) break;
+            if (i++ >= limit) break;
             // TODO break after a user defined number
             let similarBookNode = findNodeByProperties(cy, { 'label': similarBook.title, 'type': 'book' });
             if (!similarBookNode) {
@@ -185,15 +187,16 @@ function processAuthor(cy, profile, newNodes) {
 
     let newauthor = false
 
-    if (!authorNode && (goodreadsScrapeConfiguration.author === 'update' || goodreadsScrapeConfiguration.author === 'add')) {
-        authorNode = createNode(cy, profile.name);
-        authorNode.data('url', profile.pageUrl);
-        authorNode.data('type', profile.subtype);
-        authorNode.data('subtype', `goodreads-author`);
-        authorNode.data('shape', 'triangle');
-        newNodes = newNodes.union(authorNode);
-        newauthor = true
-    } else {return newNodes}
+    if (!authorNode)
+        if (goodreadsScrapeConfiguration.author === 'update' || goodreadsScrapeConfiguration.author === 'add') {
+            authorNode = createNode(cy, profile.name);
+            authorNode.data('url', profile.pageUrl);
+            authorNode.data('type', profile.subtype);
+            authorNode.data('subtype', `goodreads-author`);
+            authorNode.data('shape', 'triangle');
+            newNodes = newNodes.union(authorNode);
+            newauthor = true
+        } else { return newNodes }
     if (newbook || goodreadsScrapeConfiguration.author === 'update') {
         if (profile.image) authorNode.data('image', profile.image);
         if (profile.description) authorNode.data('biography', profile.description);
