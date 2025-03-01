@@ -105,7 +105,7 @@ const addPeriod = (profile) => {
       nextSib = nextSib.nextElementSibling
     }
 
-    if (profile.type === "Movie") {
+    if (profile.subtype === "Movie") {
       const nextSibLi = nextSib.querySelector('li:nth-of-type(1)')
       const period = nextSibLi.textContent
       if (period) {
