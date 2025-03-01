@@ -274,7 +274,7 @@ const processPerson = (cy, profile, message, newNodes, imdbScrapeConfiguration) 
             return newNodes
         }
     }
-    if (newperson || imdbScrapeConfiguration.persons === 'update') {
+    if (newperson || imdbScrapeConfiguration.person === 'update') {
         if (profile.image) nameNode.data('image', profile.image);
         if (profile.bio) nameNode.data('bio', profile.bio);
         if (profile.birthDate) nameNode.data('birthDate', profile.birthDate);
